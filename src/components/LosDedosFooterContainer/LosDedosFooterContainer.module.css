@@ -1,0 +1,15 @@
+.container {
+    background-color: #F0DFB1;
+    display: flex;
+    padding: 8rem;
+    position: relative;
+    overflow: visible;
+}
+
+
+.losDedos {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}

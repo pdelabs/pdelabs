@@ -1,0 +1,38 @@
+.bigtitle {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1rem;
+    line-height: 90%;
+    letter-spacing: -3%;
+}
+
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1rem;
+    line-height: 90%;
+    letter-spacing: -3%;
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.body {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.smallbody {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 1rem;
+}
