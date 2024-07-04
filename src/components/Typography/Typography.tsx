@@ -11,12 +11,22 @@ const titleFont = Plus_Jakarta_Sans({
 
 type TitleProps = PropsWithChildren<React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>>;
 
-export const Title: React.FC<TitleProps> = ({ children, className, ...rest }) => {
-    return <h1 className={c(titleFont.className, styles.title, className)} {...rest}>{children}</h1>;
-}
-
-
 export const BigTitle: React.FC<TitleProps> = ({ children, className, ...rest }) => {
     return <h1 className={c(titleFont.className, styles.bigtitle, className)} {...rest}>{children}</h1>;
 }
 
+export const Title: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+    return <h2 className={c(titleFont.className, styles.title, className)} {...rest}>{children}</h2>;
+}
+
+export const Subtitle: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+    return <h3 className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</h3>;
+}
+
+export const Body: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+    return <span className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</span>;
+}
+
+export const SmallBody: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+    return <span className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</span>;
+}
