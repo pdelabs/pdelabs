@@ -23,7 +23,7 @@ const LosDedosFooterContainer = () => {
             </div>
 
             <div className={styles.footer}>
-                <Title>Let's create together,</Title>
+                <Title>Let&apos;s create together,</Title>
                 <Body className={styles.contactusButton} style={{ display: "inline-flex", gap: "0.5rem" }} onClick={() => setOpen(true)}>Schedule a call <CalendarDays /></Body>
                 <div className={styles.sections}>
 

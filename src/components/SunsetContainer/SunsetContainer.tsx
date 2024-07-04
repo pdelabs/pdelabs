@@ -189,5 +189,4 @@ const PositionedSun = forwardRef<HTMLDivElement, any>(({ size }, ref) => {
     )
 });
 
-
-
+PositionedSun.displayName = "PositionedSun";
