@@ -1,6 +1,14 @@
 'use client';
 import Image from 'next/image'
 import { useEffect, useRef } from 'react';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Body, SmallBody } from './Typography/Typography';
+import Link from 'next/link';
 
 interface TechnologyBubbleProps {
     icon: string;
@@ -10,11 +18,23 @@ interface TechnologyBubbleProps {
 
 const TechnologyBubble = ({ icon, name, link }: TechnologyBubbleProps) => {
     return (
-        <div className="flex flex-col justify-center grow">
-            <div className="w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <Image src={icon} alt={name} width={64} height={64} />
-            </div>
-        </div>
+        <TooltipProvider delayDuration={200}>
+            <Tooltip>
+                <TooltipTrigger>
+                    <Link href={link} target='_blank'>
+                        <div className="flex flex-col justify-center grow">
+                            <div className="w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                <Image src={icon} alt={name} width={64} height={64} />
+                            </div>
+                        </div>
+                    </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <SmallBody>{name}</SmallBody>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
+
     )
 }
 
@@ -129,34 +149,62 @@ const technologies = [
         name: 'GitHub',
         link: 'https://www.github.com/'
     },
+    {
+        icon: '/icons/supabase.svg',
+        name: 'Supabase',
+        link: 'https://supabase.com/'
+    },
+    {
+        icon: '/icons/hasura.svg',
+        name: 'HasuraGQL',
+        link: 'https://hasura.io/'
+    },
 ]
 
 const TechnologiesScrollList = () => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+    const cursorOnTop = useRef(false);
 
     useEffect(() => {
         const scrollContainer = scrollContainerRef.current;
         let isAnimationRunning = true;
 
         const scrollWidth = scrollContainer?.scrollWidth ?? 0;
-        let step = .5; // change this value to adjust the scroll speed
+        let step = 1;
 
         const animateScroll = () => {
 
             if (isAnimationRunning && scrollContainer) {
-                if (scrollContainer.scrollLeft - scrollWidth / 2 < 0) {
-                    scrollContainer.scrollLeft += step;
-                } else {
-                    scrollContainer.scrollLeft = step;
+                if (!cursorOnTop.current) {
+
+                    if (scrollContainer.scrollLeft - scrollWidth / 2 < 0) {
+                        scrollContainer.scrollLeft += step;
+                    } else {
+                        scrollContainer.scrollLeft = step;
+                    }
                 }
+
                 requestAnimationFrame(animateScroll);
             }
         };
 
         animateScroll();
 
+        const handleStopScroll = () => {
+            cursorOnTop.current = true;
+        }
+
+        const handleStartScroll = () => {
+            cursorOnTop.current = false;
+        }
+
+        scrollContainerRef.current?.addEventListener('mouseenter', handleStopScroll);
+        scrollContainerRef.current?.addEventListener('mouseleave', handleStartScroll);
+
         return () => {
             isAnimationRunning = false;
+            scrollContainerRef.current?.removeEventListener('mouseenter', handleStopScroll);
+            scrollContainerRef.current?.removeEventListener('mouseleave', handleStartScroll);
         };
     }, []);
 

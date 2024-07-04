@@ -9,24 +9,34 @@ const titleFont = Plus_Jakarta_Sans({
     subsets: ['latin']
 });
 
-type TitleProps = PropsWithChildren<React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>>;
+const bodyFont = Plus_Jakarta_Sans({
+    weight: '400',
+    style: 'normal',
+    subsets: ['latin']
+});
 
-export const BigTitle: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+export type TypographyProps = PropsWithChildren<React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>>;
+
+export const BigTitle: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
     return <h1 className={c(titleFont.className, styles.bigtitle, className)} {...rest}>{children}</h1>;
 }
 
-export const Title: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+export const Title: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
     return <h2 className={c(titleFont.className, styles.title, className)} {...rest}>{children}</h2>;
 }
 
-export const Subtitle: React.FC<TitleProps> = ({ children, className, ...rest }) => {
+export const Subtitle: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
     return <h3 className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</h3>;
 }
 
-export const Body: React.FC<TitleProps> = ({ children, className, ...rest }) => {
-    return <span className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</span>;
+export const Body: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
+    return <span className={c(bodyFont.className, styles.body, className)} {...rest}>{children}</span>;
 }
 
-export const SmallBody: React.FC<TitleProps> = ({ children, className, ...rest }) => {
-    return <span className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</span>;
+export const SmallBody: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
+    return <span className={c(bodyFont.className, styles.smallbody, className)} {...rest}>{children}</span>;
+}
+
+export const Caption: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
+    return <span className={c(bodyFont.className, styles.caption, className)} {...rest}>{children}</span>;
 }

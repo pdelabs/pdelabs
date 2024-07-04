@@ -3,7 +3,6 @@ import { FC, forwardRef, memo, useLayoutEffect, useRef, useState } from "react";
 import styles from "./SunsetLinearGradient.module.css";
 import PDELabsSun from "../PDELabsSun/PDELabsSun";
 import Waves from "./Waves/Waves";
-import Cloud from "./Clouds/Cloud";
 
 const sunOffset = 48;
 
@@ -11,7 +10,6 @@ const SunsetContainer = ({ children }: any) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const positionedSunRef = useRef<HTMLDivElement>(null);
     const [sunSize, setSunSize] = useState(0);
-
 
     useLayoutEffect(() => {
         const container = containerRef.current!
@@ -60,21 +58,13 @@ const SunsetContainer = ({ children }: any) => {
 
     return (
         <>
-            <div className="relative w-full">
+            <div id="container" ref={containerRef} style={{ maxWidth: "100vw", height: "200vh", zIndex: 10, margin: 0, padding: 0 }} className={styles.container}>
                 <PositionedSun ref={positionedSunRef} size={sunSize} />
-                <div style={{ position: 'absolute', zIndex: 10000, width: '100%' }}>
-                    <div className="relative">
-                        <div style={{ position: "absolute", top: sunOffset + sunSize / 2, left: "50%" }}>
-                            <Cloud />
-                        </div>
-                        <div className="relative" style={{ top: sunOffset * 2 + sunSize }}>
-                            {children}
-                        </div>
+                <div style={{ position: 'absolute', zIndex: 11, width: '100%' }}>
+                    <div className="relative" style={{ top: sunOffset + sunSize, padding: '1rem 2rem' }}>
+                        {children}
                     </div>
                 </div>
-                <div id="container" ref={containerRef} style={{ maxWidth: "100vw", height: "300vh", zIndex: 10000, margin: 0, padding: 0 }} className={styles.container}>
-
-                </div >
             </div>
             <WavesDivision sunSize={sunSize} />
         </>
@@ -87,15 +77,11 @@ export default SunsetContainer;
 
 const PositionedSun = forwardRef<HTMLDivElement, any>(({ size }, ref) => {
     return (
-        <div className={`w-full flex justify-center`} ref={ref} style={{ zIndex: 1 }}>
-            {/* <div className="absolute"> */}
+        <div className={`w-full flex justify-center`} ref={ref}>
             <PDELabsSun width={size} height={size} />
-            {/* </div> */}
         </div>
     )
 });
-
-
 
 
 
@@ -104,15 +90,17 @@ interface WaveDivisionsProps {
 }
 const WavesDivision: FC<WaveDivisionsProps> = ({ sunSize }) => {
     return (
-        <div style={{ width: '100%', minHeight: sunSize + 1, backgroundColor: '#487C99', zIndex: 100000 }}>
-            <div style={{ transform: 'translateY(-25%)' }}>
-                <Waves />
-            </div>
-            <div style={{ transform: 'translateY(calc(-100% + 8px))', zIndex: 0 }}>
-                <Waves phased />
-            </div>
-            <div style={{ transform: 'translateY(calc(-175% + 16px))' }}>
-                <Waves />
+        <div style={{ position: 'relative', width: '100%', minHeight: sunSize / 2 + 1.5, backgroundColor: '#487C99', zIndex: 12 }}>
+            <div style={{ position: 'absolute', width: '100%' }}>
+                <div style={{ transform: 'translateY(-25%)' }}>
+                    <Waves />
+                </div>
+                <div style={{ transform: 'translateY(calc(-100% + 8px))', zIndex: 0 }}>
+                    <Waves phased />
+                </div>
+                <div style={{ transform: 'translateY(calc(-175% + 16px))' }}>
+                    <Waves />
+                </div>
             </div>
         </div>
     )

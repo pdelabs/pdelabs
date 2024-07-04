@@ -1,0 +1,23 @@
+.services {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    color: black;
+}
+
+.service {
+    flex: 1;
+}
+
+
+@media (max-width: 1250px) {
+    .services {
+        margin-top: 1rem;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
