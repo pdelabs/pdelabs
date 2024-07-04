@@ -29,12 +29,10 @@ export default function Home() {
         </SunsetContainer>
         <div className="flex flex-col items-center relative bg-[#547B96] pb-24 gap-y-1" style={{ color: 'white' }}>
           <Services />
-          <div className="py-24">
-            <Body style={{ color: 'white', zIndex: 5 }} className="m-auto left-0 right-0 text-center inline-flex">
-              Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#ff2b2b" }} fill="#ff2b2b" /> working with,
-            </Body>
-            <TechnologiesScrollList />
-          </div>
+          <Body style={{ color: 'white', zIndex: 5 }} className="m-auto left-0 right-0 text-center inline-flex">
+            Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#ff2b2b" }} fill="#ff2b2b" /> working with,
+          </Body>
+          <TechnologiesScrollList />
         </div>
         <CalendlyWidget />
         <LosDedosFooterContainer />
