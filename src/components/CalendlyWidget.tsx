@@ -39,7 +39,7 @@ const CalendlyCalendar = () => {
         <Dialog open={isOpen} onOpenChange={setOpen}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle><Subtitle>Let's schedule</Subtitle></DialogTitle>
+                    <DialogTitle><Subtitle>Let&aposs schedule</Subtitle></DialogTitle>
                     <CalendlyTrigger onEventScheduled={handleEventscheduled} />
                 </DialogHeader>
             </DialogContent>

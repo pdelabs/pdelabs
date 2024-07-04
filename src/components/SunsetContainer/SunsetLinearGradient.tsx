@@ -6,7 +6,7 @@ import Waves from "./Waves/Waves";
 
 const sunOffset = 48;
 
-const SunsetContainer = ({ children }: any) => {
+const SunsetContainer: FC<any> = ({ children }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const positionedSunRef = useRef<HTMLDivElement>(null);
     const [sunSize, setSunSize] = useState(0);

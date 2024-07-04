@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, memo, useLayoutEffect, useRef, useState } from "react";
+import { FC, forwardRef, memo, useLayoutEffect, useRef, useState } from "react";
 import styles from "./SunsetContainer.module.css";
 import PDELabsSun from "../PDELabsSun/PDELabsSun";
 import Waves from "./Waves/Waves";
@@ -23,7 +23,7 @@ function updateDimensions() {
     myHeight = myHeight * 2;
 }
 
-const SunsetContainer = ({ children }: any) => {
+const SunsetContainer: FC<any> = ({ children }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const sunRef = useRef<HTMLDivElement>(null);
     const sunDayRef = useRef<HTMLDivElement>(null);
