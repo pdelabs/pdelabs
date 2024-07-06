@@ -4,7 +4,7 @@ import styles from "./SunsetLinearGradient.module.css";
 import PDELabsSun from "../PDELabsSun/PDELabsSun";
 import Waves from "./Waves/Waves";
 
-const sunOffset = 48;
+const sunOffset = 48 + 56;
 
 const SunsetContainer: FC<any> = ({ children }) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -58,7 +58,7 @@ const SunsetContainer: FC<any> = ({ children }) => {
 
     return (
         <>
-            <div id="container" ref={containerRef} style={{ maxWidth: "100vw", height: "200vh", zIndex: 10, margin: 0, padding: 0 }} className={styles.container}>
+            <div id="container" ref={containerRef} style={{ maxWidth: "100vw", height: "100vh", zIndex: 10, margin: 0, padding: 0 }} className={styles.container}>
                 <PositionedSun ref={positionedSunRef} size={sunSize} />
                 <div style={{ position: 'absolute', zIndex: 11, width: '100%' }}>
                     <div className="relative" style={{ top: sunOffset + sunSize, padding: '1rem 2rem' }}>

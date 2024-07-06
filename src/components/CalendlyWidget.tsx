@@ -1,6 +1,5 @@
 "use client";
 import React, { FC } from "react";
-import Head from "next/head";
 import { useEffect } from "react";
 import {
     Dialog,
@@ -15,16 +14,6 @@ import { Subtitle } from "./Typography/Typography";
 const CalendlyCalendar = () => {
     const { toast } = useToast();
     const { isOpen, setOpen } = useCalendlyDialogOpen()
-
-    useEffect(() => {
-        const head = document.querySelector("head");
-        const script = document.createElement("script");
-        script.setAttribute(
-            "src",
-            "https://assets.calendly.com/assets/external/widget.js"
-        );
-        head!.appendChild(script);
-    }, []);
 
     const handleEventscheduled = () => {
         setOpen(false);
@@ -98,7 +87,7 @@ const CalendlyTrigger: FC<CalendlyTriggerProps> = ({ onEventScheduled }) => {
     return <div
         className="calendly-inline-widget"
         data-resize="true"
-        style={{ maxHeight: "75vh", height: "75vh" }}
+        style={{ maxHeight: "75vh", height: "75vh", minHeight: "75vh" }}
         data-url={'https://calendly.com/luisgurmendez/30min'}
     ></div>;
 }

@@ -1,3 +1,11 @@
+.hugetitle {
+    font-size: 6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 90%;
+    letter-spacing: -3%;
+}
+
 .bigtitle {
     font-size: 4rem;
     font-weight: 700;
