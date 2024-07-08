@@ -11,8 +11,16 @@
     align-items: center;
 }
 
+.callus {
+    margin: 0px;
+    display: inline-flex;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
 .burger {
     display: none;
+    cursor: pointer;
     color: var(--primary-foreground-hex);
 }
 

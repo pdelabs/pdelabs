@@ -29,10 +29,10 @@ const LosDedosFooterContainer = () => {
 
                     <div className={styles.section}>
                         <Body className={styles.sectionTitle}>Punta del Este labs</Body>
-                        <SectionLink href={'/#about'}>Home</SectionLink>
-                        <SectionLink href={'/#about'}>Services</SectionLink>
-                        <SectionLink href={'/#about'}>About us</SectionLink>
-                        <SectionLink href={'/#about'}>Portfolio</SectionLink>
+                        <SectionLink href={'#home'}>Home</SectionLink>
+                        <SectionLink href={'#services'}>Services</SectionLink>
+                        <SectionLink href={'#about-us'}>About us</SectionLink>
+                        <SectionLink href={'#portfolio'}>Portfolio</SectionLink>
                     </div>
                     <div className={styles.section}>
                         <Body className={styles.sectionTitle}>Media</Body>

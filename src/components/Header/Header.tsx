@@ -2,21 +2,23 @@
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import styles from "./Header.module.css";
-import { Body, Subtitle } from "../Typography/Typography";
+import { Body, Strong, Subtitle } from "../Typography/Typography";
 import c from "classnames";
-import { MenuIcon } from "lucide-react";
+import { CalendarDays, MenuIcon } from "lucide-react";
 import {
     Dialog,
     DialogContent,
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
+import { useCalendlyDialogOpen } from "../Calendly/CalendlyDialogOpenProvider";
 
 interface HeaderProps { }
 
 const Header: FC<HeaderProps> = () => {
     const [headerBg, setHeaderBg] = useState(false);
     const [isActive, setIsActive] = useState(false);
+    const { open: openCalendly } = useCalendlyDialogOpen();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,6 +45,7 @@ const Header: FC<HeaderProps> = () => {
             <HeaderLink onClick={handleCloseMenu} href="#services" link="Services" />
             <HeaderLink onClick={handleCloseMenu} href="#about-us" link="About us" />
             <HeaderLink onClick={handleCloseMenu} href="#portfolio" link="Portfolio" />
+            <Body className={c(styles.callus, styles.link)} onClick={openCalendly}><Strong>Contact</Strong></Body>
         </>
     );
 
@@ -91,7 +94,9 @@ const HeaderLink: FC<HeaderLinkProps> = ({
             onClick={onClick}
         >
             <Body>
-                {link}
+                <Strong>
+                    {link}
+                </Strong>
             </Body>
         </Link>
     );

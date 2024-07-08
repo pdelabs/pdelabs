@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Waves.module.css';
 
 const Waves = ({ phased }: any) => {
     const [wave, setWave] = useState("");
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setWave(generateWave(40, phased));
     }, [])
 
