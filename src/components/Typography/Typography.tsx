@@ -33,6 +33,10 @@ export const Subtitle: React.FC<TypographyProps> = ({ children, className, ...re
     return <h4 className={c(titleFont.className, styles.subtitle, className)} {...rest}>{children}</h4>;
 }
 
+export const LargeBody: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
+    return <span className={c(bodyFont.className, styles.largebody, className)} {...rest}>{children}</span>;
+}
+
 export const Body: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
     return <span className={c(bodyFont.className, styles.body, className)} {...rest}>{children}</span>;
 }

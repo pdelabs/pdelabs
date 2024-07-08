@@ -33,6 +33,11 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --primary-foreground-hex: #274453;
+    --primary-foreground-rgb: 39, 68, 83;
+
+    --header-bg-color: transparent;
   }
 
   .dark {

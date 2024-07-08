@@ -1,0 +1,12 @@
+.bigtitle {
+    padding-top: 2rem;
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .bigtitle {
+        padding-top: 1rem;
+        font-size: 2.5rem;
+    }
+}

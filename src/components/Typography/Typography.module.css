@@ -27,6 +27,12 @@
     margin-bottom: 1rem;
 }
 
+.largebody {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
 .body {
     font-size: 1rem;
     font-weight: 400;
