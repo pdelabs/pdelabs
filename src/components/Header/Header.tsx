@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { Body, Subtitle } from "../Typography/Typography";
 import c from "classnames";
-import { MenuIcon, ShieldClose, X } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import {
     Dialog,
     DialogContent,

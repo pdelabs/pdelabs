@@ -1,23 +1,56 @@
 .services {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: stretch;
     gap: 1rem;
     width: 100%;
     padding: 2rem;
     color: black;
+    flex-wrap: wrap;
 }
 
 .service {
-    flex: 1;
+    position: relative;
+    width: 30%;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
     color: var(--primary-foreground-hex);
+    transition: transform 0.3s;
+}
+
+.soontag {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: white;
+    position: absolute;
+    background-color: #ff6347;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.service:hover {
+    transform: scale(1.02);
 }
 
 @media (max-width: 1250px) {
     .services {
         margin-top: 1rem;
-        flex-direction: column;
         justify-content: center;
+        padding: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    .service {
+        width: 100%;
     }
 }
