@@ -1,4 +1,4 @@
-import { Body, boldFont, LargeBody, Strong, Subtitle, Title } from "@/components/Typography/Typography";
+import { Body, LargeBody, Strong, Subtitle, Title } from "@/components/Typography/Typography";
 import styles from './Services.module.css';
 import { FC } from "react";
 import Container from "../SectionContainer";
