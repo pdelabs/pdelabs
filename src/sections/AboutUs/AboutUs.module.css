@@ -1,0 +1,16 @@
+.us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.usBubble {
+    --bubble-size: 156px;
+    border-radius: 50%;
+    background-color: white;
+    width: var(--bubble-size);
+    height: var(--bubble-size);
+}

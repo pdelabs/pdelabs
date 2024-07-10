@@ -8,6 +8,7 @@ import AboutUs from "@/sections/AboutUs/AboutUs";
 import HomeSection from "@/sections/Home/Home";
 import { FC, PropsWithChildren } from "react";
 import Portfolio from "@/sections/Portfolio/Portfolio";
+import { LargeBody, Strong } from "@/components/Typography/Typography";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Header />
         <HomeSection />
         <WaterSection>
+
           <Services />
           <AboutUs />
           <Portfolio />

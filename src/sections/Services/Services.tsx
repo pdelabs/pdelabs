@@ -7,13 +7,15 @@ import { Bot, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone, Ta
 
 const Services = () => {
     return (
-        <section id="services" className="flex flex-col gap-1 px-8" style={{ color: 'white' }}>
+        <section id="services" className="flex flex-col gap-1 px-8 pt-8" style={{ color: 'white' }}>
             <Container>
-
-                <div className="mt-8 mb-2" style={{ width: 150, height: '2px', backgroundColor: 'white' }} />
+                <LargeBody>
+                    We are a <Strong>software development company</Strong> committed to creating world-class digital products for startups and businesses around the world.
+                </LargeBody>
+                <div className="mt-16 mb-2" style={{ width: 150, height: '2px', backgroundColor: 'white' }} />
                 <Title style={{ color: 'white' }} className="text-left center white">What we offer</Title>
                 <LargeBody>
-                    From sleek web and mobile applications to cutting-edge AI-powered solutions, our team delivers creative, innovative and impactful projects that drive business success.
+                    From sleek web and mobile applications to cutting-edge AI-powered solutions and API integrations, our team delivers creative, innovative and impactful projects that drive business success.
                 </LargeBody>
             </Container>
             <div className={styles.services}>

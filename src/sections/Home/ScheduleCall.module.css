@@ -11,6 +11,15 @@
     padding: 0.2em 0.5rem;
 }
 
+.scheduleCall {
+    border: 1px solid white;
+    border-radius: 0.5em;
+}
+
+.scheduleCall:hover {
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
 @media (max-width: 1250px) {
     .scheduleCall {
         border: 1px solid white;
@@ -18,7 +27,7 @@
     }
 }
 
-.scheduleCall::after {
+.scheduleCallUnderline::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -31,22 +40,22 @@
     transition: opacity 300ms, transform 300ms;
 }
 
-.scheduleCall:hover::after,
-.scheduleCall:focus::after {
+.scheduleCallUnderline:hover::after,
+.scheduleCallUnderline:focus::after {
     opacity: 1;
     transform: translate3d(0, 0.2em, 0);
 }
 
-.scheduleCall {
+.scheduleCallUnderline {
     overflow: hidden;
 }
 
-.scheduleCall::after {
+.scheduleCallUnderline::after {
     opacity: 1;
     transform: translate3d(-100%, 0, 0);
 }
 
-.scheduleCall:hover::after,
-.scheduleCall:focus::after {
+.scheduleCallUnderline:hover::after,
+.scheduleCallUnderline:focus::after {
     transform: translate3d(0, 0, 0);
 }

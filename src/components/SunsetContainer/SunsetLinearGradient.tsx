@@ -4,6 +4,7 @@ import styles from "./SunsetLinearGradient.module.css";
 import PDELabsSun from "../PDELabsSun/PDELabsSun";
 import Waves from "./Waves/Waves";
 import Image from 'next/image'
+import c from 'classnames';
 
 const sunOffset = 48 + 56;
 
@@ -59,12 +60,12 @@ const SunsetContainer: FC<any> = ({ children }) => {
 
     return (
         <>
-            <div id="container" ref={containerRef} style={{ maxWidth: "100vw", height: "100vh", zIndex: 10, margin: 0, padding: 0 }} className={styles.container}>
+            <div ref={containerRef} style={{ maxWidth: "100vw", minHeight: "100vh", zIndex: 10, margin: 0, padding: 0 }} className={styles.container}>
                 <PositionedSun ref={positionedSunRef} size={sunSize} />
                 <div className="relative" style={{ top: sunOffset + sunSize, padding: '1rem 2rem' }}>
                     {children}
                 </div>
-            </div>
+            </div >
             <WavesDivision sunSize={sunSize} />
         </>
 
@@ -98,10 +99,10 @@ const WavesDivision: FC<WaveDivisionsProps> = ({ sunSize }) => {
                 <div style={{ transform: 'translateY(calc(-100% + 8px))', zIndex: 0 }}>
                     <Image
                         src={'/assets/whale-tale.svg'}
-                        className={'absolute right-4 bottom-16'}
+                        className={c('absolute right-4 bottom-16', styles.whaleTale)}
                         width={230}
                         height={450}
-                        alt={"los-dedos"}
+                        alt={"whale-tale"}
                     />
                     <Waves phased />
                 </div>

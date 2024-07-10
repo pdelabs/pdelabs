@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/dialog"
 import { useToast } from "@/components/ui/use-toast"
 import { useCalendlyDialogOpen } from "./Calendly/CalendlyDialogOpenProvider";
-import { Subtitle } from "./Typography/Typography";
+import { Body, Subtitle } from "./Typography/Typography";
+import { CheckCircle2Icon } from "lucide-react";
 
 const CalendlyCalendar = () => {
     const { toast } = useToast();
@@ -19,8 +20,8 @@ const CalendlyCalendar = () => {
         setOpen(false);
         setTimeout(() => {
             toast({
-                title: "See you then!",
-            })
+                title: <Body className="inline-flex gap-2 justify-start items-center w-fit"><CheckCircle2Icon color="green" /> See you then!</Body> as any,
+            });
         }, 1000)
     }
 
@@ -47,13 +48,6 @@ interface CalendlyTriggerProps {
 
 const CalendlyTrigger: FC<CalendlyTriggerProps> = ({ onEventScheduled }) => {
     useEffect(() => {
-        const head = document.querySelector("head");
-        const script = document.createElement("script");
-        script.setAttribute(
-            "src",
-            "https://assets.calendly.com/assets/external/widget.js"
-        );
-        head!.appendChild(script);
     }, []);
 
     useEffect(() => {

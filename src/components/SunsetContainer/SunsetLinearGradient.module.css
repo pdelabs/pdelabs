@@ -3,3 +3,9 @@
     background: linear-gradient(to bottom,
             #6b8cb1, #F56217);
 }
+
+@media (max-width: 768px) {
+    .whaleTale {
+        visibility: hidden;
+    }
+}
