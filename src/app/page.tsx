@@ -19,9 +19,9 @@ export default function Home() {
       <HomeSection />
       <WaterSection>
         <Services />
-        <AboutUs />
+        {/* <AboutUs /> */}
         <Portfolio />
-        <DevelopmentProcess />
+        {/* <DevelopmentProcess /> */}
         <Contact />
         {/* <Body style={{ color: 'white', zIndex: 5 }} className="m-auto left-0 right-0 text-center inline-flex">
             Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#ff2b2b" }} fill="#ff2b2b" /> working with,
@@ -32,7 +32,6 @@ export default function Home() {
 
   )
 }
-
 
 const WaterSection: FC<PropsWithChildren> = ({ children }) => {
   return (
