@@ -30,12 +30,13 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: var(--primary-foreground-hsl);
 
     --radius: 0.5rem;
 
     --primary-foreground-hex: #274453;
     --primary-foreground-rgb: 39, 68, 83;
+    --primary-foreground-hsl: 200 36% 24%;
 
     --header-bg-color: transparent;
   }

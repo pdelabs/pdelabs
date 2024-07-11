@@ -12,7 +12,7 @@ import { useCalendlyDialogOpen } from "./Calendly/CalendlyDialogOpenProvider";
 import { Body, Subtitle } from "./Typography/Typography";
 import { CheckCircle2Icon } from "lucide-react";
 
-const CalendlyCalendar = () => {
+const CalendlyCalendarDialog = () => {
     const { toast } = useToast();
     const { isOpen, setOpen } = useCalendlyDialogOpen()
 
@@ -39,7 +39,7 @@ const CalendlyCalendar = () => {
 };
 
 
-export default CalendlyCalendar;
+export default CalendlyCalendarDialog;
 
 
 interface CalendlyTriggerProps {
@@ -47,8 +47,6 @@ interface CalendlyTriggerProps {
 }
 
 const CalendlyTrigger: FC<CalendlyTriggerProps> = ({ onEventScheduled }) => {
-    useEffect(() => {
-    }, []);
 
     useEffect(() => {
         function isCalendlyEvent(e: any) {

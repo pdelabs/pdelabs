@@ -1,30 +1,9 @@
-.services {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 1rem;
-    width: 100%;
-    padding: 2rem;
-    color: black;
-}
-
-.service {
-    flex: 1;
-}
-
 .container {
     padding: 2rem 15%;
     width: 100%;
 }
 
 @media (max-width: 1250px) {
-    .services {
-        margin-top: 1rem;
-        flex-direction: column;
-        justify-content: center;
-    }
-
     .container {
         padding: 2rem;
     }

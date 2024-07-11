@@ -1,7 +1,7 @@
 import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
 import { BigTitle, LargeBody, Strong } from "@/components/Typography/Typography";
-import ScheduleCall from "@/sections/Home/ScheduleCall";
 import styles from "./Home.module.css";
+import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
 const Home = () => {
     return (
         <section id="home">
@@ -10,7 +10,7 @@ const Home = () => {
                     <BigTitle className={styles.bigtitle}>Crafting exceptional software solutions to help your business <br /><span style={{
                         // textShadow: "0 0 1px #fff, 0 0 2px #fff, 0 0 3px #ffd271, 0 0 4px #ffd271, 0 0 5px #ffd271, 0 0 6px #ffd271, 0 0 10px #ffd271"
                     }}>shine.</span></BigTitle>
-                    <ScheduleCall />
+                    <ScheduleCallButton />
                 </div>
             </SunsetContainer>
         </section>

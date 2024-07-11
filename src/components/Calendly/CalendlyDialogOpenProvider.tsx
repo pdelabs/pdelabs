@@ -5,7 +5,9 @@ const CalendlyDialogOpenContext = createContext({ isOpen: false, setOpen: (o: bo
 
 const CalendlyDialogOpenProvider: FC<PropsWithChildren> = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
-    const open = useCallback(() => setOpen(true), [setOpen]);
+    const open = useCallback(() => {
+        window?.open("https://calendly.com/lgurmendez-pdelabs", '_blank')?.focus();
+    }, []);
     const close = useCallback(() => setOpen(false), [setOpen]);
 
     return (

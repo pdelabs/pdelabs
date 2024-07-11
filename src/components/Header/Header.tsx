@@ -11,14 +11,14 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import { useCalendlyDialogOpen } from "../Calendly/CalendlyDialogOpenProvider";
+import useOpenCalendly from "@/hooks/useOpenCalendly";
 
 interface HeaderProps { }
 
 const Header: FC<HeaderProps> = () => {
     const [headerBg, setHeaderBg] = useState(false);
     const [isActive, setIsActive] = useState(false);
-    const { open: openCalendly } = useCalendlyDialogOpen();
+    const openCalendly = useOpenCalendly();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -45,7 +45,8 @@ const Header: FC<HeaderProps> = () => {
             <HeaderLink onClick={handleCloseMenu} href="#services" link="Services" />
             <HeaderLink onClick={handleCloseMenu} href="#about-us" link="About us" />
             <HeaderLink onClick={handleCloseMenu} href="#portfolio" link="Portfolio" />
-            <Body className={c(styles.callus, styles.link)} onClick={openCalendly}><Strong>Contact</Strong></Body>
+            <HeaderLink onClick={handleCloseMenu} href="#contact" link="Contact" />
+            {/* <Body className={c(styles.callus, styles.link)} onClick={openCalendly}><Strong>Contact</Strong></Body> */}
         </>
     );
 

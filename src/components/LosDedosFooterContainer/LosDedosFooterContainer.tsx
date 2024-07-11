@@ -5,14 +5,14 @@ import Image from 'next/image'
 import { Body, SmallBody, Title } from '../Typography/Typography';
 import PdelabsIcon from './pdelabs-logo.svg';
 import Link from 'next/link';
-import { useCalendlyDialogOpen } from '../Calendly/CalendlyDialogOpenProvider';
 import { CalendarDays, Mail, MapPin, Phone } from 'lucide-react';
 import c from 'classnames';
+import useOpenCalendly from '@/hooks/useOpenCalendly';
 
 const LosDedosFooterContainer = () => {
-    const { setOpen } = useCalendlyDialogOpen();
+    const openCalendly = useOpenCalendly();
     return (
-        <div className={styles.container} style={{ color: "#7c735c" }}>
+        <footer className={styles.container} style={{ color: "#7c735c" }}>
             <div className={styles.losDedosContainer}>
                 <Image
                     src={'/assets/los-dedos.svg'}
@@ -24,7 +24,7 @@ const LosDedosFooterContainer = () => {
 
             <div className={styles.footer}>
                 <Title>Let&apos;s create together,</Title>
-                <Body className={styles.contactusButton} style={{ display: "inline-flex", gap: "0.5rem" }} onClick={() => setOpen(true)}>Schedule a call <CalendarDays /></Body>
+                <Body className={styles.contactusButton} style={{ display: "inline-flex", gap: "0.5rem" }} onClick={openCalendly}>Schedule a call <CalendarDays /></Body>
                 <div className={styles.sections}>
 
                     <div className={styles.section}>
@@ -56,7 +56,7 @@ const LosDedosFooterContainer = () => {
             <SmallBody>
                 © 2024 pdelabs. All rights reserved.
             </SmallBody>
-        </div >
+        </footer >
     )
 }
 

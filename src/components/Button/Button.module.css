@@ -2,23 +2,26 @@
     background-color: transparent;
     border: none;
     color: white;
-    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 0.5rem;
     transition: background-color 0.3s ease;
+    border: 1px solid white;
+    min-width: 110px;
+    vertical-align: middle;
+    padding: .5rem;
+    border-radius: .5rem;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: rgba(255, 255, 255, 0.2)
 }
 
 .button:active {
-    background-color: #003f7f;
+    background-color: rgba(255, 255, 255, 0.2)
 }
 
 .button:disabled {

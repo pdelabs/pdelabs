@@ -8,29 +8,27 @@ import AboutUs from "@/sections/AboutUs/AboutUs";
 import HomeSection from "@/sections/Home/Home";
 import { FC, PropsWithChildren } from "react";
 import Portfolio from "@/sections/Portfolio/Portfolio";
-import { LargeBody, Strong } from "@/components/Typography/Typography";
+import DevelopmentProcess from "@/sections/DevelopmentProcess/DevelopmentProcess";
+import Contact from "@/sections/Contact/Contact";
 
 export default function Home() {
   return (
-    <CalendlyDialogOpenProvider>
-      <main className="flex min-h-screen flex-col justify-between">
-        <Toaster />
-        <Header />
-        <HomeSection />
-        <WaterSection>
-
-          <Services />
-          <AboutUs />
-          <Portfolio />
-          {/* <Body style={{ color: 'white', zIndex: 5 }} className="m-auto left-0 right-0 text-center inline-flex">
+    <main className="flex min-h-screen flex-col justify-between">
+      <Toaster />
+      <Header />
+      <HomeSection />
+      <WaterSection>
+        <Services />
+        <AboutUs />
+        <Portfolio />
+        <DevelopmentProcess />
+        <Contact />
+        {/* <Body style={{ color: 'white', zIndex: 5 }} className="m-auto left-0 right-0 text-center inline-flex">
             Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#ff2b2b" }} fill="#ff2b2b" /> working with,
           </Body>
           <TechnologiesScrollList /> */}
-        </WaterSection>
-        <CalendlyWidget />
-        <LosDedosFooterContainer />
-      </main >
-    </CalendlyDialogOpenProvider>
+      </WaterSection>
+    </main>
 
   )
 }
