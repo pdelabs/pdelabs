@@ -1,7 +1,6 @@
-import { Body, Caption, HugeTitle, LargeBody, SmallBody, Strong, Subtitle, Title } from '@/components/Typography/Typography';
+import { Body, Subtitle, Title } from '@/components/Typography/Typography';
 import React from 'react';
 import styles from './Contact.module.css';
-import Separator from './separator.svg';
 import ScheduleCallButton from '@/components/ScheduleCallButton/ScheduleCallButton';
 import ContactForm from './ContactForm';
 
@@ -12,10 +11,7 @@ const Contact = () => {
                 <Title>We love to take on new challenges, <span style={{ color: '#F0DFB1' }}>tell us yours.</span></Title>
                 <ScheduleCallButton>Schedule a call</ScheduleCallButton>
             </div>
-            <div className={styles.separator}>
-                <Separator style={{ height: 150 }} />
-                <LargeBody className={styles.or}>or</LargeBody>
-            </div>
+            <div className={styles.separator} />
             <div className={styles.form}>
                 <Subtitle>Write us</Subtitle>
                 <ContactForm />

@@ -19,7 +19,7 @@ const DevelopmentProcess: FC = () => {
 
                 <DevelopmentStep
                     title="Design"
-                    description={<>Our UX/UI design process is a collaborative effort between our clients and our team of experts. Using industry-standard design tools and techniques, we create high-fidelity prototypes that showcase the app's look and feel on any device or screen.</>}
+                    description={<>Our UX/UI design process is a collaborative effort between our clients and our team of experts. Using industry-standard design tools and techniques, we create high-fidelity prototypes that showcase the app&apos;s look and feel on any device or screen.</>}
                     icon="design" />
 
                 <DevelopmentStep
