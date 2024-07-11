@@ -37,6 +37,8 @@
 .sections {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
     padding: 4rem;
     justify-content: space-around;
 }
@@ -73,26 +75,12 @@
     }
 
     .sections {
-        flex-direction: column;
-        padding: 2rem;
+        padding: 0;
+        padding-top: 2rem;
         justify-content: center;
     }
 
-    .pdelabsTrustedSection {
-        padding-bottom: 2rem;
-        align-self: flex-end;
-    }
-
     .section {
-        padding-bottom: 2rem;
         align-items: center;
-    }
-
-    .info {
-        align-items: flex-start;
-    }
-
-    .infoTitle {
-        align-self: center;
     }
 }

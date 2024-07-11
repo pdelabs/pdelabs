@@ -10,6 +10,9 @@ import { FC, PropsWithChildren } from "react";
 import Portfolio from "@/sections/Portfolio/Portfolio";
 import DevelopmentProcess from "@/sections/DevelopmentProcess/DevelopmentProcess";
 import Contact from "@/sections/Contact/Contact";
+import TechnologiesScrollList from "@/components/TechnologiesScrollList";
+import { Body } from "@/components/Typography/Typography";
+import { HeartIcon } from "lucide-react";
 
 export default function Home() {
   return (
@@ -22,11 +25,12 @@ export default function Home() {
         {/* <AboutUs /> */}
         <Portfolio />
         {/* <DevelopmentProcess /> */}
+        <Body style={{ color: 'white' }} className="m-auto left-0 right-0 text-center inline-flex mt-24">
+          Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#fc0e0e" }} fill="#fc0e0e" /> working with,
+        </Body>
+        <TechnologiesScrollList />
         <Contact />
-        {/* <Body style={{ color: 'white', zIndex: 5 }} className="m-auto left-0 right-0 text-center inline-flex">
-            Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#ff2b2b" }} fill="#ff2b2b" /> working with,
-          </Body>
-          <TechnologiesScrollList /> */}
+
       </WaterSection>
     </main>
 

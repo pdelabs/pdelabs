@@ -12,27 +12,27 @@ const Portfolio = () => {
     const vamosjuntosImages = ["/assets/vamosjuntos/app_preview.png", "/assets/vamosjuntos/app_preview_2.png", "/assets/vamosjuntos/app_preview_3.png", "/assets/vamosjuntos/app_preview_4.png", "/assets/vamosjuntos/app_preview_5.png", "/assets/vamosjuntos/app_preview_6.png"];
 
     return (
-        <section id="portfolio" className={styles.section} >
+        <section id="portfolio" className={styles.section}>
             <Container>
                 <div className="mt-16 mb-2" style={{ width: 150, height: '2px', backgroundColor: 'white' }} />
                 <Title style={{ color: 'white' }} className="text-left center white">Portfolio</Title>
                 <LargeBody>
-                    Discover some of the projects we have worked on, from mobile apps to web platforms and APIs.
+                    Discover some of the projects we worked on, from mobile apps to web platforms and APIs.
                 </LargeBody>
             </Container>
             <Showcase
                 title="demoda"
-                pills={["mobile", "web", "design", "api", "search"]}
+                pills={["mobile", "web", "api", "search", "staff augmentation"]}
                 description="demoda is a marketplace for clothing and accessories that enables small brands, second-hand stores, fashion designers, and individuals to sell their products. It oversees the entire sales process, including access to information, communication between buyers and sellers, online payments, shipping, and order tracking."
-                testimonial="As a co-founder of demoda, I am extremely impressed with the work pdelabs did in developing our marketplace. They expertly handled every aspect of the project, such as the integration with MercadoPago as our payment gateway. Their commitment to understanding our vision and their ability to translate it into a functional and user-friendly platform was remarkable."
-                author="Nicols Ferro, co-founder"
+                testimonial="As co-founder of demoda, I am extremely impressed with the work pdelabs did helping in the development of our marketplace. They solved technically challenging problems such as real time messaging, complex order state machines and much more. Their commitment to understanding our vision and their ability to translate it into a functional and user-friendly platform was remarkable."
+                author="Nicolas Ferro, co-founder"
                 blobColor={"#69539B"}
                 images={vamosjuntosImages}
             />
             <div style={{ marginTop: '2rem' }} />
             <Showcase
                 title="Vamos juntos"
-                pills={["mobile", "api"]}
+                pills={["api", "mobile", "web"]}
                 description="Vamos Juntos is a carpooling app designed to connect drivers and passengers for shared rides, promoting convenient and eco-friendly travel. The platform facilitates the entire process, from matching users based on their routes and schedules to providing in app messages with shared location."
                 testimonial="I couldn't be happier with the outstanding job pdelabs did in developing our carpooling app. Their team was always available, responsive, and really understood what we wanted, the development process was really smooth and we always knew what to expect. I highly recommend them for any software development needs."
                 author="Mateo Guadalupe, founder"
@@ -66,7 +66,8 @@ const Showcase = ({
                 <div className={styles.showcaseDescriptionContainer} style={isRight ? { flexDirection: 'row-reverse' } : { flexDirection: 'row' }}>
                     <div data-phone-inside-description="true">
                         <Phone images={images} />
-                    </div>                    <div className={styles.showcaseDescription}>
+                    </div>
+                    <div className={styles.showcaseDescription}>
                         <div className={styles.pillsContainer} style={isRight ? { flexDirection: 'row-reverse' } : { flexDirection: 'row' }}>
                             {pills.map((pill: string) => (
                                 <Body key={pill} className={styles.pill}>{pill}</Body>

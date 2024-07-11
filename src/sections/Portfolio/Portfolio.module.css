@@ -121,6 +121,10 @@
         display: block;
     }
 
+    .showcaseDescriptionContainer {
+        gap: 0;
+    }
+
     .showcaseDescription {
         max-width: 100%;
     }

@@ -162,26 +162,60 @@ const technologies = [
 ]
 
 const TechnologiesScrollList = () => {
+    const techs1 = technologies.slice(0, technologies.length / 2);
+    const techs2 = technologies.slice(technologies.length / 2);
+
+    return (
+        <>
+            <TechnologiesScrollListInner techs={techs1} direction={1} />
+            <TechnologiesScrollListInner techs={techs2} direction={-1} />
+        </>
+    )
+
+
+}
+
+
+const TechnologiesScrollListInner = ({ techs, direction }: any) => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const cursorOnTop = useRef(false);
+    const fakeScroll = useRef(0);
+
+    useEffect(() => {
+        if (direction === -1) {
+            scrollContainerRef.current!.scrollLeft = (scrollContainerRef.current?.scrollWidth ?? 0) * 2;
+        }
+    }, [])
 
     useEffect(() => {
         const scrollContainer = scrollContainerRef.current;
         let isAnimationRunning = true;
 
         const scrollWidth = scrollContainer?.scrollWidth ?? 0;
-        let step = 1;
+        let step = 1 * direction;
 
         const animateScroll = () => {
 
             if (isAnimationRunning && scrollContainer) {
                 if (!cursorOnTop.current) {
-
-                    if (scrollContainer.scrollLeft - scrollWidth / 2 < 0) {
-                        scrollContainer.scrollLeft += step;
+                    if (direction === 1) {
+                        if (scrollContainer.scrollLeft - scrollWidth / 2 < 0) {
+                            fakeScroll.current += step;
+                            scrollContainer.scrollLeft = fakeScroll.current;
+                        } else {
+                            scrollContainer.scrollLeft = step;
+                            fakeScroll.current = step;
+                        }
                     } else {
-                        scrollContainer.scrollLeft = step;
+                        if (scrollContainer.scrollLeft !== 0) {
+                            fakeScroll.current += step;
+                            scrollContainer.scrollLeft = fakeScroll.current;
+                        } else {
+                            fakeScroll.current = scrollWidth / 2
+                            scrollContainer.scrollLeft = fakeScroll.current;
+                        }
                     }
+
                 }
 
                 requestAnimationFrame(animateScroll);
@@ -210,7 +244,7 @@ const TechnologiesScrollList = () => {
 
     return (
         <div ref={scrollContainerRef} className="flex flex-row gap-4 overflow-x-hidden pb-4 px-4 no-scrollbar relative w-full max-w-full min-w-full">
-            {[...technologies, ...technologies].map((technology, index) => (
+            {[...techs, ...techs].map((technology, index) => (
                 <TechnologyBubble key={index} {...technology} />
             ))}
         </div>
