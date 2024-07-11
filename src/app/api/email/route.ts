@@ -23,6 +23,8 @@ export async function POST(request: NextRequest) {
         },
     });
 
+    console.log(process.env.email)
+
     const mailOptions: Mail.Options = {
         from: process.env.email,
         to: process.env.email,
@@ -46,6 +48,7 @@ export async function POST(request: NextRequest) {
         await sendMailPromise();
         return NextResponse.json({ message: 'Email sent' });
     } catch (err) {
+        console.log(err);
         return NextResponse.json({ error: err }, { status: 500 });
     }
 }

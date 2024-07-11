@@ -8,7 +8,7 @@ const Phone = ({ images, mobile }: any) => {
 
     return (
         <div className={styles.phone} data-is-mobile={mobile ? "true" : "false"}>
-            <Image fill src={src} alt="App preview" />
+            <Image fill src={src} alt="App preview" priority />
         </div>
     )
 }
