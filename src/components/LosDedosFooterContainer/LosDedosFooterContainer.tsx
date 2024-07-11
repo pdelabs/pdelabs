@@ -26,7 +26,6 @@ const LosDedosFooterContainer = () => {
                 <Title>Let&apos;s create together,</Title>
                 <Body className={styles.contactusButton} style={{ display: "inline-flex", gap: "0.5rem" }} onClick={openCalendly}>Schedule a call <CalendarDays /></Body>
                 <div className={styles.sections}>
-
                     <div className={styles.section}>
                         <Body className={styles.sectionTitle}>Punta del Este labs</Body>
                         <SectionLink href={'#home'}>Home</SectionLink>
