@@ -20,7 +20,7 @@ export default DevelopmentStepsGrid;
 const Wrapper = styled.div`
     display: none;
     grid-template-columns: repeat(auto-fill, minmax(${CARD_WIDTH}px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 2rem;
     margin: 0 auto;
     max-width: 1400px;
@@ -29,7 +29,6 @@ const Wrapper = styled.div`
         display: grid;
     }
 `;
-
 
 
 

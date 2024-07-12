@@ -73,6 +73,11 @@ const RelativeTitle = styled(Title)`
   /* Optical alignment */
   transform: translateX(-2px);
   color: white;
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+
 `
 
 const The = styled(Body)`
