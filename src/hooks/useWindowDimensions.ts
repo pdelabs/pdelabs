@@ -3,6 +3,9 @@ import React, { useEffect } from "react";
 import { throttle } from '@/utils/fn';
 
 const useWindowDimensions = () => {
+    if (typeof window === "undefined") {
+        // return { width: undefined, height: undefined, clientWidth: undefined };
+    }
 
     const [windowDimensions, setWindowDimensions] = React.useState({
         width: window.innerWidth,
@@ -42,9 +45,7 @@ const useWindowDimensions = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (typeof window === "undefined") {
-        return { width: undefined, height: undefined, clientWidth: undefined };
-    }
+
 
 
     return windowDimensions;

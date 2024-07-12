@@ -19,13 +19,11 @@ export default function Home() {
       <HomeSection />
       <WaterSection>
         <Services />
-        <Waves />
         <Portfolio />
-        <Body style={{ color: 'white' }} className="m-auto left-0 right-0 text-center inline-flex mt-24">
+        {/* <Body style={{ color: 'white' }} className="m-auto left-0 right-0 text-center inline-flex mt-24">
           Some of the technologies we <HeartIcon className={"mx-1"} style={{ color: "#fc0e0e" }} fill="#fc0e0e" /> working with,
         </Body>
-        <TechnologiesScrollList />
-        <Waves />
+        <TechnologiesScrollList /> */}
         <DevelopmentProcess />
         <Waves />
         <Contact />

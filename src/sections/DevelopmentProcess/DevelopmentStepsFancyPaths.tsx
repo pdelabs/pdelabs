@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { FC } from "react";
 import DevelopmentStepCard from "./DevelopmentStepCard";
 import { CARD_WIDTH, CARD_POSITIONS, STEPS } from "./constants";
 import styled from "styled-components";
@@ -86,7 +87,7 @@ function getPath(index: number, startPos: Pos, endPos: Pos, windowWidth: number,
     }
 }
 
-function FancyPath() {
+const DevelopmentStepsFancyPaths: FC = () => {
     const { width: windowWidth } = useWindowDimensions();
     const vbWidth = Math.min(windowWidth ?? 0, VB_MAX_WIDTH);
 
@@ -121,8 +122,6 @@ function FancyPath() {
     if (!mounted) {
         return null;
     }
-
-    console.log("paths")
 
     return (
         <Wrapper>
@@ -172,7 +171,7 @@ function FancyPath() {
                         top: CARD_POSITIONS[item.number].y + "%",
                         left: CARD_POSITIONS[item.number].x + "%",
                     }}
-                    ref={cardRefs[index][1]}
+                    ref={cardRefs[index][1] as any}
                 />
             ))}
         </Wrapper>
@@ -219,4 +218,4 @@ const PositionedModuleCard = styled(DevelopmentStepCard)`
   width: ${CARD_WIDTH}px;
 `;
 
-export default FancyPath;
+export default DevelopmentStepsFancyPaths;

@@ -1,11 +1,12 @@
 import { Body, Strong, Subtitle } from '@/components/Typography/Typography';
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { CSSProperties, PropsWithChildren, ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface DevelopmentStepCardProps {
   number: number;
   title: string;
   description: ReactNode;
+  style?: CSSProperties;
 }
 
 const DevelopmentStepCard = React.forwardRef<HTMLElement, DevelopmentStepCardProps>(
@@ -19,7 +20,7 @@ const DevelopmentStepCard = React.forwardRef<HTMLElement, DevelopmentStepCardPro
     ref
   ) => {
     return (
-      <Wrapper ref={ref} {...rest}>
+      <Wrapper ref={ref} {...rest} >
         <Num><Body><Strong>{number + 1}</Strong></Body></Num>
         <Header>
           <Subtitle>

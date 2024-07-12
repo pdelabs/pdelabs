@@ -3,10 +3,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { CARD_WIDTH } from './constants';
-import DevelopmentStepsFancyPaths from './DevelopmentStepsFancyPaths';
 import DevelopmentStepsGrid from './DevelopmentStepsGrid';
-import { BigTitle, Body, HugeTitle, Title } from '@/components/Typography/Typography';
+import { Body, Title } from '@/components/Typography/Typography';
 import ScheduleCall from '../Home/ScheduleCall';
+import dynamic from "next/dynamic";
+
+const DevelopmentStepsFancyPaths = dynamic(
+  () => {
+    return import("./DevelopmentStepsFancyPaths");
+  },
+  { ssr: false }
+);
 
 const DevelopmentProcess = () => {
   return (
