@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import LosDedosFooterContainer from '@/components/LosDedosFooterContainer/LosDedosFooterContainer'
+import StyledComponentsRegistry from '@/lib/registry'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
-        <LosDedosFooterContainer />
-      </body>
+      <StyledComponentsRegistry>
+        <body className={inter.className}>
+          {children}
+          <LosDedosFooterContainer />
+        </body>
+      </StyledComponentsRegistry>
     </html>
   )
 }

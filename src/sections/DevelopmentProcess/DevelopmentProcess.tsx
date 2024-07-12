@@ -1,70 +1,131 @@
+"use client";
+import React from 'react';
+import styled from 'styled-components';
 
-import React, { FC, ReactNode } from 'react';
-import { LargeBody, Subtitle, Title } from '@/components/Typography/Typography';
-import styles from './DevelopmentProcess.module.css';
+import { CARD_WIDTH } from './constants';
+import DevelopmentStepsFancyPaths from './DevelopmentStepsFancyPaths';
+import DevelopmentStepsGrid from './DevelopmentStepsGrid';
+import { BigTitle, Body, HugeTitle, Title } from '@/components/Typography/Typography';
+import ScheduleCall from '../Home/ScheduleCall';
 
-// https://lordicon.com/collections
-
-// inspiration https://css-for-js.dev/ "Curriculum" section
-
-const DevelopmentProcess: FC = () => {
-    return (
-        <section id="development-process" className={styles.section}>
-            <Title>Development Process</Title>
-            <div className={styles.devProcess}>
-                <DevelopmentStep
-                    title="Discovery"
-                    description="Our product discovery process is designed to ensure a comprehensive understanding of your idea, target audience, and market landscape. By employing various techniques, including user research, competitive analysis, and strategic product planning, to create a plan for your project right from the start."
-                    icon="discovery" />
-
-                <DevelopmentStep
-                    title="Design"
-                    description={<>Our UX/UI design process is a collaborative effort between our clients and our team of experts. Using industry-standard design tools and techniques, we create high-fidelity prototypes that showcase the app&apos;s look and feel on any device or screen.</>}
-                    icon="design" />
-
-                <DevelopmentStep
-                    title="Software Architecture"
-                    description={<>Our expert team of architects and designers collaboratively ensure that the final product excels not only in functionality but also in scalability and long-term maintainability. By leveraging their expertise, we guarantee that your app is designed and structured to accommodate future growth and evolving needs.</>}
-                    icon="architecture" />
-
-                <DevelopmentStep
-                    title="Development"
-                    description={<>By harnessing the power of Flutter, we can streamline frontend development with a single codebase for both iOS and Android or any device, reducing development time and cost. Its extensive collection of pre-built widgets empowers us to design visually captivating and responsive interfaces.</>}
-                    icon="development" />
-
-                <DevelopmentStep
-                    title="Testing"
-                    description={<>Our team of QA experts plays a critical role in ensuring the quality of your application by conducting rigorous testing throughout the development process. Their efforts are aimed at identifying and rectifying any potential issues that could arise in the production environment, ensuring a seamless and comfortable user experience.</>}
-                    icon="testing" />
-
-                <DevelopmentStep
-                    title="Deployment"
-                    description={<>We prioritize a smooth and successful launch of your application, and we take the necessary steps to optimize the process. Once your application is launched and operational, our commitment to support and maintenance continues.</>}
-                    icon="deployment" />
-            </div>
-        </section>
-    );
-}
+const DevelopmentProcess = () => {
+  return (
+    <section style={{ width: '100%', paddingTop: '6rem' }}>
+      <Wrapper>
+        <About>
+          <RelativeTitle>
+            <The>The</The>
+            Development Process
+          </RelativeTitle>
+          <Body>
+            At Punta del Este Labs, we follow a meticulously crafted development process to ensure the success of your project.
+            Each stage is crucial for ensuring that the final product is functional, scalable, and user-friendly.
+            Our process is designed to take your project from an initial idea through to a fully operational application,
+            within weeks.
+          </Body>
+        </About>
+      </Wrapper>
+      <DevelopmentStepsFancyPaths />
+      <DevelopmentStepsGrid />
+    </section>
+  );
+};
 
 export default DevelopmentProcess;
 
-interface DevelopmentStepProps {
-    title: string;
-    description: ReactNode;
-    icon: string;
+const MaxWidthWrapper = styled.div<{ maxWidth?: number }>`
+  position: relative;
+  width: 100%;
+  max-width: ${(p) => p.maxWidth || 730}px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+`;
+
+
+const Wrapper = styled(MaxWidthWrapper)`
+  padding-bottom: 96px;
+  pointer-events: none;
+  max-width: 1400px;
+
+  @media (max-width: 1250px) {
+    justify-content: center;
+    padding-bottom: 48px;
+  }
+`;
+
+
+const RelativeTitle = styled(Title)`
+  position: relative;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+  margin-top: 4px;
+  /* Optical alignment */
+  transform: translateX(-2px);
+  color: white;
+`
+
+const The = styled(Body)`
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  font-size: 24px;
+  transform: translateY(-100%);
+  color: #a9c6d4;
+`
+
+const About = styled.div`
+  max-width: 360px;
+  text-align: justify;
+  pointer-events: auto;
+  color: white;
+
+  /* Positioning it relative to the card */
+  position: relative;
+  left: calc(17% + ${CARD_WIDTH}px + 64px);
+
+  @media (max-width: 1250px) {
+    max-width: 450px;
+    text-align: center;
+    left: initial;
+    margin: 0 auto;
+  }
+`;
+
+
+const Callus = () => {
+  return (
+    <CallusWrapper>
+      <Ready>Ready to start your project?</Ready>
+      <ScheduleCall />
+    </CallusWrapper>
+  )
 }
 
-const DevelopmentStep: FC<DevelopmentStepProps> = ({
-    title,
-    description,
-    icon
-}) => {
+const CallusWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  color: white;
+`
 
-    return (
-        <div className={styles.devStep}>
-            <Subtitle>{title}</Subtitle>
-            <LargeBody>{description}</LargeBody>
-        </div>
-    );
-
-}
+const Ready = styled(Title)`
+  margin: 1rem 0rem;
+  height: 3rem;
+  text-align: center;
+  color: #a9c6d4;
+  // background-image: linear-gradient(
+  //   45deg,
+  //   hsl(199deg 76% 19%),
+  //   hsl(var(--primary-foreground-hsl))
+  // );
+  // background-size: 100%;
+  // background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // transition: all 0.5s;
+`

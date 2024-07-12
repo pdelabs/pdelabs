@@ -4,6 +4,7 @@ import { FC } from "react";
 import Container from "../SectionContainer";
 import c from 'classnames';
 import { Bot, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone, TabletSmartphone } from "lucide-react";
+import styled from "styled-components";
 
 const Services = () => {
     return (
@@ -75,7 +76,7 @@ const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = fa
         <div className={c("rounded-lg p-2 bg-white", styles.service)}>
             {soon && (<div className={styles.soontag}>SOON</div>)}
             <Icon size={32} />
-            <Subtitle>
+            <Subtitle style={{ paddingBottom: '1rem', textAlign: 'center' }}>
                 {title}
             </Subtitle>
             <Body>

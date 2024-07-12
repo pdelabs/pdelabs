@@ -1,7 +1,6 @@
 /* https://github.com/Svetloslav15/wave-generator/blob/main/index.js */
 
 .waveBorder {
-    z-index: 999;
     position: relative;
     width: 100%;
     height: 100px;
