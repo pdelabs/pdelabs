@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.logo {
+    cursor: pointer;
+}
+
 .callus {
     margin: 0px;
     display: inline-flex;

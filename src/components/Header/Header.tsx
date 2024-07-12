@@ -52,7 +52,6 @@ const Header: FC<HeaderProps> = () => {
     const navbarItems = (
         <>
             <HeaderLink onClick={handleCloseMenu} href="#services" link="Services" />
-            <HeaderLink onClick={handleCloseMenu} href="#about-us" link="About us" />
             <HeaderLink onClick={handleCloseMenu} href="#portfolio" link="Portfolio" />
             <HeaderLink onClick={handleCloseMenu} href="#contact" link="Contact" />
         </>
@@ -60,10 +59,14 @@ const Header: FC<HeaderProps> = () => {
 
     const headerStyles = headerBg ? styles.headerWhite : null;
 
+    const handlePressLogo = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     return (
         <header className={c(styles.header, headerStyles)}>
             <div className="flex flex-row justify-between items-center">
-                <img className={styles.logo} src="/assets/logo-full.svg" width={150} alt="pdelabs logo" />
+                <img className={styles.logo} onClick={handlePressLogo} src="/assets/logo-full.svg" width={150} alt="pdelabs logo" />
             </div>
             <nav className={c(styles.navbar)}>
                 {navbarItems}
