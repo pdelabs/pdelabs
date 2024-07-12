@@ -34,6 +34,8 @@ const DevelopmentStepCard = React.forwardRef<HTMLElement, DevelopmentStepCardPro
   }
 );
 
+DevelopmentStepCard.displayName = 'DevelopmentStepCard';
+
 const Wrapper = styled.article`
   background: hsl(0deg 0% 100%);
   pointer-events: auto;

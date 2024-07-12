@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { throttle } from '@/utils/fn';
 
 const useWindowDimensions = () => {
@@ -13,7 +13,7 @@ const useWindowDimensions = () => {
         clientWidth: document.documentElement.clientWidth,
     });
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleResize = throttle(() => {
             setWindowDimensions({
                 width: window.innerWidth,
@@ -32,7 +32,7 @@ const useWindowDimensions = () => {
     // For the very first render, for whatever reason, the width of the scrollbars
     // is sometimes not taken into account, so we need to wait until after
     // the first render to set it.
-    React.useEffect(() => {
+    useEffect(() => {
         if (windowDimensions.clientWidth !== document.documentElement.clientWidth) {
             setWindowDimensions({
                 width: window.innerWidth,
