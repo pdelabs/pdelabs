@@ -10,7 +10,7 @@ import Phone from './Phone';
 
 const Portfolio = () => {
     const vamosjuntosImages = ["/assets/vamosjuntos/app_preview.png", "/assets/vamosjuntos/app_preview_2.png", "/assets/vamosjuntos/app_preview_3.png", "/assets/vamosjuntos/app_preview_4.png", "/assets/vamosjuntos/app_preview_5.png", "/assets/vamosjuntos/app_preview_6.png"];
-
+    const demodaImages = ["/assets/demoda/app_preview.png", "/assets/demoda/app_preview2.png", "/assets/demoda/app_preview3.png", "/assets/demoda/app_preview4.png", "/assets/demoda/app_preview5.png"];
     return (
         <section id="portfolio" className={styles.section}>
             <Container>
@@ -27,7 +27,7 @@ const Portfolio = () => {
                 testimonial="As co-founder of demoda, I am extremely impressed with the work pdelabs did helping in the development of our marketplace. They solved technically challenging problems such as real time messaging, complex order state machines and much more. Their commitment to understanding our vision and their ability to translate it into a functional and user-friendly platform was remarkable."
                 author="Nicolas Ferro, co-founder"
                 blobColor={"#69539B"}
-                images={vamosjuntosImages}
+                images={demodaImages}
             />
             <div style={{ marginTop: '2rem' }} />
             <Showcase
