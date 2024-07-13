@@ -15,7 +15,7 @@ export const STEPS: DevelopmentStepProps[] = [
     {
         number: 0,
         title: 'Discovery',
-        description: <>We turn your visionary ideas into precise, actionable plans. This step is designed to thoroughly <Strong>understand your idea and gather detailed functional requirements.</Strong><br /><br /> Through in-depth discussions, we ensure all perspectives are considered, translating your needs into <Strong>clear documentation</Strong>. Our technical experts assess feasibility, identifying <Strong>potential challengess.</Strong></>,
+        description: <>We turn your visionary ideas into precise, actionable plans. This step is designed to thoroughly <Strong>understand your idea and gather detailed functional requirements.</Strong><br /><br /> Through in-depth discussions, we ensure all perspectives are considered, translating your needs into <Strong>clear documentation</Strong>. Our technical experts assess feasibility, identifying <Strong>potential challenges.</Strong></>,
         icon: 'discovery',
     },
     {

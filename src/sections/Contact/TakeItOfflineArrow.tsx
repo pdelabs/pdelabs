@@ -47,6 +47,8 @@ const TiltedBody = styled(SmallBody)`
 
     @media (max-width: 1024px) {
         justify-self: center;
+        text-align: center;
+        transform: rotate(0deg);
     }
 `
 
