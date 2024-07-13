@@ -17,7 +17,7 @@ const DevelopmentStepsFancyPaths = dynamic(
 
 const DevelopmentProcess = () => {
   return (
-    <section style={{ width: '100%', paddingTop: '6rem' }}>
+    <section id="dev-process" style={{ width: '100%', paddingTop: '6rem' }}>
       <Wrapper>
         <About>
           <RelativeTitle>

@@ -31,6 +31,7 @@ const LosDedosFooterContainer = () => {
                         <SectionLink href={'#home'}>Home</SectionLink>
                         <SectionLink href={'#services'}>Services</SectionLink>
                         <SectionLink href={'#portfolio'}>Portfolio</SectionLink>
+                        <SectionLink href={'#dev-process'}>Development Process</SectionLink>
                         <SectionLink href={'#contact'}>Contact</SectionLink>
                     </div>
                     <div className={styles.section}>

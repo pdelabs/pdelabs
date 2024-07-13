@@ -35,7 +35,7 @@ const Portfolio = () => {
                 pills={["api", "mobile", "web"]}
                 description="Vamos Juntos is a carpooling app designed to connect drivers and passengers for shared rides, promoting convenient and eco-friendly travel. The platform facilitates the entire process, from matching users based on their routes and schedules to providing in app messages with shared location."
                 testimonial="I couldn't be happier with the outstanding job pdelabs did in developing our carpooling app. Their team was always available, responsive, and really understood what we wanted, the development process was really smooth and we always knew what to expect. I highly recommend them for any software development needs."
-                author="Mateo Guadalupe, founder"
+                author="Mario Guadalupe, founder"
                 isRight
                 blobColor={"#4285F4"}
                 images={vamosjuntosImages}
