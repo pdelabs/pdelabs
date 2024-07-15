@@ -4,7 +4,7 @@ import './globals.css'
 import LosDedosFooterContainer from '@/components/LosDedosFooterContainer/LosDedosFooterContainer'
 import StyledComponentsRegistry from '@/lib/registry'
 import { SpeedInsights } from "@vercel/speed-insights/next"
-
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <StyledComponentsRegistry>
         <SpeedInsights />
+        <Analytics />
         <body className={inter.className}>
           {children}
           <LosDedosFooterContainer />
