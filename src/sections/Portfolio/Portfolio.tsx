@@ -6,6 +6,7 @@ import QuotesSvg from './quotes.svg';
 import c from 'classnames';
 import Container from '../SectionContainer';
 import Phone from './Phone';
+import SectionTitle from '@/components/SectionTitle';
 
 
 const Portfolio = () => {
@@ -14,8 +15,7 @@ const Portfolio = () => {
     return (
         <section id="portfolio" className={styles.section}>
             <Container>
-                <div className="mt-16 mb-2" style={{ width: 150, height: '2px', backgroundColor: 'white' }} />
-                <Title style={{ color: 'white' }} className="text-left center white">Portfolio</Title>
+                <SectionTitle>Portfolio</SectionTitle>
                 <LargeBody>
                     Discover some of the projects we worked on, from mobile apps to web platforms and APIs.
                 </LargeBody>

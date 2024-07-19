@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from 'react';
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import c from 'classnames';
 import styles from './Typography.module.css';
-import { Mail } from 'lucide-react';
 
 const boldFont = Plus_Jakarta_Sans({
     weight: '700',

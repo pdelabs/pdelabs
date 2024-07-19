@@ -91,7 +91,7 @@ interface WaveDivisionsProps {
 }
 const WavesDivision: FC<WaveDivisionsProps> = ({ sunSize }) => {
     return (
-        <div style={{ position: 'relative', width: '100%', minHeight: sunSize / 2 + 1.5, backgroundColor: '#487C99', zIndex: 5 }}>
+        <div style={{ position: 'relative', width: '100%', height: 100, minHeight: sunSize / 2 + 1.5, backgroundColor: '#487C99', zIndex: 5 }}>
             <div style={{ position: 'absolute', width: '100%', height: 0 }}>
                 <div style={{ transform: 'translateY(-25%)' }}>
                     <Waves />

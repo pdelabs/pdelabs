@@ -1,5 +1,5 @@
 import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
-import { BigTitle, LargeBody, Strong } from "@/components/Typography/Typography";
+import { BigTitle } from "@/components/Typography/Typography";
 import styles from "./Home.module.css";
 import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
 const Home = () => {

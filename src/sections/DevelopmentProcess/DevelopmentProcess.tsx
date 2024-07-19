@@ -7,6 +7,8 @@ import DevelopmentStepsGrid from './DevelopmentStepsGrid';
 import { Body, Title } from '@/components/Typography/Typography';
 import ScheduleCall from '../Home/ScheduleCall';
 import dynamic from "next/dynamic";
+import SectionTitle from '@/components/SectionTitle';
+import Container from '../SectionContainer';
 
 const DevelopmentStepsFancyPaths = dynamic(
   () => {
@@ -18,6 +20,7 @@ const DevelopmentStepsFancyPaths = dynamic(
 const DevelopmentProcess = () => {
   return (
     <section id="dev-process" style={{ width: '100%', paddingTop: '6rem' }}>
+      <Container className="mb-24"><SectionTitle>How we work</SectionTitle></Container>
       <Wrapper>
         <About>
           <RelativeTitle>

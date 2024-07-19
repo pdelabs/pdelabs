@@ -1,7 +1,6 @@
 "use client";
 import { BigTitle, SmallBody, Subtitle, Title } from '@/components/Typography/Typography';
 import React from 'react';
-import styles from './Contact.module.css';
 import styled from 'styled-components';
 import useDimensions from './useDimensions';
 

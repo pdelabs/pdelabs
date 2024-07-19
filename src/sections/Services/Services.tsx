@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const Services = () => {
     return (
-        <section id="services" className="flex flex-col gap-1 px-8 pt-8" style={{ color: 'white' }}>
+        <section id="services" className="flex flex-col gap-1 px-8 pt-10" style={{ color: 'white' }}>
             <Container>
                 <LargeBody>
                     We are a <Strong>software development company</Strong> committed to creating world-class digital products for startups and businesses around the world.
