@@ -1,5 +1,5 @@
 "use client";
-import { BigTitle, SmallBody, Subtitle, Title } from '@/components/Typography/Typography';
+import { BigTitle, SmallBody, Strong, Subtitle, Title } from '@/components/Typography/Typography';
 import React from 'react';
 import styled from 'styled-components';
 import useDimensions from './useDimensions';
@@ -11,8 +11,9 @@ const TakeItOfflineArrow = () => {
     return (
         <Wrapper>
             <TiltedBody>
-                Or<br />
-                if your prefer taking it offline
+                <Strong>Or</Strong><br />
+                if your prefer taking it offline, write us <br />
+                by email
             </TiltedBody>
             <Svg ref={ref as any}>
                 <Line d={`M 5 ${(height / 2) - 40} S ${width / 2} 0, ${width / 2} ${height / 4}, 40 50, ${width - 5} 20`} />

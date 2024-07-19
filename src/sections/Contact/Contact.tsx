@@ -14,7 +14,6 @@ const Contact = () => {
             </div>
             <TakeItOfflineArrow />
             <div className={styles.form}>
-                <Subtitle style={{ color: "#a9c6d4" }}>Write us</Subtitle>
                 <ContactForm />
             </div>
         </section>
