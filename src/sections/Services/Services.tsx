@@ -3,8 +3,7 @@ import styles from './Services.module.css';
 import { FC } from "react";
 import Container from "../SectionContainer";
 import c from 'classnames';
-import { Bot, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone, TabletSmartphone } from "lucide-react";
-import styled from "styled-components";
+import { Bot, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone } from "lucide-react";
 
 const Services = () => {
     return (
