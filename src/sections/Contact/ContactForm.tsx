@@ -19,7 +19,7 @@ export type FormData = {
 };
 
 const ContactForm: FC = () => {
-    const { register, handleSubmit } = useForm<FormData>();
+    const { register, handleSubmit, reset } = useForm<FormData>();
     const { state, actions } = useAsyncValueState<Response>();
     const { toast } = useToast();
 
@@ -28,6 +28,7 @@ const ContactForm: FC = () => {
         try {
             const response = await sendEmail(data);
             actions.data(response);
+            reset();
         } catch (e: any) {
             actions.error('There was an error sending email');
         }
@@ -67,7 +68,7 @@ const ContactForm: FC = () => {
             <div className={styles.gap} />
             <Caption>We will get back to you in less than <Strong>24 hs.</Strong></Caption>
             <div className={styles.gap} />
-            <Button><Body><Strong>{state.loading ? "Loading" : "Send"}</Strong></Body></Button>
+            <Button disabled={state.loading}><Body><Strong>{state.loading ? "Loading" : "Send"}</Strong></Body></Button>
         </form>
     );
 };

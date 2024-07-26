@@ -5,11 +5,12 @@ import c from 'classnames';
 
 interface Props {
     onClick?: () => void;
+    disabled?: boolean;
 }
 
-const Button: FC<PropsWithChildren<Props>> = ({ children, onClick }) => {
+const Button: FC<PropsWithChildren<Props>> = ({ children, onClick, disabled }) => {
     return (
-        <button className={c(styles.button, "inline-flex")} onClick={onClick}>
+        <button className={c(styles.button, "inline-flex")} onClick={onClick} disabled={disabled}>
             <Body>{children}</Body>
         </button>
     );
