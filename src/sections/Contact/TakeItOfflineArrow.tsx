@@ -13,7 +13,7 @@ const TakeItOfflineArrow = () => {
             <TiltedBody>
                 <Strong>Or</Strong><br />
                 if your prefer taking it offline, write us <br />
-                by email
+                via email
             </TiltedBody>
             <Svg ref={ref as any}>
                 <Line d={`M 5 ${(height / 2) - 40} S ${width / 2} 0, ${width / 2} ${height / 4}, 40 50, ${width - 5} 20`} />
