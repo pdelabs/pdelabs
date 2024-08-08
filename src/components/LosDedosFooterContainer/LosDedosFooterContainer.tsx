@@ -36,10 +36,9 @@ const LosDedosFooterContainer = () => {
                     </div>
                     <div className={styles.section}>
                         <Body className={styles.sectionTitle}>Media</Body>
-                        <SmallBody>Instagram</SmallBody>
-                        <SmallBody>Whats app</SmallBody>
-                        <SmallBody>Twitter</SmallBody>
-                        <SmallBody>Linkedin</SmallBody>
+                        <Link target='_blank' href="https://www.instagram.com/puntadelestelabs/"><SmallBody>Instagram</SmallBody></Link>
+                        <Link target='_blank' href="https://wa.me/34607778304"><SmallBody>Whats app</SmallBody></Link>
+                        <Link target='_blank' href="https://www.linkedin.com/company/pdelabs"><SmallBody>Linkedin</SmallBody></Link>
                     </div>
                     <div className={c(styles.section, styles.info)}>
                         <Body className={c(styles.sectionTitle, styles.infoTitle)}>Info</Body>
