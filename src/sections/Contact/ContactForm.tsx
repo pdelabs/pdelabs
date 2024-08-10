@@ -19,7 +19,8 @@ export type FormData = {
 };
 
 const ContactForm: FC = () => {
-    const { register, handleSubmit, reset } = useForm<FormData>();
+    const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormData>();
+    console.log(errors);
     const { state, actions } = useAsyncValueState<Response>();
     const { toast } = useToast();
 
@@ -59,7 +60,7 @@ const ContactForm: FC = () => {
                 <SmallBody >Your company email</SmallBody>
             </label>
 
-            <Input className={styles.input} placeholder="user@companyemail.com" {...register('email', { required: true })} />
+            <Input className={styles.input} error={errors.email?.message} placeholder="user@companyemail.com" {...register('email', { required: true, validate: validateEmail })} />
             <div className={styles.gap} />
             <label htmlFor='message'>
                 <SmallBody >Tell us about your project</SmallBody>
@@ -81,15 +82,15 @@ interface AsyncValue<D> {
     data: D | null;
 }
 
-function useAsyncQuery<D>(query: () => Promise<D>) {
-    const { state, actions } = useAsyncValueState<D>();
 
-    const asyncQuery = useCallback(async () => {
+function validateEmail(email: string): string | undefined {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ) !== null ? undefined : 'Invalid email';
+};
 
-    }, [])
-
-    return { state, asyncQuery }
-}
 
 interface AsyncValueStateReducerActionLoading<D> {
     type: 'loading';
