@@ -5,11 +5,9 @@ import HomeSection from "@/sections/Home/Home";
 import { FC, PropsWithChildren } from "react";
 import Portfolio from "@/sections/Portfolio/Portfolio";
 import Contact from "@/sections/Contact/Contact";
-import TechnologiesScrollList from "@/components/TechnologiesScrollList";
-import { Body } from "@/components/Typography/Typography";
-import { HeartIcon } from "lucide-react";
 import DevelopmentProcess from "@/sections/DevelopmentProcess/DevelopmentProcess";
 import Waves from "@/components/SunsetContainer/Waves/Waves";
+import Box from "@/components/Box/Box";
 
 export default function Home() {
   return (
@@ -26,7 +24,9 @@ export default function Home() {
         <TechnologiesScrollList /> */}
         <DevelopmentProcess />
         <Waves />
-        <Contact />
+        <Box pt="5rem">
+          <Contact />
+        </Box>
       </WaterSection>
     </main>
 

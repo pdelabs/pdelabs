@@ -56,7 +56,6 @@ const CalendlyTrigger: FC<CalendlyTriggerProps> = ({ onEventScheduled }) => {
 
         function handleCalendlyEvent(e: any) {
             if (isCalendlyEvent(e)) {
-                console.log(e.data);
                 if (e.data.event === 'calendly.event_scheduled') {
                     onEventScheduled()
                 }

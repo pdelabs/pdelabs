@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useForm } from 'react-hook-form';
 import { sendEmail } from '@/utils/email';
 import { Body, Caption, SmallBody, Strong, } from '@/components/Typography/Typography';
@@ -19,8 +19,7 @@ export type FormData = {
 };
 
 const ContactForm: FC = () => {
-    const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormData>();
-    console.log(errors);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
     const { state, actions } = useAsyncValueState<Response>();
     const { toast } = useToast();
 
