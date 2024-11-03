@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: 'Punta del Este - Labs',
   description: 'Punta del Este Labs offers comprehensive software development services, including product discovery, UX/UI design, software architecture, development, testing, and deployment. Our expert team ensures high-quality, scalable, and user-friendly applications tailored to your business needs.',
   keywords: ["custom software development", "webapp development", "mobile app development", "AI solutions", "software integration", "API development", "data engineering", "data mining", "etl", "software consulting"],
+  verification: { google: "-U-TYuy4mItqVNdUz3k7mUsN9ZMJ-po-CTWuz7ji7cA" }
 }
 
 export default function RootLayout({
