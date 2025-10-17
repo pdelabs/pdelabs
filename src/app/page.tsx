@@ -1,4 +1,4 @@
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/Header/Header";
 import Services from "@/sections/Services/Services";
 import HomeSection from "@/sections/Home/Home";
@@ -29,8 +29,7 @@ export default function Home() {
         </Box>
       </WaterSection>
     </main>
-
-  )
+  );
 }
 
 const WaterSection: FC<PropsWithChildren> = ({ children }) => {
@@ -38,5 +37,5 @@ const WaterSection: FC<PropsWithChildren> = ({ children }) => {
     <div className={"flex flex-col items-center relative bg-[#547B96] pb-24"}>
       {children}
     </div>
-  )
-}
+  );
+};
