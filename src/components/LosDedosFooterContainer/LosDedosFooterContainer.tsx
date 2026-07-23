@@ -8,6 +8,7 @@ import Link from "next/link";
 import { CalendarDays, Mail, MapPin, Phone } from "lucide-react";
 import c from "classnames";
 import useOpenCalendly from "@/hooks/useOpenCalendly";
+import { CONTACT_EMAIL, CONTACT_PHONE, WHATSAPP_NUMBER } from "@/seo";
 
 const LosDedosFooterContainer = () => {
   const openCalendly = useOpenCalendly();
@@ -36,11 +37,19 @@ const LosDedosFooterContainer = () => {
             <Body className={styles.sectionTitle}>Punta del Este labs</Body>
             <SectionLink href={"/#home"}>Home</SectionLink>
             <SectionLink href={"/#services"}>Services</SectionLink>
-            <SectionLink href={"/#portfolio"}>Portfolio</SectionLink>
+            <SectionLink href={"/ai"}>AI Agents &amp; RAG</SectionLink>
+            <SectionLink href={"/work"}>Work</SectionLink>
+            <SectionLink href={"/work/demoda"}>demoda case study</SectionLink>
+            <SectionLink href={"/work/vamos-juntos"}>
+              Vamos Juntos case study
+            </SectionLink>
             <SectionLink href={"/#dev-process"}>
               Development Process
             </SectionLink>
-            <SectionLink href={"/#contact"}>Contact</SectionLink>
+            <SectionLink href={"/contact"}>Contact</SectionLink>
+            <SectionLink href={"/blog/inspiration"}>
+              Why &ldquo;Punta del Este&rdquo;
+            </SectionLink>
           </div>
           <div className={styles.section}>
             <Body className={styles.sectionTitle}>Media</Body>
@@ -50,7 +59,7 @@ const LosDedosFooterContainer = () => {
             >
               <SmallBody>Instagram</SmallBody>
             </Link>
-            <Link target="_blank" href="https://wa.me/34607778304">
+            <Link target="_blank" href={`https://wa.me/${WHATSAPP_NUMBER}`}>
               <SmallBody>Whats app</SmallBody>
             </Link>
             <Link
@@ -75,12 +84,12 @@ const LosDedosFooterContainer = () => {
                 <MapPin size={16} /> Los Dedos, Punta del Este, Uruguay
               </SmallBody>
             </Link>
-            <Link href="mailto:lgurmendez@pdleabs.com">
+            <Link href={`mailto:${CONTACT_EMAIL}`}>
               <SmallBody className="inline-flex gap-x-1 center">
-                <Mail size={16} /> info@pdelabs.com
+                <Mail size={16} /> {CONTACT_EMAIL}
               </SmallBody>
             </Link>
-            <Link href="tel:+34607778304">
+            <Link href={`tel:${CONTACT_PHONE}`}>
               <SmallBody className="inline-flex gap-x-1 center">
                 <Phone size={16} /> +598 99 002 835
               </SmallBody>

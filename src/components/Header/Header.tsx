@@ -25,8 +25,11 @@ const Header: FC<HeaderProps> = () => {
     useEffect(() => {
         const handleScroll = () => {
             const isScrollingUp = window.scrollY < lastScrollPosition.current;
-            const homeSection = document.getElementById('home');
-            if (homeSection!.getBoundingClientRect().height <= window.scrollY) {
+            // Every page opens on a full-height sunset hero, but each one names it
+            // differently — and a page with no hero at all still has to scroll.
+            const heroSection = document.querySelector('#home, [id$="-hero"]');
+            const heroHeight = heroSection?.getBoundingClientRect().height ?? window.innerHeight;
+            if (heroHeight <= window.scrollY) {
                 if (isScrollingUp) {
                     setHeaderBg(true);
                 } else {
@@ -51,9 +54,12 @@ const Header: FC<HeaderProps> = () => {
 
     const navbarItems = (
         <>
-            <HeaderLink onClick={handleCloseMenu} href="#services" link="Services" />
-            <HeaderLink onClick={handleCloseMenu} href="#portfolio" link="Portfolio" />
-            <HeaderLink onClick={handleCloseMenu} href="#contact" link="Contact" />
+            {/* Root-relative so the nav still works from /ai and other pages. */}
+            <HeaderLink onClick={handleCloseMenu} href="/#services" link="Services" />
+            {/* Lands past the hero, on the capability grid. */}
+            <HeaderLink onClick={handleCloseMenu} href="/ai#what-we-build" link="AI" />
+            <HeaderLink onClick={handleCloseMenu} href="/#portfolio" link="Portfolio" />
+            <HeaderLink onClick={handleCloseMenu} href="/#contact" link="Contact" />
         </>
     );
 

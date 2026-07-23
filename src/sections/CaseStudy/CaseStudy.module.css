@@ -1,0 +1,270 @@
+/* Case study body. Same vocabulary as /ai: white cards on the water blue,
+   navy text inside them, sun-gold for the numbering. */
+
+.body {
+    width: 100%;
+    color: white;
+    /* The wave closing the hero paints over the water at z-index 5. */
+    padding-top: 5rem;
+}
+
+/* ── Fact bar ──────────────────────────────────────────────────────────── */
+
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.factLabel {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.factValue {
+    color: white;
+}
+
+/* ── Pills ─────────────────────────────────────────────────────────────── */
+
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 2rem;
+}
+
+.pill {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: white;
+}
+
+.intro {
+    display: block;
+    max-width: 70ch;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* ── Screenshots ───────────────────────────────────────────────────────── */
+
+.phoneRow {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 0 0;
+}
+
+/* ── Section scaffolding ───────────────────────────────────────────────── */
+
+.divider {
+    width: 150px;
+    height: 2px;
+    background-color: white;
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.blockTitle {
+    color: white;
+    padding-bottom: 1.5rem;
+}
+
+/* ── Problem cards ─────────────────────────────────────────────────────── */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1rem;
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px;
+    padding: 1.75rem;
+    border-radius: 1rem;
+    background: white;
+    color: var(--primary-foreground-hex);
+}
+
+.cardTitle {
+    padding-bottom: 0.75rem;
+}
+
+.cardBody {
+    color: var(--primary-foreground-hex);
+}
+
+/* ── Highlights ────────────────────────────────────────────────────────── */
+
+.highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.highlight {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.highlightNumber {
+    flex-shrink: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #F0DFB1;
+    opacity: 0.9;
+}
+
+.highlightContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 70ch;
+}
+
+.highlightTitle {
+    color: white;
+    padding-bottom: 0.5rem;
+}
+
+.highlightBody {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.bullets {
+    /* Tailwind preflight strips list markers globally, so put them back. */
+    list-style: disc;
+    margin: 0.75rem 0 0 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.bullets li {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bullets li::marker {
+    color: #F0DFB1;
+}
+
+/* ── Stack ─────────────────────────────────────────────────────────────── */
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.stackGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stackLabel {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.stackItems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.stackItem {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    background: white;
+    color: var(--primary-foreground-hex);
+}
+
+/* ── Testimonial ───────────────────────────────────────────────────────── */
+
+.testimonial {
+    position: relative;
+    max-width: 70ch;
+    margin: 4rem auto 0 auto;
+    padding: 0 2.5rem;
+}
+
+.quote {
+    width: 2rem;
+    color: #F0DFB1;
+    opacity: 0.8;
+    position: absolute;
+    right: 0;
+    bottom: -0.5rem;
+    transform: rotate(180deg);
+}
+
+.quote[data-quote-open="true"] {
+    left: 0;
+    top: -0.5rem;
+    right: auto;
+    bottom: auto;
+    transform: none;
+}
+
+.testimonialContent {
+    display: block;
+    color: white;
+    font-style: italic;
+}
+
+/* ── CTA ───────────────────────────────────────────────────────────────── */
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 4rem;
+    color: white;
+}
+
+.ctaTitle {
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 1250px) {
+    .facts {
+        gap: 1.5rem;
+    }
+
+    .highlight {
+        gap: 1rem;
+    }
+
+    .highlightNumber {
+        font-size: 1.5rem;
+    }
+
+    .testimonial {
+        padding: 0 1.5rem;
+    }
+}

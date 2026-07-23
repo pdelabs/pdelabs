@@ -1,0 +1,321 @@
+/* /ai page body. Same vocabulary as the rest of the site: white cards on the
+   water blue, navy text, green pills, sun-gold for the numbers and the blob. */
+
+.block {
+    position: relative;
+    width: 100%;
+    color: white;
+}
+
+/* Anchor target for the "AI" nav link. The header is fixed at 72px, so the
+   section title would otherwise land underneath it. */
+.anchored {
+    scroll-margin-top: 6rem;
+}
+
+/* The wave division closing the hero paints at z-index 5 over the water, so
+   the first block has to start clear of it. */
+.intro {
+    width: 100%;
+    color: white;
+    padding-top: 5rem;
+}
+
+/* ── Card grids (capabilities + engagement) ────────────────────────────── */
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    color: black;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    min-width: 350px;
+    padding: 2rem;
+    color: var(--primary-foreground-hex);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.cardTitle {
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.cardDescription {
+    display: block;
+    margin-top: 0.75rem;
+}
+
+.engagementCard {
+    align-items: flex-start;
+}
+
+.engagementCard .cardTitle {
+    text-align: left;
+    padding-top: 0.75rem;
+    padding-bottom: 0;
+}
+
+.engagementCard .cardDescription {
+    margin-top: 0;
+}
+
+/* Green pill — same one the portfolio uses for its tech tags. */
+.pill {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2rem;
+    background-color: #5A9654;
+    color: white;
+    margin-bottom: 0;
+}
+
+.pills {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.bullets li {
+    position: relative;
+    padding-left: 1.1rem;
+}
+
+.bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #5A9654;
+}
+
+.bullets li span {
+    margin-bottom: 0;
+}
+
+/* ── Agent anatomy ─────────────────────────────────────────────────────── */
+
+.anatomy {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    margin: 0;
+}
+
+.anatomyStep {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    color: var(--primary-foreground-hex);
+    transition: transform 0.3s;
+}
+
+.anatomyStep:hover {
+    transform: scale(1.02);
+}
+
+/* The sun, standing in for the step number. */
+.anatomyNumber {
+    position: absolute;
+    top: -18px;
+    left: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #F5D372;
+    color: var(--primary-foreground-hex);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* Steps 02–04 are the loop — ringed so the cycle reads at a glance. */
+.anatomyStepLooping {
+    box-shadow: 0 0 0 2px #5A9654;
+}
+
+.anatomyTitle {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.anatomyDescription {
+    display: block;
+    margin-bottom: 0;
+}
+
+/* ── Hermes ────────────────────────────────────────────────────────────── */
+
+.hermesSection {
+    margin-top: 2rem;
+    /* The blob deliberately bleeds past the right edge — clip it here so it
+       never widens the document. */
+    overflow: hidden;
+}
+
+/* Peeks out from behind the card's top-right corner, like the sun setting
+   behind it. Fixed size — left to stretch it turns into a wedge. */
+.blob {
+    position: absolute;
+    width: 460px;
+    height: auto;
+    top: 4rem;
+    right: -110px;
+    transform: scale(-1, -1);
+    z-index: 0;
+}
+
+.hermesCard {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    padding: 2.5rem;
+    color: var(--primary-foreground-hex);
+}
+
+.hermesHead {
+    padding-bottom: 1.5rem;
+}
+
+.hermesName {
+    margin-bottom: 0.25rem;
+}
+
+.hermesTagline {
+    display: block;
+    color: #5A9654;
+}
+
+.hermesBody {
+    max-width: 70ch;
+}
+
+.hermesDescription {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.hermesFeatures {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #F5D372;
+}
+
+.hermesFeature span {
+    display: block;
+}
+
+.hermesFeatureDescription {
+    margin-bottom: 0;
+    opacity: 0.85;
+}
+
+/* ── Closing CTA ───────────────────────────────────────────────────────── */
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem 1rem 2rem;
+    color: white;
+}
+
+/* Sun gold, the same accent the contact section closes on. */
+.ctaText {
+    color: #F5D372;
+    max-width: 24ch;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+
+@media (max-width: 1250px) {
+    .cards {
+        margin-top: 1rem;
+        padding: 1rem 0;
+    }
+
+    .anatomy {
+        padding: 1.5rem 0;
+    }
+
+    .hermesFeatures {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hermesCard {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blob {
+        display: none;
+    }
+
+    .card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .anatomyStep {
+        max-width: 100%;
+    }
+
+    .hermesFeatures {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hermesCard {
+        padding: 1.5rem;
+    }
+
+    .hermesName {
+        font-size: 2rem;
+    }
+}

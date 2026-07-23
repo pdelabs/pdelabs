@@ -3,7 +3,7 @@ import Header from "@/components/Header/Header";
 import LosDedosFooterContainer from "@/components/LosDedosFooterContainer/LosDedosFooterContainer";
 import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
 import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
-import { Title } from "@/components/Typography/Typography";
+import { TitleAsH1 } from "@/components/Typography/Typography";
 import React from "react";
 import styled from "styled-components";
 
@@ -13,7 +13,7 @@ const InspirationPage = () => {
       <Header />
       <BlogPostContainer>
         <div className="max-w-4xl mx-auto px-4 py-12">
-          <Title className="mb-6">Discover Punta del Este</Title>
+          <TitleAsH1 className="mb-6">Discover Punta del Este</TitleAsH1>
 
           <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
             At <strong>Punta del Este Labs</strong>, our name isn’t just a title—it’s a tribute to a place that embodies
@@ -23,9 +23,10 @@ const InspirationPage = () => {
           <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
             Punta del Este, Uruguay, is known for its stunning beaches, vibrant culture, and serene atmosphere.
             It’s a place where innovation meets tranquility, where the hustle of the tech world can find balance
-            in the calm of the ocean waves. Often called the "St. Tropez of South America," it blends natural
+            in the calm of the ocean waves. Often called the &ldquo;St. Tropez of South America,&rdquo; it blends natural
             beauty with modern sophistication.
           </p>
+
 
           <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
             Beyond its scenic charm, Punta del Este is emerging as a growing tech hub, attracting talent and

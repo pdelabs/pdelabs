@@ -3,7 +3,8 @@ import styles from './Services.module.css';
 import { FC } from "react";
 import Container from "../SectionContainer";
 import c from 'classnames';
-import { Bot, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone } from "lucide-react";
+import { Bot, BrainCircuit, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone } from "lucide-react";
+import Link from "next/link";
 
 const Services = () => {
     return (
@@ -15,10 +16,20 @@ const Services = () => {
                 <div className="mt-16 mb-2" style={{ width: 150, height: '2px', backgroundColor: 'white' }} />
                 <Title style={{ color: 'white' }} className="text-left center white">What we offer</Title>
                 <LargeBody>
-                    From sleek web and mobile applications to cutting-edge AI-powered solutions and API integrations, our team delivers creative, innovative and impactful projects that drive business success.
+                    We build <Strong>AI products</Strong> — RAG systems, agentic loops and autonomous agents — on top of the web, mobile and data engineering that has to carry them. One team for the model and for everything around it.
                 </LargeBody>
             </Container>
             <div className={styles.services}>
+                <ServiceCard
+                    Icon={Bot}
+                    title={"AI Agents & RAG Systems"}
+                    href="/ai"
+                    description={
+                        <>
+                            <Strong>Retrieval-augmented generation, agentic loops and autonomous agents</Strong> built to run in production, not just to demo well.<br /><br /> This includes <Strong>tool use, memory, guardrails, evals and observability</Strong> — powered by Hermes, our own agent runtime.
+                        </>
+                    }
+                />
                 <ServiceCard
                     Icon={MonitorSmartphone}
                     title={"Custom Software Development"}
@@ -47,9 +58,8 @@ const Services = () => {
                     </>}
                 />
                 <ServiceCard
-                    soon
-                    Icon={Bot}
-                    title={"Comprehensive AI Solutions"}
+                    Icon={BrainCircuit}
+                    title={"Machine Learning & Data Science"}
                     description={
                         <>
                             Leverage <Strong>state-of-the-art AI technologies</Strong> to transform your data into <Strong>actionable insights and intelligent solutions</Strong>.<br /><br /> This includes <Strong>machine learning models, predictive analytics, reinforcement learning, and data-driven automation</Strong>.
@@ -68,11 +78,13 @@ interface ServiceCardProps {
     description: React.ReactNode;
     Icon: React.FC<LucideProps>;
     soon?: boolean;
+    /** When set, the whole card links to that anchor (used by the AI deep dive). */
+    href?: string;
 }
 
-const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = false }) => {
-    return (
-        <div className={c("rounded-lg p-2 bg-white", styles.service)}>
+const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = false, href }) => {
+    const content = (
+        <>
             {soon && (<div className={styles.soontag}>SOON</div>)}
             <Icon size={32} />
             <Subtitle style={{ paddingBottom: '1rem', textAlign: 'center' }}>
@@ -81,6 +93,15 @@ const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = fa
             <Body>
                 {description}
             </Body>
-        </div>
+            {href && (<Body className={styles.serviceLink}>See how we build them &rarr;</Body>)}
+        </>
     );
+
+    const className = c("rounded-lg p-2 bg-white", styles.service, href ? styles.serviceFeatured : null);
+
+    if (href) {
+        return <Link href={href} className={className} prefetch={false}>{content}</Link>;
+    }
+
+    return <div className={className}>{content}</div>;
 }

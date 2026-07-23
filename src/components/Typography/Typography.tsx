@@ -21,8 +21,18 @@ export const BigTitle: React.FC<TypographyProps> = ({ children, className, ...re
     return <h1 className={c(boldFont.className, styles.bigtitle, className)} {...rest}>{children}</h1>;
 }
 
+/** BigTitle's look, but as an <h2> — for hero-sized headings on a page that already has its h1. */
+export const BigTitleAsH2: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
+    return <h2 className={c(boldFont.className, styles.bigtitle, className)} {...rest}>{children}</h2>;
+}
+
 export const Title: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
     return <h2 className={c(boldFont.className, styles.title, className)} {...rest}>{children}</h2>;
+}
+
+/** Title's look, but as the page's <h1> — for pages whose main heading is Title-sized. */
+export const TitleAsH1: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
+    return <h1 className={c(boldFont.className, styles.title, className)} {...rest}>{children}</h1>;
 }
 
 export const Subtitle: React.FC<TypographyProps> = ({ children, className, ...rest }) => {
