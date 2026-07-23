@@ -98,6 +98,29 @@ export function caseStudyJsonLd(data: {
     };
 }
 
+/** Blog post structured data. Same loose typing as caseStudyJsonLd, same reason. */
+export function articleJsonLd(a: {
+    slug: string;
+    headline: string;
+    description: string;
+    datePublished: string;
+    image?: string;
+}) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        '@id': `${SITE_URL}${a.slug}#article`,
+        headline: a.headline,
+        description: a.description,
+        url: `${SITE_URL}${a.slug}`,
+        datePublished: a.datePublished,
+        ...(a.image ? { image: `${SITE_URL}${a.image}` } : {}),
+        author: { '@id': `${SITE_URL}/#organization` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        inLanguage: 'en',
+    };
+}
+
 export const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',

@@ -1,63 +1,110 @@
-"use client"
+import { FC, PropsWithChildren } from "react";
 import Header from "@/components/Header/Header";
-import LosDedosFooterContainer from "@/components/LosDedosFooterContainer/LosDedosFooterContainer";
-import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
 import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
-import { TitleAsH1 } from "@/components/Typography/Typography";
-import React from "react";
-import styled from "styled-components";
+import Waves from "@/components/SunsetContainer/Waves/Waves";
+import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
+import { BigTitle, Body, LargeBody, SmallBody, Strong, Subtitle } from "@/components/Typography/Typography";
+import { articleJsonLd } from "@/seo";
+import styles from "./page.module.css";
+
+const PUBLISHED = "2024-08-01";
 
 const InspirationPage = () => {
   return (
-    <>
+    <main className="flex min-h-screen flex-col justify-between">
       <Header />
-      <BlogPostContainer>
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <TitleAsH1 className="mb-6">Discover Punta del Este</TitleAsH1>
+      <section id="post-hero">
+        <SunsetContainer>
+          <div className="flex flex-col items-center" style={{ color: "white" }}>
+            <BigTitle className={styles.title}>Why we&rsquo;re Punta del Este Labs</BigTitle>
+            <LargeBody className={styles.dek}>
+              A software studio named after a beach town. Here&rsquo;s what that has to do with how we build.
+            </LargeBody>
+          </div>
+        </SunsetContainer>
+      </section>
 
-          <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
-            At <strong>Punta del Este Labs</strong>, our name isn’t just a title—it’s a tribute to a place that embodies
-            everything we stand for. 🌊🌴
-          </p>
+      <WaterSection>
+        <article className={styles.article}>
+          <SmallBody className={styles.byline}>By Punta del Este Labs&nbsp;·&nbsp;4 min read</SmallBody>
 
-          <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
-            Punta del Este, Uruguay, is known for its stunning beaches, vibrant culture, and serene atmosphere.
-            It’s a place where innovation meets tranquility, where the hustle of the tech world can find balance
-            in the calm of the ocean waves. Often called the &ldquo;St. Tropez of South America,&rdquo; it blends natural
-            beauty with modern sophistication.
-          </p>
+          <Body className={styles.p}>
+            Most software companies are named after an abstraction &mdash; a Latin root, a coined word that
+            happened to clear a trademark search. We named ours after a place you can stand in.
+          </Body>
 
+          <Body className={styles.p}>
+            Punta del Este sits on the southern coast of Uruguay, where the Río de la Plata meets the Atlantic.
+            On its most famous beach, a giant hand rises out of the sand &mdash; <em>Los&nbsp;Dedos</em>, &ldquo;the
+            fingers.&rdquo; It&rsquo;s where our address points, and it&rsquo;s a fitting emblem for the work: something
+            built with enough care that people travel to see it.
+          </Body>
 
-          <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
-            Beyond its scenic charm, Punta del Este is emerging as a growing tech hub, attracting talent and
-            investment globally. The city’s peaceful surroundings paired with its tech-forward mindset make it a
-            prime location for innovation and creativity.
-          </p>
+          <Body className={styles.p}>
+            But a name is only worth defending if it means something past the postcard. So here is what Punta del
+            Este actually has to do with how we build software.
+          </Body>
 
-          <p className="text-lg text-neutral-800 dark:text-neutral-200 mb-4">
-            Much like the city, <strong>Punta del Este Labs</strong> is about balance. We build innovative,
-            high-tech solutions in a space that fosters creativity and clarity. Whether you’re walking its beaches
-            or building your next big idea with us, Punta del Este reminds us that great things grow where peace
-            and purpose meet.
-          </p>
+          <Subtitle className={styles.h}>The same hours as you</Subtitle>
+          <Body className={styles.p}>
+            Uruguay runs on GMT-3. On the US East Coast, we share most of your working day; in Europe, we overlap
+            your whole morning. That is not a small thing &mdash; it is the difference between a question answered in
+            ten minutes and a question that costs you a day. We are a <Strong>nearshore</Strong> team, not an
+            offshore one: you talk to the people writing your code, while they are awake.
+          </Body>
 
-          <p className="text-lg text-neutral-800 dark:text-neutral-200 font-medium mb-8">
-            Join us on this journey where nature inspires innovation. 🌟
-          </p>
+          <Subtitle className={styles.h}>A small country that takes this seriously</Subtitle>
+          <Body className={styles.p}>
+            Uruguay is the most stable country in Latin America &mdash; first in the region on the Democracy Index,
+            on rule of law, and on low corruption. Its tech sector is what the industry calls a{" "}
+            <Strong>craft market</Strong>: a small talent pool, but unusually high quality and low turnover.
+            Engineers here stay on a product for years, not months, and English proficiency is among the strongest
+            in the region. None of that is scenery. It is why the work holds up after we hand it over.
+          </Body>
 
-        <div style={{ color: 'white' }}>
-          <ScheduleCallButton />
-        </div>
-        </div>
-      </BlogPostContainer>
-    </>
+          <Subtitle className={styles.h}>Balance &mdash; the useful kind</Subtitle>
+          <Body className={styles.p}>
+            The easy version of this story is that the beach makes us calm and calm makes us creative. That is not
+            it. What the place actually teaches is that you can move fast without living in a permanent emergency
+            &mdash; that a team which isn&rsquo;t burned out ships better software, for longer. We build that way on
+            purpose: careful where it counts, quick where it doesn&rsquo;t, and honest with you about which is which.
+          </Body>
+
+          <Body className={styles.p}>
+            So: Punta del Este Labs. A studio that works the way its home does &mdash; steady, close, and built to
+            last longer than a launch.
+          </Body>
+
+          <div className={styles.cta}>
+            <Body className={styles.ctaLine}>
+              If that&rsquo;s the kind of team you want on your next project, let&rsquo;s talk.
+            </Body>
+            <ScheduleCallButton />
+          </div>
+        </article>
+        <Waves />
+      </WaterSection>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            articleJsonLd({
+              slug: "/blog/inspiration",
+              headline: "Why We Are Called Punta del Este Labs",
+              description:
+                "The story behind pdelabs — and why building from Punta del Este, Uruguay, means a nearshore team in your timezone, from a low-attrition craft market.",
+              datePublished: PUBLISHED,
+            })
+          ),
+        }}
+      />
+    </main>
   );
 };
 
 export default InspirationPage;
 
-
-const BlogPostContainer = styled.div`
-    background-color: #547B96;
-    padding: 20px;
-`;
+const WaterSection: FC<PropsWithChildren> = ({ children }) => (
+  <div className="flex flex-col items-center relative bg-[#547B96] pb-24">{children}</div>
+);
