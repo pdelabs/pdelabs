@@ -41,6 +41,22 @@
     transform: scale(1.02);
 }
 
+/* The AI card leads the grid — gold ring ties it to the AI section below. */
+.serviceFeatured {
+    box-shadow: 0 0 0 2px #ffd271, 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.serviceLink {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-weight: 700;
+    color: var(--primary-foreground-hex);
+}
+
+.serviceFeatured:hover .serviceLink {
+    text-decoration: underline;
+}
+
 @media (max-width: 1250px) {
     .services {
         margin-top: 1rem;

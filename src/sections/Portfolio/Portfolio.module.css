@@ -150,3 +150,15 @@
         display: none;
     }
 }
+/* Link from a homepage showcase through to its full case study. */
+.caseStudyLink {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.caseStudyLink:hover {
+    color: #F0DFB1;
+}

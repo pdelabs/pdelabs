@@ -7,6 +7,7 @@ import c from 'classnames';
 import Container from '../SectionContainer';
 import Phone from './Phone';
 import SectionTitle from '@/components/SectionTitle';
+import Link from 'next/link';
 
 
 const Portfolio = () => {
@@ -28,6 +29,7 @@ const Portfolio = () => {
                 author="Nicolas Ferro, co-founder"
                 blobColor={"#69539B"}
                 images={demodaImages}
+                href="/work/demoda"
             />
             <div style={{ marginTop: '2rem' }} />
             <Showcase
@@ -39,6 +41,7 @@ const Portfolio = () => {
                 isRight
                 blobColor={"#4285F4"}
                 images={vamosjuntosImages}
+                href="/work/vamos-juntos"
             />
 
         </section>
@@ -54,7 +57,8 @@ const Showcase = ({
     author,
     isRight,
     blobColor,
-    images
+    images,
+    href
 }: any) => {
     return (
         <div className={c(styles.showcase)} data-horientation={isRight ? "right" : "left"}>
@@ -86,6 +90,11 @@ const Showcase = ({
                             </Body>
                             <QuotesSvg className={styles.quote} />
                         </div>
+                        {href && (
+                            <Link href={href} className={styles.caseStudyLink} prefetch={false}>
+                                <Body><Strong>Read the case study &rarr;</Strong></Body>
+                            </Link>
+                        )}
                     </div>
                 </div>
                 <div className={styles.mobilePhoneContainer} data-phone-inside-description="false">
