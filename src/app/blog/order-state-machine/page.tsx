@@ -3,13 +3,13 @@ import { FC, PropsWithChildren } from "react";
 import Link from "next/link";
 import Header from "@/components/Header/Header";
 import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
-import Waves from "@/components/SunsetContainer/Waves/Waves";
 import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
 import { BigTitle, Body, LargeBody, SmallBody, Strong, Subtitle } from "@/components/Typography/Typography";
 import { articleJsonLd } from "@/seo";
 import { getPost } from "@/sections/Blog/posts";
 import {
-    OrderLifecycleDiagram,
+    ExceptionDiagram,
+    HappyPathDiagram,
     WaitingStateDiagram,
     WebhookFlowDiagram,
 } from "@/sections/Blog/diagrams/orderStateMachine";
@@ -112,46 +112,78 @@ const OrderStateMachinePost = () => {
                         a dispute path, for when something is wrong.
                     </Body>
 
-                    <Subtitle className={styles.h}>The full lifecycle</Subtitle>
+                    <Subtitle className={styles.h}>The happy path already forks</Subtitle>
                     <Body className={styles.p}>
-                        Laid out end to end, the happy path runs straight down the middle: the buyer pays, the seller
-                        accepts, the seller ships, the package is delivered, the buyer confirms, the order completes and
-                        the funds are released. What makes it robust is everything branching off to the side.
+                        Even the happy path is not a straight line, because demoda lets a buyer either have an item{" "}
+                        <Strong>mailed</Strong> or collect it <Strong>in person</Strong>, and those are genuinely
+                        different flows. Once payment clears, a mailed order waits for the seller to ship and then sits in{" "}
+                        <em>shipping</em>; an in-person order goes straight to <em>waiting for pickup</em>. Both converge
+                        on <em>fulfilled</em>, at which point the seller gets paid.
                     </Body>
 
                     <figure className={styles.figure}>
                         <div className={styles.diagram}>
-                            <OrderLifecycleDiagram />
-                        </div>
-                        <div className={styles.legend}>
-                            <span className={styles.legendItem}>
-                                <span className={styles.swatch} style={{ borderColor: "#ffffff" }} /> the action happens
-                            </span>
-                            <span className={styles.legendItem}>
-                                <span className={styles.swatch} style={{ borderColor: "#D98A2B" }} /> a timeout fires
-                            </span>
+                            <HappyPathDiagram />
                         </div>
                         <figcaption className={styles.figcaption}>
-                            demoda&rsquo;s order lifecycle. Every state that waits on a person has a timeout branch, so an
-                            order left alone still resolves itself instead of hanging forever.
+                            The path everyone hopes for &mdash; and it already branches by how the buyer chose to receive
+                            the item. &ldquo;Or auto&rdquo; is the timeout quietly completing an order the buyer never got
+                            around to confirming.
                         </figcaption>
                     </figure>
 
                     <Subtitle className={styles.h}>A timeout on every edge</Subtitle>
                     <Body className={styles.p}>
                         This is the discipline that holds the whole thing together, and it is worth stating plainly:{" "}
-                        <Strong>nothing waits forever</Strong>. Each waiting state has its own timeout handler, and each
-                        does something specific. If a buyer never pays, the order cancels and releases the reservation. If
-                        a seller never accepts, it auto-cancels and the buyer is refunded. If a seller accepts but never
-                        ships, it refunds. If a delivered order is never confirmed, it escalates to us, or auto-confirms
-                        after a grace period so the seller still gets paid.
+                        <Strong>nothing waits forever</Strong>. Every state above that waits on a person has its own
+                        timeout, and they do not fire blind &mdash; they <em>nudge first</em>. A seller who hasn&rsquo;t
+                        shipped gets reminded, twice; a buyer who hasn&rsquo;t picked up or confirmed receipt gets
+                        reminded too. Only if the reminders are ignored does the timeout actually fire.
                     </Body>
                     <Body className={styles.p}>
-                        None of those are edge cases we bolted on after the first bad week. They shipped with the product,
-                        because on a marketplace the unhappy paths <em>are</em> the product &mdash; they are what makes it
-                        safe to hand money to a stranger. Each timeout is a small, independent job that wakes up, checks
-                        whether the wait has gone on too long, and moves the order along if it has.
+                        And when it does, most states resolve <em>forward</em>. A shipped order the buyer never confirms
+                        auto-completes so the seller still gets paid; the same is true for a pickup that is never
+                        confirmed. The one state that resolves backward is payment itself: if the buyer never pays inside
+                        the window, the order is <Strong>cancelled</Strong> and the reserved stock goes back on sale.
+                        None of these are edge cases we bolted on after the first bad week &mdash; on a marketplace the
+                        unhappy paths <em>are</em> the product.
                     </Body>
+
+                    <Subtitle className={styles.h}>When it goes wrong: judging</Subtitle>
+                    <Body className={styles.p}>
+                        Two things break the happy path outright. A seller can <Strong>reject</Strong> an order they
+                        can&rsquo;t fulfil &mdash; if it was paid by card, the buyer is refunded automatically; if it was
+                        a bank transfer, which can&rsquo;t be clawed back with an API call, it goes to a human. And a
+                        buyer can <Strong>report a problem</Strong>, which moves the order into <em>judging</em> &mdash; a
+                        hold where the dispute is actually decided.
+                    </Body>
+                    <Body className={styles.p}>
+                        From judging there are exactly two ways out: favour the seller and the order fulfils and funds
+                        release, or favour the buyer and it refunds. Judging itself has a time limit, so even a contested
+                        order can&rsquo;t sit forever &mdash; if no one resolves it in time, it defaults to fulfilled.
+                    </Body>
+
+                    <figure className={styles.figure}>
+                        <div className={styles.diagram}>
+                            <ExceptionDiagram />
+                        </div>
+                        <div className={styles.legend}>
+                            <span className={styles.legendItem}>
+                                <span className={styles.swatch} style={{ borderColor: "#D98A2B" }} /> timeout / hold
+                            </span>
+                            <span className={styles.legendItem}>
+                                <span className={styles.swatch} style={{ borderColor: "#C96A5E" }} /> dispute / refund
+                            </span>
+                            <span className={styles.legendItem}>
+                                <span className={styles.swatch} style={{ borderColor: "#4FA97F" }} /> success
+                            </span>
+                        </div>
+                        <figcaption className={styles.figcaption}>
+                            Everything that isn&rsquo;t the happy path. <em>Judging</em> is the arbitration hold; every
+                            order still ends in exactly one of three terminal states &mdash; fulfilled, refunded, or
+                            cancelled.
+                        </figcaption>
+                    </figure>
 
                     <Subtitle className={styles.h}>The app is never the source of truth</Subtitle>
                     <Body className={styles.p}>
@@ -210,7 +242,6 @@ const OrderStateMachinePost = () => {
                         Read the full project write-up in the <Link href="/work/demoda">demoda case study</Link>.
                     </SmallBody>
                 </article>
-                <Waves />
             </WaterSection>
 
             <script

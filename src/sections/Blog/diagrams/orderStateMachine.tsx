@@ -6,8 +6,13 @@
  * crawlable. Every diagram scales to its container and scrolls on narrow
  * screens instead of shrinking its text to nothing.
  *
+ * The states and transitions mirror demoda's real OrderStatusEnum:
+ *   WAITING_PAYMENT → WAITING_SHIPMENT → SHIPPING          (mailed)
+ *   WAITING_PAYMENT → WAITING_PICKUP                       (in person)
+ *   … → FULFILLED, plus JUDGING (dispute hold), REFUNDED, CANCELLED.
+ *
  * Palette matches the site: white nodes and navy text on the water blue, amber
- * for the timeout paths, green for success, red for disputes.
+ * for the timeout/hold paths, green for success, red for disputes and refunds.
  */
 import { ReactNode } from "react";
 
@@ -16,14 +21,15 @@ const AMBER = "#D98A2B";
 const AMBER_SOFT = "#F4E4C4";
 const GREEN = "#4FA97F";
 const RED = "#C96A5E";
+const RED_SOFT = "#F6E0DC";
 
 type Lines = string[];
 
 function Node({
     x,
     y,
-    w = 200,
-    h = 84,
+    w = 190,
+    h = 62,
     lines,
     accent,
 }: {
@@ -47,7 +53,7 @@ function Node({
                     y={start + i * 18}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    fontSize={14.5}
+                    fontSize={14}
                     fontWeight={700}
                     fill={NAVY}
                 >
@@ -71,11 +77,11 @@ function Chip({
     fill?: string;
     color?: string;
 }) {
-    const w = 16 + text.length * 6.9;
+    const w = 16 + text.length * 6.7;
     return (
         <g>
             <rect x={cx - w / 2} y={cy - 12} width={w} height={24} rx={12} fill={fill} stroke={NAVY} strokeOpacity={0.1} />
-            <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fontSize={12.5} fontWeight={600} fill={color}>
+            <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fontSize={12} fontWeight={600} fill={color}>
                 {text}
             </text>
         </g>
@@ -175,67 +181,80 @@ export function WaitingStateDiagram() {
     );
 }
 
-/** The full order lifecycle: happy path down the centre, a timeout off every wait. */
-export function OrderLifecycleDiagram() {
-    const p = "ol";
-    // Centre column, top-to-bottom. Node centre y = y + 42.
-    const centre: { y: number; lines: Lines; accent?: string }[] = [
-        { y: 24, lines: ["Pending payment"] },
-        { y: 162, lines: ["Awaiting seller", "to accept"] },
-        { y: 300, lines: ["Awaiting shipment"] },
-        { y: 438, lines: ["In transit"] },
-        { y: 576, lines: ["Awaiting", "confirmation"] },
-        { y: 714, lines: ["Completed"], accent: GREEN },
-    ];
-    const happy = [
-        { y: 135, text: "buyer pays" },
-        { y: 273, text: "seller accepts" },
-        { y: 411, text: "seller ships" },
-        { y: 549, text: "delivered" },
-        { y: 687, text: "buyer confirms" },
-    ];
-    // Terminal (amber) off each waiting state; terminal centre aligns to its source.
-    const terminals: { y: number; lines: Lines; edge: string; dashed?: boolean }[] = [
-        { y: 34, lines: ["Cancelled"], edge: "no payment" },
-        { y: 172, lines: ["Auto-cancelled", "(or seller rejects)"], edge: "no response" },
-        { y: 310, lines: ["Refunded"], edge: "not shipped" },
-        { y: 448, lines: ["Escalated to us"], edge: "no delivery" },
-        { y: 586, lines: ["Auto-confirmed"], edge: "no confirmation", dashed: true },
-    ];
+/** The happy path, which forks by how the buyer chose to receive the item. */
+export function HappyPathDiagram() {
+    const p = "hp";
     return (
-        <Svg w={700} h={840} minW={520} label="The demoda order lifecycle: a happy path down the centre with a timeout branch off every state that waits on a person.">
+        <Svg
+            w={720}
+            h={530}
+            minW={620}
+            label="The happy path forks after payment: a mailed order goes waiting-for-shipment then shipping; an in-person order goes waiting-for-pickup. Both end at fulfilled."
+        >
             <Markers p={p} />
 
-            {/* happy path edges */}
-            {centre.slice(0, -1).map((n, i) => (
-                <Edge key={i} d={`M250,${n.y + 84} L250,${centre[i + 1].y}`} color="#ffffff" marker={`${p}-navy`} />
-            ))}
-            {happy.map((c, i) => (
-                <Chip key={i} cx={250} cy={c.y} text={c.text} />
-            ))}
+            {/* edges */}
+            <Edge d="M330,82 C 245,108 163,132 163,166" color="#ffffff" marker={`${p}-navy`} />
+            <Edge d="M390,82 C 475,108 557,132 557,166" color="#ffffff" marker={`${p}-navy`} />
+            <Edge d="M163,230 L163,298" color="#ffffff" marker={`${p}-navy`} />
+            <Edge d="M163,360 C 163,414 250,438 267,449" color="#ffffff" marker={`${p}-navy`} />
+            <Edge d="M557,230 C 557,414 470,438 453,449" color="#ffffff" marker={`${p}-navy`} />
 
-            {/* timeout edges to terminals */}
-            {terminals.map((t, i) => {
-                const cy = centre[i].y + 42;
-                return (
-                    <g key={i}>
-                        <Edge d={`M350,${cy} L468,${cy}`} color={AMBER} marker={`${p}-amber`} dashed={t.dashed} />
-                        <Chip cx={409} cy={cy} text={t.edge} fill={AMBER_SOFT} />
-                    </g>
-                );
-            })}
+            <Chip cx={243} cy={120} text="mailed" />
+            <Chip cx={477} cy={120} text="in person" />
+            <Chip cx={163} cy={264} text="seller ships" />
+            <Chip cx={214} cy={402} text="receives · or auto" />
+            <Chip cx={506} cy={402} text="picks up · or auto" />
 
-            {/* auto-confirm loops back to Completed */}
-            <Edge d="M468,618 C 360,660 250,662 250,714" color={AMBER} marker={`${p}-amber`} dashed />
+            {/* nodes */}
+            <Node x={267} y={20} lines={["Waiting for payment"]} />
+            <Node x={70} y={166} lines={["Waiting for", "shipment"]} />
+            <Node x={464} y={166} lines={["Waiting for", "pickup"]} />
+            <Node x={70} y={298} lines={["Shipping"]} />
+            <Node x={267} y={440} lines={["Fulfilled"]} accent={GREEN} />
+        </Svg>
+    );
+}
 
-            {/* centre nodes */}
-            {centre.map((n, i) => (
-                <Node key={i} x={150} y={n.y} w={200} h={84} lines={n.lines} accent={n.accent} />
-            ))}
-            {/* terminal nodes */}
-            {terminals.map((t, i) => (
-                <Node key={i} x={468} y={t.y} w={210} h={64} lines={t.lines} accent={AMBER} />
-            ))}
+/** The exceptions: cancellation, seller rejection, and the JUDGING dispute hold. */
+export function ExceptionDiagram() {
+    const p = "ex";
+    return (
+        <Svg
+            w={760}
+            h={392}
+            minW={660}
+            label="Exceptions: an unpaid order is cancelled; a rejected order is refunded, or held in judging for a bank transfer; a reported problem goes to judging, which resolves to fulfilled for the seller or refunded for the buyer."
+        >
+            <Markers p={p} />
+
+            {/* payment row */}
+            <Edge d="M220,50 L536,50" color={AMBER} marker={`${p}-amber`} />
+            <Chip cx={380} cy={50} text="no payment · rejected" fill={AMBER_SOFT} />
+
+            {/* into judging */}
+            <Edge d="M212,214 L300,210" color={RED} marker={`${p}-red`} />
+            <Chip cx={252} cy={168} text="reports a problem" fill={RED_SOFT} color={RED} />
+
+            {/* seller rejects, straight to refund */}
+            <Edge d="M206,238 C 350,348 470,348 556,314" color={RED} marker={`${p}-red`} dashed />
+            <Chip cx={362} cy={348} text="seller rejects" fill={RED_SOFT} color={RED} />
+
+            {/* out of judging */}
+            <Edge d="M460,200 L556,180" color={GREEN} marker={`${p}-green`} />
+            <Chip cx={502} cy={170} text="favours seller" fill={AMBER_SOFT} />
+
+            <Edge d="M460,244 L556,300" color={RED} marker={`${p}-red`} />
+            <Chip cx={505} cy={262} text="favours buyer" fill={RED_SOFT} color={RED} />
+
+            {/* nodes */}
+            <Node x={40} y={24} w={180} h={52} lines={["Waiting for payment"]} />
+            <Node x={540} y={24} w={180} h={52} lines={["Cancelled"]} accent={AMBER} />
+
+            <Node x={40} y={190} w={172} h={64} lines={["An active order", "(any wait above)"]} />
+            <Node x={300} y={185} w={160} h={74} lines={["Judging", "(dispute hold)"]} accent={AMBER} />
+            <Node x={560} y={150} w={180} h={52} lines={["Fulfilled"]} accent={GREEN} />
+            <Node x={560} y={280} w={180} h={52} lines={["Refunded"]} accent={RED} />
         </Svg>
     );
 }
@@ -271,7 +290,7 @@ export function WebhookFlowDiagram() {
 
             {/* the app can't set state */}
             <Edge d="M105,116 C 105,262 470,262 540,234" color={RED} marker={`${p}-red`} dashed />
-            <Chip cx={300} cy={262} text="the app can never set this" fill="#F6E0DC" color={RED} />
+            <Chip cx={300} cy={262} text="the app can never set this" fill={RED_SOFT} color={RED} />
         </Svg>
     );
 }
