@@ -59,6 +59,7 @@ const Header: FC<HeaderProps> = () => {
             {/* Lands past the hero, on the capability grid. */}
             <HeaderLink onClick={handleCloseMenu} href="/ai#what-we-build" link="AI" />
             <HeaderLink onClick={handleCloseMenu} href="/#portfolio" link="Portfolio" />
+            <HeaderLink onClick={handleCloseMenu} href="/blog" link="Blog" />
             <HeaderLink onClick={handleCloseMenu} href="/#contact" link="Contact" />
         </>
     );
