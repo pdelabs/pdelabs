@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Body, LargeBody, Strong, Subtitle, Title } from '@/components/Typography/Typography';
+"use client";
+import React from 'react';
+import { Body, LargeBody, Strong, Subtitle } from '@/components/Typography/Typography';
 import styles from './Portfolio.module.css';
 import BlobSvg from './blob.svg';
 import QuotesSvg from './quotes.svg';
@@ -8,36 +9,40 @@ import Container from '../SectionContainer';
 import Phone from './Phone';
 import SectionTitle from '@/components/SectionTitle';
 import Link from 'next/link';
+import { useI18n } from '@/i18n/I18nProvider';
 
 
 const Portfolio = () => {
+    const { t } = useI18n();
     const vamosjuntosImages = ["/assets/vamosjuntos/app_preview.png", "/assets/vamosjuntos/app_preview_2.png", "/assets/vamosjuntos/app_preview_3.png", "/assets/vamosjuntos/app_preview_4.png", "/assets/vamosjuntos/app_preview_5.png", "/assets/vamosjuntos/app_preview_6.png"];
     const demodaImages = ["/assets/demoda/app_preview.png", "/assets/demoda/app_preview2.png", "/assets/demoda/app_preview3.png", "/assets/demoda/app_preview4.png", "/assets/demoda/app_preview5.png"];
     return (
         <section id="portfolio" className={styles.section}>
             <Container>
-                <SectionTitle>Portfolio</SectionTitle>
+                <SectionTitle>{t("portfolio.title")}</SectionTitle>
                 <LargeBody>
-                    Discover some of the projects we worked on, from mobile apps to web platforms and APIs.
+                    {t("portfolio.intro")}
                 </LargeBody>
             </Container>
             <Showcase
                 title="demoda"
-                pills={["mobile", "web", "api", "search", "staff augmentation"]}
-                description="demoda is a marketplace for clothing and accessories that enables small brands, second-hand stores, fashion designers, and individuals to sell their products. It oversees the entire sales process, including access to information, communication between buyers and sellers, online payments, shipping, and order tracking."
-                testimonial="As co-founder of demoda, I am extremely impressed with the work pdelabs did helping in the development of our marketplace. They solved technically challenging problems such as real time messaging, complex order state machines and much more. Their commitment to understanding our vision and their ability to translate it into a functional and user-friendly platform was remarkable."
-                author="Nicolas Ferro, co-founder"
+                pills={t("portfolio.demoda.pills")}
+                description={t("portfolio.demoda.description")}
+                testimonial={t("portfolio.demoda.testimonial")}
+                author={t("portfolio.demoda.author")}
+                readCaseStudy={t("portfolio.readCaseStudy")}
                 blobColor={"#69539B"}
                 images={demodaImages}
                 href="/work/demoda"
             />
             <div style={{ marginTop: '2rem' }} />
             <Showcase
-                title="Vamos juntos"
-                pills={["api", "mobile", "web"]}
-                description="Vamos Juntos is a carpooling app designed to connect drivers and passengers for shared rides, promoting convenient and eco-friendly travel. The platform facilitates the entire process, from matching users based on their routes and schedules to providing in app messages with shared location."
-                testimonial="I couldn't be happier with the outstanding job pdelabs did in developing our carpooling app. Their team was always available, responsive, and really understood what we wanted, the development process was really smooth and we always knew what to expect. I highly recommend them for any software development needs."
-                author="Mario Guadalupe, founder"
+                title="Vamos Juntos"
+                pills={t("portfolio.vamos.pills")}
+                description={t("portfolio.vamos.description")}
+                testimonial={t("portfolio.vamos.testimonial")}
+                author={t("portfolio.vamos.author")}
+                readCaseStudy={t("portfolio.readCaseStudy")}
                 isRight
                 blobColor={"#4285F4"}
                 images={vamosjuntosImages}
@@ -58,7 +63,8 @@ const Showcase = ({
     isRight,
     blobColor,
     images,
-    href
+    href,
+    readCaseStudy
 }: any) => {
     return (
         <div className={c(styles.showcase)} data-horientation={isRight ? "right" : "left"}>
@@ -92,7 +98,7 @@ const Showcase = ({
                         </div>
                         {href && (
                             <Link href={href} className={styles.caseStudyLink} prefetch={false}>
-                                <Body><Strong>Read the case study &rarr;</Strong></Body>
+                                <Body><Strong>{readCaseStudy} &rarr;</Strong></Body>
                             </Link>
                         )}
                     </div>

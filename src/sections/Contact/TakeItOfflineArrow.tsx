@@ -3,17 +3,23 @@ import { BigTitle, SmallBody, Strong, Subtitle, Title } from '@/components/Typog
 import React from 'react';
 import styled from 'styled-components';
 import useDimensions from './useDimensions';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const TakeItOfflineArrow = () => {
 
     const [ref, { width, height }] = useDimensions();
+    const { t } = useI18n();
+    const lines = String(t('contact.takeOffline')).split('\n');
 
     return (
         <Wrapper>
             <TiltedBody>
-                <Strong>Or</Strong><br />
-                if your prefer taking it offline, write us <br />
-                via email
+                {lines.map((line, i) => (
+                    <React.Fragment key={i}>
+                        {i === 0 ? <Strong>{line}</Strong> : line}
+                        {i < lines.length - 1 && <br />}
+                    </React.Fragment>
+                ))}
             </TiltedBody>
             <Svg ref={ref as any}>
                 <Line d={`M 5 ${(height / 2) - 40} S ${width / 2} 0, ${width / 2} ${height / 4}, 40 50, ${width - 5} 20`} />

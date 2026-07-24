@@ -1,9 +1,11 @@
-import { BigTitle, BigTitleAsH2, Body, Subtitle, Title } from '@/components/Typography/Typography';
+"use client";
+import { BigTitle, BigTitleAsH2 } from '@/components/Typography/Typography';
 import React from 'react';
 import styles from './Contact.module.css';
 import ScheduleCallButton from '@/components/ScheduleCallButton/ScheduleCallButton';
 import ContactForm from './ContactForm';
 import TakeItOfflineArrow from './TakeItOfflineArrow';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface ContactProps {
     /**
@@ -15,12 +17,13 @@ interface ContactProps {
 }
 
 const Contact = ({ isPageHeading = false }: ContactProps) => {
+    const { t } = useI18n();
     const Heading = isPageHeading ? BigTitle : BigTitleAsH2;
     return (
         <section id="contact" className={styles.section}>
             <div className={styles.schedule}>
-                <Heading>We love to take on new challenges, <span style={{ color: '#F0DFB1' }}>tell us yours.</span></Heading>
-                <ScheduleCallButton>Schedule a call</ScheduleCallButton>
+                <Heading>{t("contact.heading1")} <span style={{ color: '#F0DFB1' }}>{t("contact.heading2")}</span></Heading>
+                <ScheduleCallButton>{t("buttons.scheduleCallShort")}</ScheduleCallButton>
             </div>
             <TakeItOfflineArrow />
             <div className={styles.form}>

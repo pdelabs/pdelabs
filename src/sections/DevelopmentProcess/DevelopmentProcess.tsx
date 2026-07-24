@@ -9,6 +9,7 @@ import ScheduleCall from '../Home/ScheduleCall';
 import dynamic from "next/dynamic";
 import SectionTitle from '@/components/SectionTitle';
 import Container from '../SectionContainer';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const DevelopmentStepsFancyPaths = dynamic(
   () => {
@@ -18,20 +19,18 @@ const DevelopmentStepsFancyPaths = dynamic(
 );
 
 const DevelopmentProcess = () => {
+  const { t } = useI18n();
   return (
     <section id="dev-process" style={{ width: '100%', paddingTop: '6rem' }}>
-      <Container className="mb-24"><SectionTitle>How we work</SectionTitle></Container>
+      <Container className="mb-24"><SectionTitle>{t("process.sectionTitle")}</SectionTitle></Container>
       <Wrapper>
         <About>
           <RelativeTitle>
-            <The>The</The>
-            Development Process
+            <The>{t("process.the")}</The>
+            {" "}{t("process.title")}
           </RelativeTitle>
           <Body>
-            At Punta del Este Labs, we follow a meticulously crafted development process to ensure the success of your project.
-            Each stage is crucial for ensuring that the final product is functional, scalable, and user-friendly.
-            Our process is designed to take your project from an initial idea through to a fully operational application,
-            within weeks.
+            {t("process.intro")}
           </Body>
         </About>
       </Wrapper>

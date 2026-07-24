@@ -11,6 +11,7 @@ import styles from './Contact.module.css';
 import Button from '@/components/Button/Button';
 import { useToast } from '@/components/ui/use-toast';
 import { CheckCircle2Icon, XCircle } from 'lucide-react';
+import { useI18n, Rich } from '@/i18n/I18nProvider';
 
 export type FormData = {
     name: string;
@@ -22,6 +23,7 @@ const ContactForm: FC = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
     const { state, actions } = useAsyncValueState<Response>();
     const { toast } = useToast();
+    const { t } = useI18n();
 
     const onSubmit = useCallback(async (data: FormData) => {
         actions.loading();
@@ -30,45 +32,45 @@ const ContactForm: FC = () => {
             actions.data(response);
             reset();
         } catch (e: any) {
-            actions.error('There was an error sending email');
+            actions.error(t('contact.toast.errorTitle'));
         }
     }, []);
 
     useOnAsyncStateData(state, () => {
         toast({
-            title: <Body className="inline-flex gap-2 justify-start items-center w-fit"><CheckCircle2Icon color="green" /> Email sent!</Body> as any,
-            description: "We will get back to you in less than 24hs",
+            title: <Body className="inline-flex gap-2 justify-start items-center w-fit"><CheckCircle2Icon color="green" /> {t('contact.toast.sentTitle')}</Body> as any,
+            description: t('contact.toast.sentDesc'),
         })
     });
 
     useOnAsyncStateError(state, () => {
         toast({
 
-            title: <Body className="inline-flex gap-2 justify-start items-center w-fit"><XCircle color="red" /> There was an error sending email</Body> as any,
+            title: <Body className="inline-flex gap-2 justify-start items-center w-fit"><XCircle color="red" /> {t('contact.toast.errorTitle')}</Body> as any,
         })
     });
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor='name'>
-                <SmallBody>Full Name</SmallBody>
+                <SmallBody>{t('contact.form.fullName')}</SmallBody>
             </label>
-            <Input className={styles.input} placeholder="Your name" {...register('name', { required: true })} />
+            <Input className={styles.input} placeholder={t('contact.form.namePlaceholder')} {...register('name', { required: true })} />
             <div className={styles.gap} />
             <label htmlFor='email'>
-                <SmallBody >Your company email</SmallBody>
+                <SmallBody >{t('contact.form.email')}</SmallBody>
             </label>
 
-            <Input className={styles.input} error={errors.email?.message} placeholder="user@companyemail.com" {...register('email', { required: true, validate: validateEmail })} />
+            <Input className={styles.input} error={errors.email?.message} placeholder={t('contact.form.emailPlaceholder')} {...register('email', { required: true, validate: validateEmail })} />
             <div className={styles.gap} />
             <label htmlFor='message'>
-                <SmallBody >Tell us about your project</SmallBody>
+                <SmallBody >{t('contact.form.project')}</SmallBody>
             </label>
-            <Textarea className={styles.input} rows={8} placeholder="What do you want to accomplish?" {...register('message', { required: true })} />
+            <Textarea className={styles.input} rows={8} placeholder={t('contact.form.projectPlaceholder')} {...register('message', { required: true })} />
             <div className={styles.gap} />
-            <Caption>We will get back to you in less than <Strong>24 hs.</Strong></Caption>
+            <Caption><Rich text={t('contact.form.within24')} /></Caption>
             <div className={styles.gap} />
-            <Button disabled={state.loading}><Body><Strong>{state.loading ? "Loading" : "Send"}</Strong></Body></Button>
+            <Button disabled={state.loading}><Body><Strong>{state.loading ? t('contact.form.loading') : t('contact.form.send')}</Strong></Body></Button>
         </form>
     );
 };

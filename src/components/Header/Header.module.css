@@ -100,3 +100,12 @@
         padding: 0 1rem;
     }
 }
+/* Language selector spacing within the nav. */
+.langSelector {
+    margin-left: 0.75rem;
+}
+
+.langSelectorMobile {
+    margin-top: 1.5rem;
+    align-self: center;
+}

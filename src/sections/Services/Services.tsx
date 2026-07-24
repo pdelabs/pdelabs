@@ -1,71 +1,47 @@
-import { Body, LargeBody, Strong, Subtitle, Title } from "@/components/Typography/Typography";
+"use client";
+import { Body, LargeBody, Subtitle, Title } from "@/components/Typography/Typography";
 import styles from './Services.module.css';
 import { FC } from "react";
 import Container from "../SectionContainer";
 import c from 'classnames';
 import { Bot, BrainCircuit, CloudCog, Database, LucideProps, MonitorSmartphone, Smartphone } from "lucide-react";
 import Link from "next/link";
+import { useI18n, Rich } from "@/i18n/I18nProvider";
+
+const CARDS: { key: string; Icon: React.FC<LucideProps>; href?: string }[] = [
+    { key: "rag", Icon: Bot, href: "/ai" },
+    { key: "custom", Icon: MonitorSmartphone },
+    { key: "mobile", Icon: Smartphone },
+    { key: "integration", Icon: CloudCog },
+    { key: "data", Icon: Database },
+    { key: "ml", Icon: BrainCircuit },
+];
 
 const Services = () => {
+    const { t } = useI18n();
     return (
         <section id="services" className="flex flex-col gap-1 px-8 pt-10" style={{ color: 'white' }}>
             <Container>
                 <LargeBody>
-                    We are a <Strong>software development company</Strong> committed to creating world-class digital products for startups and businesses around the world.
+                    <Rich text={t("services.intro1")} />
                 </LargeBody>
                 <div className="mt-16 mb-2" style={{ width: 150, height: '2px', backgroundColor: 'white' }} />
-                <Title style={{ color: 'white' }} className="text-left center white">What we offer</Title>
+                <Title style={{ color: 'white' }} className="text-left center white">{t("services.whatWeOffer")}</Title>
                 <LargeBody>
-                    We build <Strong>AI products</Strong> — RAG systems, agentic loops and autonomous agents — on top of the web, mobile and data engineering that has to carry them. One team for the model and for everything around it.
+                    <Rich text={t("services.intro2")} />
                 </LargeBody>
             </Container>
             <div className={styles.services}>
-                <ServiceCard
-                    Icon={Bot}
-                    title={"AI Agents & RAG Systems"}
-                    href="/ai"
-                    description={
-                        <>
-                            <Strong>Retrieval-augmented generation, agentic loops and autonomous agents</Strong> built to run in production, not just to demo well.<br /><br /> This includes <Strong>tool use, memory, guardrails, evals and observability</Strong> — powered by Hermes, our own agent runtime.
-                        </>
-                    }
-                />
-                <ServiceCard
-                    Icon={MonitorSmartphone}
-                    title={"Custom Software Development"}
-                    description={
-                        <>
-                            Developing bespoke <Strong>software solutions</Strong> tailored to the specific needs and requirements of a client.<br /><br /> This includes <Strong>web applications, desktop applications, and specialized business software</Strong>.
-                        </>}
-                />
-                <ServiceCard
-                    Icon={Smartphone}
-                    title={"Mobile App Development"}
-                    description={<>
-                        Creating <Strong>mobile applications</Strong> that offer a seamless user experience.<br /><br /> This includes <Strong>native app development, cross-platform solutions, or progressive web apps (PWAs).</Strong>
-                    </>}
-                />
-                <ServiceCard
-                    Icon={CloudCog}
-                    title={"Software Integration and API Development"}
-                    description={<>Ensuring different <Strong>software systems work together seamlessly</Strong>. <br /><br /> This includes developing and implementing <Strong>APIs, middleware solutions, integrations</Strong>, as well as structured and non structured <Strong>databases</Strong>.</>}
-                />
-                <ServiceCard
-                    Icon={Database}
-                    title={"Data Engineering Solutions"}
-                    description={<>
-                        Refine your <Strong>raw data</Strong> into a potent tool for enriching <Strong>user experiences and generating critical insights</Strong>.<br /><br /> This includes <Strong>design and manage data pipelines and ETLs</Strong> tailored to your needs.
-                    </>}
-                />
-                <ServiceCard
-                    Icon={BrainCircuit}
-                    title={"Machine Learning & Data Science"}
-                    description={
-                        <>
-                            Leverage <Strong>state-of-the-art AI technologies</Strong> to transform your data into <Strong>actionable insights and intelligent solutions</Strong>.<br /><br /> This includes <Strong>machine learning models, predictive analytics, reinforcement learning, and data-driven automation</Strong>.
-                        </>
-                    }
-                />
+                {CARDS.map(({ key, Icon, href }) => (
+                    <ServiceCard
+                        key={key}
+                        Icon={Icon}
+                        title={t(`services.cards.${key}.title`)}
+                        seeHow={t("services.seeHow")}
+                        description={<Rich text={t(`services.cards.${key}.desc`)} />}
+                        href={href}
+                    />
+                ))}
             </div>
         </section>
     )
@@ -78,11 +54,12 @@ interface ServiceCardProps {
     description: React.ReactNode;
     Icon: React.FC<LucideProps>;
     soon?: boolean;
+    seeHow: string;
     /** When set, the whole card links to that anchor (used by the AI deep dive). */
     href?: string;
 }
 
-const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = false, href }) => {
+const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = false, seeHow, href }) => {
     const content = (
         <>
             {soon && (<div className={styles.soontag}>SOON</div>)}
@@ -93,7 +70,7 @@ const ServiceCard: FC<ServiceCardProps> = ({ title, description, Icon, soon = fa
             <Body>
                 {description}
             </Body>
-            {href && (<Body className={styles.serviceLink}>See how we build them &rarr;</Body>)}
+            {href && (<Body className={styles.serviceLink}>{seeHow} &rarr;</Body>)}
         </>
     );
 

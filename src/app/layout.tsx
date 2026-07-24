@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { GoogleTagManager } from "@next/third-parties/google"
 import { SITE_URL, organizationJsonLd, websiteJsonLd } from '@/seo'
+import { I18nProvider } from '@/i18n/I18nProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -66,8 +67,10 @@ export default function RootLayout({
       <StyledComponentsRegistry>
         <GoogleTagManager gtmId="AW-16648191500" />
         <body className={inter.className}>
-          {children}
-          <LosDedosFooterContainer />
+          <I18nProvider>
+            {children}
+            <LosDedosFooterContainer />
+          </I18nProvider>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

@@ -12,6 +12,8 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog"
 import useOpenCalendly from "@/hooks/useOpenCalendly";
+import { useI18n } from "@/i18n/I18nProvider";
+import LanguageSelector from "@/components/LanguageSelector/LanguageSelector";
 
 interface HeaderProps { }
 
@@ -21,6 +23,7 @@ const Header: FC<HeaderProps> = () => {
     const [isActive, setIsActive] = useState(false);
     const lastScrollPosition = useRef(0);
     const openCalendly = useOpenCalendly();
+    const { t } = useI18n();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -55,12 +58,12 @@ const Header: FC<HeaderProps> = () => {
     const navbarItems = (
         <>
             {/* Root-relative so the nav still works from /ai and other pages. */}
-            <HeaderLink onClick={handleCloseMenu} href="/#services" link="Services" />
+            <HeaderLink onClick={handleCloseMenu} href="/#services" link={t("nav.services")} />
             {/* Lands past the hero, on the capability grid. */}
-            <HeaderLink onClick={handleCloseMenu} href="/ai#what-we-build" link="AI" />
-            <HeaderLink onClick={handleCloseMenu} href="/#portfolio" link="Portfolio" />
-            <HeaderLink onClick={handleCloseMenu} href="/blog" link="Blog" />
-            <HeaderLink onClick={handleCloseMenu} href="/#contact" link="Contact" />
+            <HeaderLink onClick={handleCloseMenu} href="/ai#what-we-build" link={t("nav.ai")} />
+            <HeaderLink onClick={handleCloseMenu} href="/#portfolio" link={t("nav.portfolio")} />
+            <HeaderLink onClick={handleCloseMenu} href="/blog" link={t("nav.blog")} />
+            <HeaderLink onClick={handleCloseMenu} href="/#contact" link={t("nav.contact")} />
         </>
     );
 
@@ -77,6 +80,7 @@ const Header: FC<HeaderProps> = () => {
             </div>
             <nav className={c(styles.navbar)}>
                 {navbarItems}
+                <LanguageSelector className={styles.langSelector} />
             </nav>
 
             <MenuIcon className={styles.burger} onClick={() => setIsActive(s => !s)} />
@@ -87,6 +91,7 @@ const Header: FC<HeaderProps> = () => {
                     </DialogHeader>
                     <nav className={styles.navbarMobile}>
                         {navbarItems}
+                        <LanguageSelector className={styles.langSelectorMobile} />
                     </nav>
                 </DialogContent>
             </Dialog>
