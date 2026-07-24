@@ -5,6 +5,7 @@ import { CARD_WIDTH, CARD_POSITIONS, STEPS } from "./constants";
 import styled from "styled-components";
 import useHasMounted from "@/hooks/useHasMounted";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { useI18n, Rich } from "@/i18n/I18nProvider";
 
 const VB_HEIGHT = 1450;
 const VB_MAX_WIDTH = 1400;
@@ -88,6 +89,7 @@ function getPath(index: number, startPos: Pos, endPos: Pos, windowWidth: number,
 }
 
 const DevelopmentStepsFancyPaths: FC = () => {
+    const { t } = useI18n();
     const { width: windowWidth } = useWindowDimensions();
     const vbWidth = Math.min(windowWidth ?? 0, VB_MAX_WIDTH);
 
@@ -165,8 +167,8 @@ const DevelopmentStepsFancyPaths: FC = () => {
                 <PositionedModuleCard
                     key={item.number}
                     number={item.number}
-                    title={item.title}
-                    description={item.description}
+                    title={t(`process.steps.${item.stepKey}.title`)}
+                    description={<Rich text={t(`process.steps.${item.stepKey}.desc`)} />}
                     style={{
                         top: CARD_POSITIONS[item.number].y + "%",
                         left: CARD_POSITIONS[item.number].x + "%",

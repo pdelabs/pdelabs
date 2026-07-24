@@ -1,14 +1,21 @@
-
+"use client";
 import React from 'react';
 import styled from 'styled-components';
 import { CARD_WIDTH, STEPS } from './constants';
 import DevelopmentStepCard from './DevelopmentStepCard';
+import { useI18n, Rich } from '@/i18n/I18nProvider';
 
 const DevelopmentStepsGrid = () => {
+    const { t } = useI18n();
     return (
         <Wrapper>
             {STEPS.map((step, index) => (
-                <DevelopmentStepCard key={index} number={index} title={step.title} description={step.description} />
+                <DevelopmentStepCard
+                    key={index}
+                    number={index}
+                    title={t(`process.steps.${step.stepKey}.title`)}
+                    description={<Rich text={t(`process.steps.${step.stepKey}.desc`)} />}
+                />
             ))}
         </Wrapper>
     );
