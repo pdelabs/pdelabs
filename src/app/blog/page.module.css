@@ -1,0 +1,91 @@
+.bigtitle {
+    padding-top: 2rem;
+    color: white;
+    text-align: center;
+    padding: 2rem 6rem 0 6rem;
+}
+
+.subtitle {
+    display: block;
+    max-width: 52ch;
+    padding: 0 2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.body {
+    width: 100%;
+    padding-top: 5rem;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 46rem;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem;
+    border-radius: 1rem;
+    background: white;
+    color: var(--primary-foreground-hex);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.meta {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(39, 68, 83, 0.55);
+    padding-bottom: 0.5rem;
+}
+
+.cardTitle {
+    padding-bottom: 0.6rem;
+}
+
+.excerpt {
+    color: var(--primary-foreground-hex);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem 0 0.25rem 0;
+}
+
+.tag {
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    background-color: rgba(84, 123, 150, 0.15);
+    color: var(--primary-foreground-hex);
+}
+
+.readLink {
+    padding-top: 0.75rem;
+    font-weight: 700;
+}
+
+@media (max-width: 1250px) {
+    .bigtitle {
+        padding: 1rem 0 0 0;
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        padding: 0 1rem;
+        font-size: 1rem;
+    }
+}

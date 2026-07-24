@@ -46,10 +46,8 @@ const LosDedosFooterContainer = () => {
             <SectionLink href={"/#dev-process"}>
               Development Process
             </SectionLink>
+            <SectionLink href={"/blog"}>Blog</SectionLink>
             <SectionLink href={"/contact"}>Contact</SectionLink>
-            <SectionLink href={"/blog/inspiration"}>
-              Why &ldquo;Punta del Este&rdquo;
-            </SectionLink>
           </div>
           <div className={styles.section}>
             <Body className={styles.sectionTitle}>Media</Body>
