@@ -1,0 +1,155 @@
+/* Blog post: sunset hero, then a readable column of prose on the water blue,
+   with the diagrams breaking a little wider than the text. */
+
+.title {
+    padding-top: 2rem;
+    color: white;
+    text-align: center;
+    padding: 2rem 5rem 0 5rem;
+}
+
+.dek {
+    display: block;
+    max-width: 54ch;
+    padding: 0 2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.article {
+    width: 100%;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 0 1.5rem;
+    color: white;
+}
+
+.byline {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+    padding-bottom: 2rem;
+}
+
+.p {
+    display: block;
+    font-size: 1.13rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.92);
+    padding-bottom: 1.5rem;
+}
+
+.h {
+    display: block;
+    color: white;
+    padding: 1.75rem 0 0.75rem 0;
+}
+
+.article a {
+    color: #F0DFB1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.article code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.35rem;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+
+/* ── Diagrams ──────────────────────────────────────────────────────────── */
+
+.figure {
+    margin: 2.5rem 0;
+}
+
+.diagram {
+    overflow-x: auto;
+    padding: 1.5rem 1.25rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1rem;
+}
+
+.figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.72);
+    text-align: center;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+    justify-content: center;
+    margin-top: 0.9rem;
+}
+
+.legendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.swatch {
+    width: 1.5rem;
+    height: 0;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-radius: 2px;
+}
+
+/* ── CTA ───────────────────────────────────────────────────────────────── */
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ctaLine {
+    display: block;
+    font-size: 1.13rem;
+    color: white;
+}
+
+.footnote {
+    display: block;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 1250px) {
+    .title {
+        padding: 1rem 0 0 0;
+        font-size: 2.5rem;
+    }
+
+    .dek {
+        padding: 0 1rem;
+        font-size: 1rem;
+    }
+
+    .article {
+        padding-top: 4rem;
+    }
+
+    .p,
+    .ctaLine {
+        font-size: 1.05rem;
+    }
+}

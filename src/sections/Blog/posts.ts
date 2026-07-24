@@ -17,11 +17,20 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
     {
+        slug: "ai-agents-in-production",
+        title: "What actually goes inside a production AI agent",
+        excerpt:
+            "Anyone can wire an LLM to an API and get a demo. Everything hard is after that. The five systems that turn a prompt into an agent you can actually run.",
+        date: "2026-07-24",
+        readingTime: "9 min read",
+        tags: ["ai agents", "llm", "architecture"],
+    },
+    {
         slug: "order-state-machine",
         title: "Designing an order state machine with a timeout on every edge",
         excerpt:
             "On a marketplace, an order is a multi-day negotiation between two strangers with money in the middle. Here is how we modelled it so it never gets stuck.",
-        date: "2026-07-24",
+        date: "2024-11-04",
         readingTime: "7 min read",
         tags: ["architecture", "marketplaces", "backend"],
     },
