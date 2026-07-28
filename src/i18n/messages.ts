@@ -1,4 +1,5 @@
 import { Locale } from "./config";
+import { PAGE_MESSAGES } from "./pages";
 
 /**
  * All user-facing marketing copy, per locale.
@@ -429,4 +430,8 @@ const pt: Messages = {
     },
 };
 
-export const MESSAGES: Record<Locale, Messages> = { en, es, pt };
+export const MESSAGES: Record<Locale, Messages> = {
+    en: { ...en, ...PAGE_MESSAGES.en },
+    es: { ...es, ...PAGE_MESSAGES.es },
+    pt: { ...pt, ...PAGE_MESSAGES.pt },
+};

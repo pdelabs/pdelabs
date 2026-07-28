@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
 import Header from "@/components/Header/Header";
-import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
 import Waves from "@/components/SunsetContainer/Waves/Waves";
-import { BigTitle, LargeBody } from "@/components/Typography/Typography";
 import { Toaster } from "@/components/ui/toaster";
 import Box from "@/components/Box/Box";
 import Contact from "@/sections/Contact/Contact";
 import CaseStudy from "./CaseStudy";
+import CaseStudyHero from "./CaseStudyHero";
 import { CaseStudyData } from "./constants";
 import { caseStudyJsonLd } from "@/seo";
-import styles from "./CaseStudyPage.module.css";
 
 /**
  * Both case studies render identically — only the data differs. Keeping the
@@ -43,14 +41,7 @@ const CaseStudyPage = ({ data }: { data: CaseStudyData }) => {
         <main className="flex min-h-screen flex-col justify-between">
             <Toaster />
             <Header />
-            <section id="case-study-hero">
-                <SunsetContainer>
-                    <div className="flex flex-col items-center" style={{ color: "white" }}>
-                        <BigTitle className={styles.bigtitle}>{data.name}</BigTitle>
-                        <LargeBody className={styles.subtitle}>{data.tagline}</LargeBody>
-                    </div>
-                </SunsetContainer>
-            </section>
+            <CaseStudyHero slug={data.slug} name={data.name} />
             <WaterSection>
                 <CaseStudy data={data} />
                 <Waves />

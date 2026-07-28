@@ -1,3 +1,4 @@
+"use client";
 import { Body, LargeBody, SmallBody, Strong, Subtitle, Title } from "@/components/Typography/Typography";
 import Container from "../SectionContainer";
 import SectionTitle from "@/components/SectionTitle";
@@ -5,144 +6,130 @@ import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButt
 import BlobSvg from "./blob.svg";
 import c from "classnames";
 import styles from "./AI.module.css";
-import { AGENT_ANATOMY, AI_ENGAGEMENT, CAPABILITIES, HERMES } from "./constants";
+import { Bot, Braces, LucideProps, Radar, ScanSearch, ShieldCheck, Workflow } from "lucide-react";
+import { useI18n, Rich } from "@/i18n/I18nProvider";
 
 /**
- * Body of the /ai page — everything below the sunset hero. Lives on the water
- * (#547B96) like the rest of the site, so it uses the site's own vocabulary:
- * white cards, green pills, sun-gold accents and a blob behind the hero card.
+ * Body of the /ai page — everything below the sunset hero. Copy comes from the
+ * i18n dictionary (ai.*); structure (icons, ordering, step numbers) is here.
  */
+
+const CAPABILITY_META: { key: string; Icon: React.FC<LucideProps> }[] = [
+    { key: "rag", Icon: ScanSearch },
+    { key: "agenticLoops", Icon: Workflow },
+    { key: "autonomousAgents", Icon: Bot },
+    { key: "evals", Icon: Radar },
+    { key: "guardrails", Icon: ShieldCheck },
+    { key: "infrastructure", Icon: Braces },
+];
+
+const ANATOMY_KEYS = ["context", "tools", "loop", "guardrails", "evals"];
+const HERMES_PILLS = ["RAG", "agentic loops", "autonomous agents", "tool use", "evals", "tracing"];
+const HERMES_FEATURE_KEYS = ["loopEngine", "toolRegistry", "memory", "retrieval", "tracing", "evalHarness"];
+const ENGAGEMENT_KEYS = ["audit", "prototype", "hardening"];
+
 const AI = () => {
+    const { t } = useI18n();
     return (
         <>
-            <Intro />
-            <Capabilities />
-            <AgentAnatomy />
-            <Hermes />
-            <Engagement />
+            <div className={styles.intro}>
+                <Container>
+                    <LargeBody><Rich text={t("ai.intro")} /></LargeBody>
+                </Container>
+            </div>
+
+            <section id="what-we-build" className={c(styles.block, styles.anchored)}>
+                <Container>
+                    <SectionTitle>{t("ai.whatWeBuild.title")}</SectionTitle>
+                    <LargeBody>{t("ai.whatWeBuild.lead")}</LargeBody>
+                </Container>
+                <div className={styles.cards}>
+                    {CAPABILITY_META.map(({ key, Icon }) => (
+                        <article key={key} className={c("rounded-lg bg-white", styles.card)}>
+                            <Icon size={32} />
+                            <Subtitle className={styles.cardTitle}>{t(`ai.capabilities.${key}.title`)}</Subtitle>
+                            <SmallBody className={styles.pill}>{t(`ai.capabilities.${key}.tagline`)}</SmallBody>
+                            <Body className={styles.cardDescription}><Rich text={t(`ai.capabilities.${key}.description`)} /></Body>
+                            <ul className={styles.bullets}>
+                                {(t(`ai.capabilities.${key}.bullets`) as string[]).map((bullet) => (
+                                    <li key={bullet}><SmallBody>{bullet}</SmallBody></li>
+                                ))}
+                            </ul>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <section className={styles.block}>
+                <Container>
+                    <SectionTitle>{t("ai.anatomy.title")}</SectionTitle>
+                    <LargeBody>{t("ai.anatomy.lead")}</LargeBody>
+                </Container>
+                <ol className={styles.anatomy}>
+                    {ANATOMY_KEYS.map((key, i) => (
+                        <li
+                            key={key}
+                            className={c("rounded-lg bg-white", styles.anatomyStep, i > 0 && i < 4 ? styles.anatomyStepLooping : null)}
+                        >
+                            <span className={styles.anatomyNumber}>{String(i + 1).padStart(2, "0")}</span>
+                            <Subtitle className={styles.anatomyTitle}>{t(`ai.anatomySteps.${key}.title`)}</Subtitle>
+                            <Body className={styles.anatomyDescription}>{t(`ai.anatomySteps.${key}.description`)}</Body>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            <section className={c(styles.block, styles.hermesSection)}>
+                <BlobSvg className={styles.blob} style={{ color: '#F5D372' }} />
+                <Container>
+                    <SectionTitle>{t("ai.hermesTitle")}</SectionTitle>
+                    <div className={c("rounded-lg bg-white", styles.hermesCard)}>
+                        <div className={styles.hermesHead}>
+                            <Title className={styles.hermesName}>Hermes</Title>
+                            <LargeBody className={styles.hermesTagline}>{t("ai.hermes.tagline")}</LargeBody>
+                            <div className={styles.pills}>
+                                {HERMES_PILLS.map((p) => (
+                                    <SmallBody key={p} className={styles.pill}>{p}</SmallBody>
+                                ))}
+                            </div>
+                        </div>
+                        <div className={styles.hermesBody}>
+                            <Body className={styles.hermesDescription}><Rich text={t("ai.hermes.description")} /></Body>
+                            <Body className={styles.hermesDescription}><Rich text={t("ai.hermes.outcome")} /></Body>
+                        </div>
+                        <div className={styles.hermesFeatures}>
+                            {HERMES_FEATURE_KEYS.map((key) => (
+                                <div key={key} className={styles.hermesFeature}>
+                                    <Body><Strong>{t(`ai.hermes.features.${key}.title`)}</Strong></Body>
+                                    <SmallBody className={styles.hermesFeatureDescription}>{t(`ai.hermes.features.${key}.description`)}</SmallBody>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            <section className={styles.block}>
+                <Container>
+                    <SectionTitle>{t("ai.engagement.title")}</SectionTitle>
+                    <LargeBody>{t("ai.engagement.lead")}</LargeBody>
+                </Container>
+                <div className={styles.cards}>
+                    {ENGAGEMENT_KEYS.map((key) => (
+                        <div key={key} className={c("rounded-lg bg-white", styles.card, styles.engagementCard)}>
+                            <SmallBody className={styles.pill}>{t(`ai.engagementSteps.${key}.duration`)}</SmallBody>
+                            <Subtitle className={styles.cardTitle}>{t(`ai.engagementSteps.${key}.title`)}</Subtitle>
+                            <Body className={styles.cardDescription}>{t(`ai.engagementSteps.${key}.description`)}</Body>
+                        </div>
+                    ))}
+                </div>
+                <div className={styles.cta}>
+                    <Title className={styles.ctaText}>{t("ai.cta.title")}</Title>
+                    <ScheduleCallButton>{t("ai.cta.button")}</ScheduleCallButton>
+                </div>
+            </section>
         </>
     );
 };
 
 export default AI;
-
-const Intro = () => (
-    <div className={styles.intro}>
-        <Container>
-            <LargeBody>
-            Anyone can wire a chatbot to an API. The hard part is everything after the demo: retrieval that holds up
-            on messy documents, agents that recover from their own mistakes, budgets that keep the bill sane, and
-            evals that tell you the moment quality slips.
-            <br /><br />
-            That is the part we do. <Strong>RAG systems, agentic loops and autonomous agents</Strong>, engineered
-                like software rather than assembled like a prompt.
-            </LargeBody>
-        </Container>
-    </div>
-);
-
-const Capabilities = () => (
-    <section id="what-we-build" className={c(styles.block, styles.anchored)}>
-        <Container>
-            <SectionTitle>What we build</SectionTitle>
-            <LargeBody>
-                Six things we do well, and the pieces that go into each of them.
-            </LargeBody>
-        </Container>
-        <div className={styles.cards}>
-            {CAPABILITIES.map(({ id, title, tagline, description, bullets, Icon }) => (
-                <article key={id} className={c("rounded-lg bg-white", styles.card)}>
-                    <Icon size={32} />
-                    <Subtitle className={styles.cardTitle}>{title}</Subtitle>
-                    <SmallBody className={styles.pill}>{tagline}</SmallBody>
-                    <Body className={styles.cardDescription}>{description}</Body>
-                    <ul className={styles.bullets}>
-                        {bullets.map((bullet) => (
-                            <li key={bullet}><SmallBody>{bullet}</SmallBody></li>
-                        ))}
-                    </ul>
-                </article>
-            ))}
-        </div>
-    </section>
-);
-
-const AgentAnatomy = () => (
-    <section className={styles.block}>
-        <Container>
-            <SectionTitle>What is inside an agent we ship</SectionTitle>
-            <LargeBody>
-                An agent is not a prompt. It is five systems that have to hold together — and steps two to four run
-                in a loop until the goal is met or a budget stops it.
-            </LargeBody>
-        </Container>
-        <ol className={styles.anatomy}>
-            {AGENT_ANATOMY.map(({ step, title, description }, i) => (
-                <li
-                    key={step}
-                    className={c("rounded-lg bg-white", styles.anatomyStep, i > 0 && i < 4 ? styles.anatomyStepLooping : null)}
-                >
-                    <span className={styles.anatomyNumber}>{step}</span>
-                    <Subtitle className={styles.anatomyTitle}>{title}</Subtitle>
-                    <Body className={styles.anatomyDescription}>{description}</Body>
-                </li>
-            ))}
-        </ol>
-    </section>
-);
-
-const Hermes = () => (
-    <section className={c(styles.block, styles.hermesSection)}>
-        <BlobSvg className={styles.blob} style={{ color: '#F5D372' }} />
-        <Container>
-            <SectionTitle>Built in-house</SectionTitle>
-            <div className={c("rounded-lg bg-white", styles.hermesCard)}>
-                <div className={styles.hermesHead}>
-                    <Title className={styles.hermesName}>{HERMES.name}</Title>
-                    <LargeBody className={styles.hermesTagline}>{HERMES.tagline}</LargeBody>
-                    <div className={styles.pills}>
-                        {HERMES.pills.map((p) => (
-                            <SmallBody key={p} className={styles.pill}>{p}</SmallBody>
-                        ))}
-                    </div>
-                </div>
-                <div className={styles.hermesBody}>
-                    <Body className={styles.hermesDescription}>{HERMES.description}</Body>
-                    <Body className={styles.hermesDescription}>{HERMES.outcome}</Body>
-                </div>
-                <div className={styles.hermesFeatures}>
-                    {HERMES.features.map(({ title, description }) => (
-                        <div key={title} className={styles.hermesFeature}>
-                            <Body><Strong>{title}</Strong></Body>
-                            <SmallBody className={styles.hermesFeatureDescription}>{description}</SmallBody>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </Container>
-    </section>
-);
-
-const Engagement = () => (
-    <section className={styles.block}>
-        <Container>
-            <SectionTitle>How an AI project with us goes</SectionTitle>
-            <LargeBody>
-                Short steps, each one ending in something you can actually judge.
-            </LargeBody>
-        </Container>
-        <div className={styles.cards}>
-            {AI_ENGAGEMENT.map(({ title, duration, description }) => (
-                <div key={title} className={c("rounded-lg bg-white", styles.card, styles.engagementCard)}>
-                    <SmallBody className={styles.pill}>{duration}</SmallBody>
-                    <Subtitle className={styles.cardTitle}>{title}</Subtitle>
-                    <Body className={styles.cardDescription}>{description}</Body>
-                </div>
-            ))}
-        </div>
-        <div className={styles.cta}>
-            <Title className={styles.ctaText}>Have a workflow you think an agent should be doing?</Title>
-            <ScheduleCallButton>Let&apos;s talk about it</ScheduleCallButton>
-        </div>
-    </section>
-);

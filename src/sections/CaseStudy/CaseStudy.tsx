@@ -1,3 +1,4 @@
+"use client";
 import { Body, LargeBody, SmallBody, Strong, Subtitle, Title } from "@/components/Typography/Typography";
 import Container from "../SectionContainer";
 import Phone from "../Portfolio/Phone";
@@ -5,22 +6,30 @@ import QuotesSvg from "../Portfolio/quotes.svg";
 import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
 import styles from "./CaseStudy.module.css";
 import { CaseStudyData } from "./constants";
+import { useI18n, Rich } from "@/i18n/I18nProvider";
 
 const CaseStudy = ({ data }: { data: CaseStudyData }) => {
+    const { t } = useI18n();
+    const cs = `caseStudy.${data.slug}`;
+    const challenge = t(`${cs}.challenge`) as { title: string; body: string }[];
+    const highlights = t(`${cs}.highlights`) as { title: string; body: string; bullets?: string[] }[];
+    const pills = t(`${cs}.pills`) as string[];
+    const testimonial = t(`${cs}.testimonial`) as { quote: string; author: string };
+
     return (
         <div className={styles.body}>
             <Container>
                 <div className={styles.facts}>
-                    <Fact label="Role" value={data.role} />
-                    <Fact label="Platforms" value={data.platforms} />
-                    <Fact label="Timeline" value={data.year} />
+                    <Fact label={t("caseStudy.labels.role")} value={t(`${cs}.role`)} />
+                    <Fact label={t("caseStudy.labels.platforms")} value={t(`${cs}.platforms`)} />
+                    <Fact label={t("caseStudy.labels.timeline")} value={t(`${cs}.year`)} />
                 </div>
                 <div className={styles.pills}>
-                    {data.pills.map((pill) => (
+                    {pills.map((pill) => (
                         <Body key={pill} className={styles.pill}>{pill}</Body>
                     ))}
                 </div>
-                <LargeBody className={styles.intro}>{data.intro}</LargeBody>
+                <LargeBody className={styles.intro}><Rich text={t(`${cs}.intro`)} /></LargeBody>
             </Container>
 
             <Container>
@@ -34,9 +43,9 @@ const CaseStudy = ({ data }: { data: CaseStudyData }) => {
 
             <Container>
                 <Divider />
-                <Title className={styles.blockTitle}>The problem</Title>
+                <Title className={styles.blockTitle}>{t("caseStudy.labels.theProblem")}</Title>
                 <div className={styles.cards}>
-                    {data.challenge.map(({ title, body }) => (
+                    {challenge.map(({ title, body }) => (
                         <article key={title} className={styles.card}>
                             <Subtitle className={styles.cardTitle}>{title}</Subtitle>
                             <Body className={styles.cardBody}>{body}</Body>
@@ -47,9 +56,9 @@ const CaseStudy = ({ data }: { data: CaseStudyData }) => {
 
             <Container>
                 <Divider />
-                <Title className={styles.blockTitle}>What we built</Title>
+                <Title className={styles.blockTitle}>{t("caseStudy.labels.whatWeBuilt")}</Title>
                 <ol className={styles.highlights}>
-                    {data.highlights.map(({ title, body, bullets }, i) => (
+                    {highlights.map(({ title, body, bullets }, i) => (
                         <li key={title} className={styles.highlight}>
                             <span className={styles.highlightNumber}>{String(i + 1).padStart(2, "0")}</span>
                             <div className={styles.highlightContent}>
@@ -70,7 +79,7 @@ const CaseStudy = ({ data }: { data: CaseStudyData }) => {
 
             <Container>
                 <Divider />
-                <Title className={styles.blockTitle}>The stack</Title>
+                <Title className={styles.blockTitle}>{t("caseStudy.labels.theStack")}</Title>
                 <div className={styles.stack}>
                     {data.stack.map(({ group, items }) => (
                         <div key={group} className={styles.stackGroup}>
@@ -89,10 +98,10 @@ const CaseStudy = ({ data }: { data: CaseStudyData }) => {
                 <div className={styles.testimonial}>
                     <QuotesSvg className={styles.quote} data-quote-open="true" />
                     <Body className={styles.testimonialContent}>
-                        {data.testimonial.quote}
+                        {testimonial.quote}
                         <br />
                         <br />
-                        - <Strong>{data.testimonial.author}</Strong>
+                        - <Strong>{testimonial.author}</Strong>
                     </Body>
                     <QuotesSvg className={styles.quote} />
                 </div>
@@ -100,7 +109,7 @@ const CaseStudy = ({ data }: { data: CaseStudyData }) => {
 
             <Container>
                 <div className={styles.cta}>
-                    <Subtitle className={styles.ctaTitle}>Have something like this to build?</Subtitle>
+                    <Subtitle className={styles.ctaTitle}>{t("caseStudy.labels.ctaTitle")}</Subtitle>
                     <ScheduleCallButton />
                 </div>
             </Container>
