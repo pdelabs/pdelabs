@@ -10,8 +10,8 @@ export const SITE_URL = 'https://www.pdelabs.com';
 
 export const CONTACT_EMAIL = 'info@pdelabs.com';
 export const CONTACT_PHONE = '+59899002835';
-/** WhatsApp is a different line from the Uruguayan phone above — do not merge them. */
-export const WHATSAPP_NUMBER = '34607778304';
+/** wa.me format: country code + number, no "+" or spaces. Same line as CONTACT_PHONE. */
+export const WHATSAPP_NUMBER = '59899002835';
 
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
