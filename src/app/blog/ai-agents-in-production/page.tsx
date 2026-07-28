@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
-import Link from "next/link";
 import Header from "@/components/Header/Header";
 import SunsetContainer from "@/components/SunsetContainer/SunsetLinearGradient";
 import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButton";
@@ -88,7 +87,7 @@ const AiAgentsPost = () => {
                     <Body className={styles.p}>
                         We have shipped enough of these to have opinions about what has to be there. What follows is the
                         anatomy &mdash; the five systems we build around a model before we would call the result an
-                        agent. It is the same skeleton behind <Link href="/ai">Hermes</Link>, the runtime we use so we
+                        agent. It is the same skeleton behind Hermes, the open-source agent runtime we use, so we
                         stop rebuilding it every time.
                     </Body>
 
@@ -184,7 +183,7 @@ const AiAgentsPost = () => {
                     </figure>
 
                     <Body className={styles.p}>
-                        This is exactly the scaffolding <Link href="/ai">Hermes</Link> gives us for free, so a project
+                        This is exactly the scaffolding Hermes gives us for free, so a project
                         starts at the interesting problem &mdash; your workflow, your data, your definition of a good
                         outcome &mdash; instead of at the plumbing every agent needs and no demo bothers with.
                     </Body>

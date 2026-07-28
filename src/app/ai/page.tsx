@@ -13,7 +13,7 @@ import AIHero from "@/sections/AI/AIHero";
 const title = "AI Agent Development — RAG Systems & Autonomous Agents";
 const socialTitle = `${title} | pdelabs`;
 const description =
-    "pdelabs builds AI agents that make it to production: RAG systems, agentic loops and autonomous agents, with guardrails, evals and observability from day one — powered by Hermes, our own agent runtime.";
+    "pdelabs builds AI agents that make it to production: RAG systems, agentic loops and autonomous agents, with guardrails, evals and observability from day one.";
 
 export const metadata: Metadata = {
     title,

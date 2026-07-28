@@ -32,7 +32,7 @@ const en: Messages = {
         cards: {
             rag: {
                 title: "AI Agents & RAG Systems",
-                desc: "**Retrieval-augmented generation, agentic loops and autonomous agents** built to run in production, not just to demo well.\n\nThis includes **tool use, memory, guardrails, evals and observability** — powered by Hermes, our own agent runtime.",
+                desc: "**Retrieval-augmented generation, agentic loops and autonomous agents** built to run in production, not just to demo well.\n\nThis includes **tool use, memory, guardrails, evals and observability**.",
             },
             custom: {
                 title: "Custom Software Development",
@@ -171,7 +171,7 @@ const es: Messages = {
         cards: {
             rag: {
                 title: "Agentes de IA y Sistemas RAG",
-                desc: "**Generación aumentada por recuperación (RAG), bucles agénticos y agentes autónomos** creados para funcionar en producción, no solo para lucir en una demo.\n\nEsto incluye **uso de herramientas, memoria, guardrails, evaluaciones y observabilidad** — impulsados por Hermes, nuestro propio runtime de agentes.",
+                desc: "**Generación aumentada por recuperación (RAG), bucles agénticos y agentes autónomos** creados para funcionar en producción, no solo para lucir en una demo.\n\nEsto incluye **uso de herramientas, memoria, guardrails, evaluaciones y observabilidad**.",
             },
             custom: {
                 title: "Desarrollo de Software a Medida",
@@ -310,7 +310,7 @@ const pt: Messages = {
         cards: {
             rag: {
                 title: "Agentes de IA e Sistemas RAG",
-                desc: "**Geração aumentada por recuperação (RAG), loops agênticos e agentes autônomos** feitos para rodar em produção, não apenas para impressionar numa demo.\n\nIsso inclui **uso de ferramentas, memória, guardrails, avaliações e observabilidade** — impulsionados pelo Hermes, nosso próprio runtime de agentes.",
+                desc: "**Geração aumentada por recuperação (RAG), loops agênticos e agentes autônomos** feitos para rodar em produção, não apenas para impressionar numa demo.\n\nIsso inclui **uso de ferramentas, memória, guardrails, avaliações e observabilidade**.",
             },
             custom: {
                 title: "Desenvolvimento de Software Sob Medida",

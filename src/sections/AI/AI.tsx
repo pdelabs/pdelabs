@@ -85,7 +85,7 @@ const AI = () => {
                     <SectionTitle>{t("ai.hermesTitle")}</SectionTitle>
                     <div className={c("rounded-lg bg-white", styles.hermesCard)}>
                         <div className={styles.hermesHead}>
-                            <Title className={styles.hermesName}>Hermes</Title>
+                            <Title className={styles.hermesName}>{t("ai.hermes.heading")}</Title>
                             <LargeBody className={styles.hermesTagline}>{t("ai.hermes.tagline")}</LargeBody>
                             <div className={styles.pills}>
                                 {HERMES_PILLS.map((p) => (

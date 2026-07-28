@@ -19,7 +19,7 @@ const en = {
         intro: "Anyone can wire a chatbot to an API. The hard part is everything after the demo: retrieval that holds up on messy documents, agents that recover from their own mistakes, budgets that keep the bill sane, and evals that tell you the moment quality slips.\n\nThat is the part we do. **RAG systems, agentic loops and autonomous agents**, engineered like software rather than assembled like a prompt.",
         whatWeBuild: { title: "What we build", lead: "Six things we do well, and the pieces that go into each of them." },
         anatomy: { title: "What is inside an agent we ship", lead: "An agent is not a prompt. It is five systems that have to hold together — and steps two to four run in a loop until the goal is met or a budget stops it." },
-        hermesTitle: "Built in-house",
+        hermesTitle: "How we start fast",
         engagement: { title: "How an AI project with us goes", lead: "Short steps, each one ending in something you can actually judge." },
         cta: { title: "Have a workflow you think an agent should be doing?", button: "Let's talk about it" },
         capabilities: {
@@ -38,8 +38,9 @@ const en = {
             evals: { title: "Evals", description: "Golden sets and judges gate every change, so quality is a number and not an opinion." },
         },
         hermes: {
-            tagline: "Our agent runtime for autonomous work.",
-            description: "Hermes is the runtime we built for ourselves after shipping enough agents to get tired of rebuilding the same scaffolding. It handles the parts that are the same every time — **the loop, tool routing, memory, retries, budgets, tracing and evals** — so a project starts at the interesting problem instead of at plumbing.",
+            heading: "The scaffolding, already built",
+            tagline: "Every agent needs the same plumbing. We don't rebuild it each time.",
+            description: "**The loop, tool routing, memory, retries, budgets, tracing and evals** are the same on every project. We run them on a mature, proven agent runtime instead of rebuilding them each time — so a project starts at the interesting problem instead of at the plumbing.",
             outcome: "For you that means agents in production in **weeks, not quarters**, on infrastructure that has already been through the failure modes yours is about to hit.",
             features: {
                 loopEngine: { title: "Loop engine", description: "Plan/act/observe cycles with budgets, timeouts and clean cancellation." },
@@ -127,7 +128,7 @@ const es: typeof en = {
         intro: "Cualquiera puede conectar un chatbot a una API. Lo difícil es todo lo que viene después de la demo: recuperación que aguanta con documentos desprolijos, agentes que se recuperan de sus propios errores, presupuestos que mantienen la cuenta bajo control y evaluaciones que te avisan en el momento exacto en que baja la calidad.\n\nEsa es la parte que hacemos. **Sistemas RAG, bucles agénticos y agentes autónomos**, diseñados como software y no armados como un prompt.",
         whatWeBuild: { title: "Qué construimos", lead: "Seis cosas que hacemos bien, y las piezas que componen cada una." },
         anatomy: { title: "Qué hay dentro de un agente que ponemos en producción", lead: "Un agente no es un prompt. Son cinco sistemas que tienen que sostenerse juntos — y los pasos dos a cuatro corren en un bucle hasta cumplir el objetivo o hasta que un presupuesto los detiene." },
-        hermesTitle: "Hecho en casa",
+        hermesTitle: "Cómo arrancamos rápido",
         engagement: { title: "Cómo es un proyecto de IA con nosotros", lead: "Pasos cortos, cada uno terminando en algo que podés evaluar de verdad." },
         cta: { title: "¿Tenés un flujo de trabajo que creés que un agente debería hacer?", button: "Hablemos de eso" },
         capabilities: {
@@ -146,8 +147,9 @@ const es: typeof en = {
             evals: { title: "Evaluaciones", description: "Golden sets y jueces validan cada cambio, para que la calidad sea un número y no una opinión." },
         },
         hermes: {
-            tagline: "Nuestro runtime de agentes para trabajo autónomo.",
-            description: "Hermes es el runtime que construimos para nosotros mismos después de haber puesto suficientes agentes en producción como para cansarnos de reconstruir el mismo andamiaje. Se encarga de las partes que son iguales siempre — **el bucle, el ruteo de herramientas, la memoria, los reintentos, los presupuestos, el tracing y las evaluaciones** — para que un proyecto arranque en el problema interesante y no en la plomería.",
+            heading: "El andamiaje, ya construido",
+            tagline: "Todo agente necesita la misma plomería. No la reconstruimos cada vez.",
+            description: "**El bucle, el ruteo de herramientas, la memoria, los reintentos, los presupuestos, el tracing y las evaluaciones** son iguales en cada proyecto. Los corremos sobre un runtime de agentes maduro y probado en lugar de reconstruirlos cada vez — así un proyecto arranca en el problema interesante y no en la plomería.",
             outcome: "Para vos eso significa agentes en producción en **semanas, no trimestres**, sobre una infraestructura que ya pasó por los modos de falla que el tuyo está por encontrar.",
             features: {
                 loopEngine: { title: "Motor de bucle", description: "Ciclos de planificar/actuar/observar con presupuestos, timeouts y cancelación limpia." },
@@ -235,7 +237,7 @@ const pt: typeof en = {
         intro: "Qualquer um consegue ligar um chatbot a uma API. O difícil é tudo o que vem depois da demo: recuperação que aguenta documentos bagunçados, agentes que se recuperam dos próprios erros, orçamentos que mantêm a conta sob controle e avaliações que avisam no exato momento em que a qualidade cai.\n\nEssa é a parte que fazemos. **Sistemas RAG, loops agênticos e agentes autônomos**, projetados como software e não montados como um prompt.",
         whatWeBuild: { title: "O que construímos", lead: "Seis coisas que fazemos bem, e as peças que compõem cada uma delas." },
         anatomy: { title: "O que existe dentro de um agente que colocamos em produção", lead: "Um agente não é um prompt. São cinco sistemas que precisam se sustentar juntos — e os passos dois a quatro rodam em loop até o objetivo ser cumprido ou até um orçamento parar." },
-        hermesTitle: "Feito em casa",
+        hermesTitle: "Como começamos rápido",
         engagement: { title: "Como é um projeto de IA com a gente", lead: "Passos curtos, cada um terminando em algo que você consegue de fato avaliar." },
         cta: { title: "Tem um fluxo de trabalho que você acha que um agente deveria fazer?", button: "Vamos conversar sobre isso" },
         capabilities: {
@@ -254,8 +256,9 @@ const pt: typeof en = {
             evals: { title: "Avaliações", description: "Golden sets e juízes validam cada mudança, para que a qualidade seja um número e não uma opinião." },
         },
         hermes: {
-            tagline: "Nosso runtime de agentes para trabalho autônomo.",
-            description: "O Hermes é o runtime que construímos para nós mesmos depois de colocar agentes suficientes em produção a ponto de cansar de reconstruir o mesmo andaime. Ele cuida das partes que são iguais toda vez — **o loop, o roteamento de ferramentas, a memória, os retries, os orçamentos, o tracing e as avaliações** — para que um projeto comece no problema interessante em vez de no encanamento.",
+            heading: "O andaime, já construído",
+            tagline: "Todo agente precisa do mesmo encanamento. Não reconstruímos toda vez.",
+            description: "**O loop, o roteamento de ferramentas, a memória, os retries, os orçamentos, o tracing e as avaliações** são iguais em todo projeto. Rodamos isso sobre um runtime de agentes maduro e comprovado em vez de reconstruir toda vez — então um projeto começa no problema interessante em vez de no encanamento.",
             outcome: "Para você isso significa agentes em produção em **semanas, não trimestres**, sobre uma infraestrutura que já passou pelos modos de falha que o seu está prestes a encontrar.",
             features: {
                 loopEngine: { title: "Motor de loop", description: "Ciclos de planejar/agir/observar com orçamentos, timeouts e cancelamento limpo." },
