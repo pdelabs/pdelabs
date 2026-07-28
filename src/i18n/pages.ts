@@ -142,7 +142,7 @@ const es: typeof en = {
         engagement: { title: "Cómo es un proyecto de IA con nosotros", lead: "Pasos cortos, cada uno terminando en algo que podés evaluar de verdad." },
         cta: { title: "¿Tenés un flujo de trabajo que creés que un agente debería hacer?", button: "Hablemos de eso" },
         vsDesktop: {
-            title: "¿Por qué no usar Claude Desktop y ya?",
+            title: "¿Por qué no usar Claude Desktop y tá?",
             lead: "Claude Desktop y ChatGPT son geniales — para una persona, manejándolos de a una tarea, en una ventana de chat. Lo que no pueden ser es un agente que corre **adentro de tu negocio**. Esa es la parte que construimos.",
             items: {
                 unattended: { label: "Corre solo, sobre tus sistemas", desc: "No una ventana de chat en la que te sentás enfrente — un agente que corre en un cronograma y actúa mientras nadie mira." },
