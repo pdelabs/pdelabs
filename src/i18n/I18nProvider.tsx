@@ -36,9 +36,21 @@ export function I18nProvider({
     useEffect(() => {
         const match = document.cookie.match(new RegExp(`(?:^|; )${LOCALE_COOKIE}=([^;]+)`));
         const saved = match?.[1];
-        if (isLocale(saved) && saved !== locale) {
-            setLocaleState(saved);
-            document.documentElement.lang = saved;
+        // A saved manual choice always wins.
+        if (isLocale(saved)) {
+            if (saved !== locale) {
+                setLocaleState(saved);
+                document.documentElement.lang = saved;
+            }
+            return;
+        }
+        // First visit, no choice yet: fall back to the browser's language.
+        // (Browser language, not geo-IP — a good proxy that keeps the site static.)
+        const nav = (navigator.language || "").toLowerCase();
+        const detected: Locale = nav.startsWith("es") ? "es" : nav.startsWith("pt") ? "pt" : "en";
+        if (detected !== locale) {
+            setLocaleState(detected);
+            document.documentElement.lang = detected;
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
