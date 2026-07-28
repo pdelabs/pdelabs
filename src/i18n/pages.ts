@@ -147,9 +147,9 @@ const es: typeof en = {
             evals: { title: "Evaluaciones", description: "Golden sets y jueces validan cada cambio, para que la calidad sea un número y no una opinión." },
         },
         hermes: {
-            heading: "El andamiaje, ya construido",
-            tagline: "Todo agente necesita la misma plomería. No la reconstruimos cada vez.",
-            description: "**El bucle, el ruteo de herramientas, la memoria, los reintentos, los presupuestos, el tracing y las evaluaciones** son iguales en cada proyecto. Los corremos sobre un runtime de agentes maduro y probado en lugar de reconstruirlos cada vez — así un proyecto arranca en el problema interesante y no en la plomería.",
+            heading: "La base, ya resuelta",
+            tagline: "Todo agente arranca sobre la misma base. No la rehacemos en cada proyecto.",
+            description: "**El bucle, el ruteo de herramientas, la memoria, los reintentos, los presupuestos, el tracing y las evaluaciones** son iguales en todos los proyectos. En vez de rehacerlos cada vez, los corremos sobre un runtime de agentes maduro y probado — así el proyecto arranca en el problema que importa y no en la infraestructura de siempre.",
             outcome: "Para vos eso significa agentes en producción en **semanas, no trimestres**, sobre una infraestructura que ya pasó por los modos de falla que el tuyo está por encontrar.",
             features: {
                 loopEngine: { title: "Motor de bucle", description: "Ciclos de planificar/actuar/observar con presupuestos, timeouts y cancelación limpia." },
@@ -256,9 +256,9 @@ const pt: typeof en = {
             evals: { title: "Avaliações", description: "Golden sets e juízes validam cada mudança, para que a qualidade seja um número e não uma opinião." },
         },
         hermes: {
-            heading: "O andaime, já construído",
-            tagline: "Todo agente precisa do mesmo encanamento. Não reconstruímos toda vez.",
-            description: "**O loop, o roteamento de ferramentas, a memória, os retries, os orçamentos, o tracing e as avaliações** são iguais em todo projeto. Rodamos isso sobre um runtime de agentes maduro e comprovado em vez de reconstruir toda vez — então um projeto começa no problema interessante em vez de no encanamento.",
+            heading: "A base, já pronta",
+            tagline: "Todo agente começa sobre a mesma base. Não refazemos isso a cada projeto.",
+            description: "**O loop, o roteamento de ferramentas, a memória, os retries, os orçamentos, o tracing e as avaliações** são iguais em todos os projetos. Em vez de refazer tudo isso a cada vez, rodamos sobre um runtime de agentes maduro e comprovado — então o projeto começa no problema que importa e não na infraestrutura de sempre.",
             outcome: "Para você isso significa agentes em produção em **semanas, não trimestres**, sobre uma infraestrutura que já passou pelos modos de falha que o seu está prestes a encontrar.",
             features: {
                 loopEngine: { title: "Motor de loop", description: "Ciclos de planejar/agir/observar com orçamentos, timeouts e cancelamento limpo." },
