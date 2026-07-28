@@ -6,7 +6,7 @@ import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButt
 import BlobSvg from "./blob.svg";
 import c from "classnames";
 import styles from "./AI.module.css";
-import { Bot, Braces, LucideProps, Radar, ScanSearch, ShieldCheck, Wrench } from "lucide-react";
+import { Bot, Braces, Check, LucideProps, Radar, ScanSearch, ShieldCheck, Wrench, X } from "lucide-react";
 import { useI18n, Rich } from "@/i18n/I18nProvider";
 
 /**
@@ -22,8 +22,6 @@ const CAPABILITY_META: { key: string; Icon: React.FC<LucideProps> }[] = [
     { key: "guardrails", Icon: ShieldCheck },
     { key: "infrastructure", Icon: Braces },
 ];
-
-const VS_DESKTOP_KEYS = ["unattended", "tools", "trust", "accountable"];
 
 const ANATOMY_KEYS = ["context", "tools", "loop", "guardrails", "evals"];
 const HERMES_PILLS = ["RAG", "agentic loops", "autonomous agents", "tool use", "evals", "tracing"];
@@ -68,11 +66,21 @@ const AI = () => {
                     <LargeBody><Rich text={t("ai.vsDesktop.lead")} /></LargeBody>
                 </Container>
                 <Container>
-                    <div className={styles.vsList}>
-                        {VS_DESKTOP_KEYS.map((k) => (
-                            <div key={k} className={styles.vsItem}>
-                                <Subtitle className={styles.vsLabel}>{t(`ai.vsDesktop.items.${k}.label`)}</Subtitle>
-                                <Body className={styles.vsDesc}>{t(`ai.vsDesktop.items.${k}.desc`)}</Body>
+                    <div className={styles.vsCompare}>
+                        <div className={styles.vsHeaders}>
+                            <SmallBody className={styles.vsHeadThem}>{t("ai.vsDesktop.themLabel")}</SmallBody>
+                            <SmallBody className={styles.vsHeadUs}>{t("ai.vsDesktop.usLabel")}</SmallBody>
+                        </div>
+                        {(t("ai.vsDesktop.rows") as { them: string; us: string }[]).map((row, i) => (
+                            <div key={i} className={styles.vsRow}>
+                                <div className={styles.vsThem}>
+                                    <X size={18} className={styles.vsX} />
+                                    <SmallBody>{row.them}</SmallBody>
+                                </div>
+                                <div className={styles.vsUs}>
+                                    <Check size={18} className={styles.vsCheck} />
+                                    <SmallBody>{row.us}</SmallBody>
+                                </div>
                             </div>
                         ))}
                     </div>

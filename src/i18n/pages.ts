@@ -25,12 +25,14 @@ const en = {
         vsDesktop: {
             title: "Why not just use Claude Desktop?",
             lead: "Claude Desktop and ChatGPT are great — for one person, driving them one task at a time, in a chat window. What they can't be is an agent that runs **inside your business**. That is the part we build.",
-            items: {
-                unattended: { label: "It runs unattended, on your systems", desc: "Not a chat window you sit in front of — an agent that runs on a schedule and takes action while nobody is watching." },
-                tools: { label: "Connected to your stack", desc: "We write custom tools so it reads and writes your CRM, database and internal APIs — not just whatever you paste into a chat." },
-                trust: { label: "Safe enough to trust with actions", desc: "Budgets, approval gates, reversible operations, an audit trail and evals — so an autonomous agent is recoverable, not a liability." },
-                accountable: { label: "A team that owns it", desc: "When it breaks, someone is accountable and fixes it. A download does not come with that." },
-            },
+            themLabel: "Claude Desktop / ChatGPT",
+            usLabel: "An agent in your business",
+            rows: [
+                { them: "You sit there and type it every task.", us: "Runs autonomous flows on a schedule, while nobody watches." },
+                { them: "Only sees what you paste into the chat.", us: "Reads and writes your CRM, database and internal APIs." },
+                { them: "No budgets, no approvals, no undo.", us: "Budgets, approval gates, reversible operations and an audit trail." },
+                { them: "It's an app — if it breaks, that's on you.", us: "A team that's accountable when something breaks." },
+            ],
         },
         capabilities: {
             rag: { title: "RAG that actually retrieves", tagline: "Answers grounded in your data", description: "Most RAG demos fall apart the moment real documents show up. We build retrieval that survives production: **hybrid search, deliberate chunking, reranking and citations** — measured against a golden set instead of vibes.", bullets: ["Hybrid vector + keyword search", "Reranking & context compression", "Inline citations and source tracing", "Retrieval quality benchmarks"] },
@@ -144,12 +146,14 @@ const es: typeof en = {
         vsDesktop: {
             title: "¿Por qué no usar Claude Desktop y tá?",
             lead: "Claude Desktop y ChatGPT son geniales — para una persona, manejándolos de a una tarea, en una ventana de chat. Lo que no pueden ser es un agente que corre **adentro de tu negocio**. Esa es la parte que construimos.",
-            items: {
-                unattended: { label: "Corre solo, sobre tus sistemas", desc: "No una ventana de chat en la que te sentás enfrente — un agente que corre en un cronograma y actúa mientras nadie mira." },
-                tools: { label: "Conectado a tu stack", desc: "Escribimos herramientas a medida para que lea y escriba en tu CRM, tu base de datos y tus APIs internas — no solo lo que pegás en un chat." },
-                trust: { label: "Lo bastante seguro para confiarle acciones", desc: "Presupuestos, puntos de aprobación, operaciones reversibles, traza de auditoría y evaluaciones — así un agente autónomo es recuperable y no un riesgo." },
-                accountable: { label: "Un equipo que se hace cargo", desc: "Cuando se rompe, hay alguien responsable que lo arregla. Un download no viene con eso." },
-            },
+            themLabel: "Claude Desktop / ChatGPT",
+            usLabel: "Un agente en tu negocio",
+            rows: [
+                { them: "Te sentás y le tipeás cada tarea.", us: "Corre flujos autónomos en un cronograma, mientras nadie mira." },
+                { them: "Solo ve lo que le pegás en el chat.", us: "Lee y escribe en tu CRM, tu base de datos y tus APIs internas." },
+                { them: "Sin límites, sin aprobaciones, sin vuelta atrás.", us: "Presupuestos, aprobaciones, operaciones reversibles y traza de auditoría." },
+                { them: "Es una app: si se rompe, es tu problema.", us: "Un equipo que se hace cargo cuando algo se rompe." },
+            ],
         },
         capabilities: {
             rag: { title: "RAG que realmente recupera", tagline: "Respuestas basadas en tus datos", description: "La mayoría de las demos de RAG se caen apenas aparecen documentos reales. Construimos recuperación que sobrevive en producción: **búsqueda híbrida, chunking deliberado, reranking y citas** — medida contra un golden set y no contra la intuición.", bullets: ["Búsqueda híbrida vectorial + por palabras clave", "Reranking y compresión de contexto", "Citas en línea y trazabilidad de fuentes", "Benchmarks de calidad de recuperación"] },
@@ -263,12 +267,14 @@ const pt: typeof en = {
         vsDesktop: {
             title: "Por que não usar só o Claude Desktop?",
             lead: "Claude Desktop e ChatGPT são ótimos — para uma pessoa, usando-os uma tarefa por vez, numa janela de chat. O que eles não conseguem ser é um agente que roda **dentro do seu negócio**. Essa é a parte que a gente constrói.",
-            items: {
-                unattended: { label: "Roda sozinho, sobre os seus sistemas", desc: "Não uma janela de chat na sua frente — um agente que roda numa agenda e age enquanto ninguém está olhando." },
-                tools: { label: "Conectado ao seu stack", desc: "Escrevemos ferramentas sob medida para ele ler e escrever no seu CRM, no seu banco de dados e nas suas APIs internas — não só o que você cola num chat." },
-                trust: { label: "Seguro o suficiente para confiar ações", desc: "Orçamentos, portões de aprovação, operações reversíveis, trilha de auditoria e avaliações — então um agente autônomo é recuperável, não um risco." },
-                accountable: { label: "Um time que assume", desc: "Quando quebra, tem alguém responsável que conserta. Um download não vem com isso." },
-            },
+            themLabel: "Claude Desktop / ChatGPT",
+            usLabel: "Um agente no seu negócio",
+            rows: [
+                { them: "Você senta e digita cada tarefa.", us: "Roda fluxos autônomos numa agenda, enquanto ninguém olha." },
+                { them: "Só vê o que você cola no chat.", us: "Lê e escreve no seu CRM, no seu banco de dados e nas suas APIs internas." },
+                { them: "Sem limites, sem aprovações, sem desfazer.", us: "Orçamentos, aprovações, operações reversíveis e trilha de auditoria." },
+                { them: "É um app: se quebra, o problema é seu.", us: "Um time responsável quando algo quebra." },
+            ],
         },
         capabilities: {
             rag: { title: "RAG que realmente recupera", tagline: "Respostas baseadas nos seus dados", description: "A maioria das demos de RAG desmorona no momento em que documentos reais aparecem. Construímos recuperação que sobrevive em produção: **busca híbrida, chunking deliberado, reranking e citações** — medida contra um golden set e não contra o feeling.", bullets: ["Busca híbrida vetorial + por palavras-chave", "Reranking e compressão de contexto", "Citações inline e rastreamento de fontes", "Benchmarks de qualidade de recuperação"] },
