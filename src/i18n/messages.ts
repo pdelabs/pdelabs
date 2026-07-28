@@ -159,19 +159,19 @@ const es: Messages = {
         titleLead: "Construimos agentes de IA que llegan a",
         titleEmphasis: "producción.",
         subtitle:
-            "Sistemas RAG, bucles agénticos y agentes autónomos — diseñados, evaluados y puestos en producción. Además del trabajo web, mobile y de datos que los sostiene.",
+            "Sistemas RAG, loops agénticos y agentes autónomos — diseñados, evaluados y puestos en producción. Además del trabajo web, mobile y de datos que los sostiene.",
     },
     services: {
         intro1:
             "Somos una **empresa de desarrollo de software** comprometida con crear productos digitales de clase mundial para startups y empresas de todo el mundo.",
         whatWeOffer: "Qué ofrecemos",
         intro2:
-            "Construimos **productos de IA** — sistemas RAG, bucles agénticos y agentes autónomos — sobre la ingeniería web, mobile y de datos que debe sostenerlos. Un solo equipo para el modelo y para todo lo que lo rodea.",
+            "Construimos **productos de IA** — sistemas RAG, loops agénticos y agentes autónomos — sobre la ingeniería web, mobile y de datos que debe sostenerlos. Un solo equipo para el modelo y para todo lo que lo rodea.",
         seeHow: "Mirá cómo los construimos",
         cards: {
             rag: {
                 title: "Agentes de IA y Sistemas RAG",
-                desc: "**Generación aumentada por recuperación (RAG), bucles agénticos y agentes autónomos** creados para funcionar en producción, no solo para lucir en una demo.\n\nEsto incluye **uso de herramientas, memoria, guardrails, evaluaciones y observabilidad**.",
+                desc: "**Generación aumentada por recuperación (RAG), loops agénticos y agentes autónomos** creados para funcionar en producción, no solo para lucir en una demo.\n\nEsto incluye **uso de herramientas, memoria, guardrails, evaluaciones y observabilidad**.",
             },
             custom: {
                 title: "Desarrollo de Software a Medida",
