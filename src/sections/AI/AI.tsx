@@ -6,7 +6,7 @@ import ScheduleCallButton from "@/components/ScheduleCallButton/ScheduleCallButt
 import BlobSvg from "./blob.svg";
 import c from "classnames";
 import styles from "./AI.module.css";
-import { Bot, Braces, LucideProps, Radar, ScanSearch, ShieldCheck, Workflow } from "lucide-react";
+import { Bot, Braces, LucideProps, Radar, ScanSearch, ShieldCheck, Wrench } from "lucide-react";
 import { useI18n, Rich } from "@/i18n/I18nProvider";
 
 /**
@@ -16,12 +16,14 @@ import { useI18n, Rich } from "@/i18n/I18nProvider";
 
 const CAPABILITY_META: { key: string; Icon: React.FC<LucideProps> }[] = [
     { key: "rag", Icon: ScanSearch },
-    { key: "agenticLoops", Icon: Workflow },
+    { key: "customTools", Icon: Wrench },
     { key: "autonomousAgents", Icon: Bot },
     { key: "evals", Icon: Radar },
     { key: "guardrails", Icon: ShieldCheck },
     { key: "infrastructure", Icon: Braces },
 ];
+
+const VS_DESKTOP_KEYS = ["unattended", "tools", "trust", "accountable"];
 
 const ANATOMY_KEYS = ["context", "tools", "loop", "guardrails", "evals"];
 const HERMES_PILLS = ["RAG", "agentic loops", "autonomous agents", "tool use", "evals", "tracing"];
@@ -58,6 +60,23 @@ const AI = () => {
                         </article>
                     ))}
                 </div>
+            </section>
+
+            <section className={styles.block}>
+                <Container>
+                    <SectionTitle>{t("ai.vsDesktop.title")}</SectionTitle>
+                    <LargeBody><Rich text={t("ai.vsDesktop.lead")} /></LargeBody>
+                </Container>
+                <Container>
+                    <div className={styles.vsList}>
+                        {VS_DESKTOP_KEYS.map((k) => (
+                            <div key={k} className={styles.vsItem}>
+                                <Subtitle className={styles.vsLabel}>{t(`ai.vsDesktop.items.${k}.label`)}</Subtitle>
+                                <Body className={styles.vsDesc}>{t(`ai.vsDesktop.items.${k}.desc`)}</Body>
+                            </div>
+                        ))}
+                    </div>
+                </Container>
             </section>
 
             <section className={styles.block}>

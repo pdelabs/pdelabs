@@ -319,3 +319,38 @@
         font-size: 2rem;
     }
 }
+
+/* ── "Why not just Claude Desktop?" contrast list ──────────────────────── */
+
+.vsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 2.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 2rem 0 2rem;
+}
+
+.vsItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 1rem;
+    border-left: 3px solid #4FA97F;
+}
+
+.vsLabel {
+    color: white;
+}
+
+.vsDesc {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 900px) {
+    .vsList {
+        grid-template-columns: 1fr;
+        padding: 1rem 1rem 0 1rem;
+    }
+}
