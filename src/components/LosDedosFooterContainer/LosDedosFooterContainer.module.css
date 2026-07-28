@@ -13,6 +13,9 @@
     height: 300px;
     max-width: calc(100% - 4rem);
     top: 0;
+    /* Purely decorative — it overlaps the contact CTAs above and the footer
+       button below, so let clicks pass through to them. */
+    pointer-events: none;
 }
 
 .losDedos {
@@ -20,6 +23,7 @@
     top: 0;
     transform: translateY(-50%);
     z-index: 5;
+    pointer-events: none;
 }
 
 .pdelabslogo {
