@@ -113,6 +113,7 @@ const en: Messages = {
     contact: {
         heading1: "We love to take on new challenges,",
         heading2: "tell us yours.",
+        whatsapp: "Message us on WhatsApp",
         takeOffline: "Or\nif you prefer taking it offline, write us\nvia email",
         form: {
             fullName: "Full Name",
@@ -252,6 +253,7 @@ const es: Messages = {
     contact: {
         heading1: "Nos encanta asumir nuevos desafíos,",
         heading2: "contanos el tuyo.",
+        whatsapp: "Escribinos por WhatsApp",
         takeOffline: "O\nsi preferís hacerlo por otro medio, escribinos\npor email",
         form: {
             fullName: "Nombre completo",
@@ -391,6 +393,7 @@ const pt: Messages = {
     contact: {
         heading1: "Adoramos abraçar novos desafios,",
         heading2: "conte o seu pra gente.",
+        whatsapp: "Fale com a gente no WhatsApp",
         takeOffline: "Ou\nse preferir de outro jeito, escreva pra gente\npor email",
         form: {
             fullName: "Nome completo",
