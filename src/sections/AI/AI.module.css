@@ -320,60 +320,57 @@
     }
 }
 
-/* ── "Why not just Claude Desktop?" — a ✗ / ✓ comparison ───────────────── */
+/* ── "Why not just Claude Desktop?" — two white cards, ✗ vs ✓ ──────────── */
 
-.vsCompare {
+.vsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     width: 100%;
-    max-width: 920px;
+    max-width: 940px;
     margin: 1.5rem auto 0 auto;
     padding: 0 2rem;
 }
 
-.vsHeaders,
-.vsRow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 2.5rem;
+.vsCard {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.75rem 2rem;
+    color: var(--primary-foreground-hex);
+    border-top: 4px solid transparent;
 }
 
-.vsHeaders {
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+.vsCardThem {
+    border-top-color: rgba(39, 68, 83, 0.15);
 }
 
-.vsHeadThem,
-.vsHeadUs {
+.vsCardUs {
+    border-top-color: #4FA97F;
+}
+
+.vsCardHeadThem,
+.vsCardHeadUs {
+    display: block;
     text-transform: uppercase;
     letter-spacing: 0.07em;
     font-weight: 700;
+    padding-bottom: 0.5rem;
 }
 
-.vsHeadThem {
-    color: rgba(255, 255, 255, 0.55);
+.vsCardHeadThem {
+    color: rgba(39, 68, 83, 0.5);
 }
 
-.vsHeadUs {
-    color: #7FCBA6;
+.vsCardHeadUs {
+    color: #3E9A73;
 }
 
-.vsRow {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.vsThem,
-.vsUs {
+.vsCardItem {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
-}
-
-.vsThem {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.vsUs {
-    color: white;
+    gap: 0.65rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid rgba(39, 68, 83, 0.08);
 }
 
 .vsX {
@@ -389,18 +386,8 @@
 }
 
 @media (max-width: 760px) {
-    .vsCompare {
-        padding: 0 1rem;
-    }
-
-    /* Stack each row: the ✗ (Claude) above the ✓ (us). The icons carry the
-       meaning, so the column headers are hidden. */
-    .vsHeaders {
-        display: none;
-    }
-
-    .vsRow {
+    .vsGrid {
         grid-template-columns: 1fr;
-        gap: 0.6rem;
+        padding: 0 1rem;
     }
 }

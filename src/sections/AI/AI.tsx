@@ -30,6 +30,7 @@ const ENGAGEMENT_KEYS = ["audit", "prototype", "hardening"];
 
 const AI = () => {
     const { t } = useI18n();
+    const vsRows = t("ai.vsDesktop.rows") as { them: string; us: string }[];
     return (
         <>
             <div className={styles.intro}>
@@ -66,23 +67,25 @@ const AI = () => {
                     <LargeBody><Rich text={t("ai.vsDesktop.lead")} /></LargeBody>
                 </Container>
                 <Container>
-                    <div className={styles.vsCompare}>
-                        <div className={styles.vsHeaders}>
-                            <SmallBody className={styles.vsHeadThem}>{t("ai.vsDesktop.themLabel")}</SmallBody>
-                            <SmallBody className={styles.vsHeadUs}>{t("ai.vsDesktop.usLabel")}</SmallBody>
-                        </div>
-                        {(t("ai.vsDesktop.rows") as { them: string; us: string }[]).map((row, i) => (
-                            <div key={i} className={styles.vsRow}>
-                                <div className={styles.vsThem}>
+                    <div className={styles.vsGrid}>
+                        <div className={c(styles.vsCard, styles.vsCardThem)}>
+                            <SmallBody className={styles.vsCardHeadThem}>{t("ai.vsDesktop.themLabel")}</SmallBody>
+                            {vsRows.map((row, i) => (
+                                <div key={i} className={styles.vsCardItem}>
                                     <X size={18} className={styles.vsX} />
                                     <SmallBody>{row.them}</SmallBody>
                                 </div>
-                                <div className={styles.vsUs}>
+                            ))}
+                        </div>
+                        <div className={c(styles.vsCard, styles.vsCardUs)}>
+                            <SmallBody className={styles.vsCardHeadUs}>{t("ai.vsDesktop.usLabel")}</SmallBody>
+                            {vsRows.map((row, i) => (
+                                <div key={i} className={styles.vsCardItem}>
                                     <Check size={18} className={styles.vsCheck} />
                                     <SmallBody>{row.us}</SmallBody>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </Container>
             </section>
