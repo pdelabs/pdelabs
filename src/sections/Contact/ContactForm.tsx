@@ -23,18 +23,18 @@ const ContactForm: FC = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
     const { state, actions } = useAsyncValueState<Response>();
     const { toast } = useToast();
-    const { t } = useI18n();
+    const { t, locale } = useI18n();
 
     const onSubmit = useCallback(async (data: FormData) => {
         actions.loading();
         try {
-            const response = await sendEmail(data);
+            const response = await sendEmail({ ...data, locale });
             actions.data(response);
             reset();
         } catch (e: any) {
             actions.error(t('contact.toast.errorTitle'));
         }
-    }, []);
+    }, [locale]);
 
     useOnAsyncStateData(state, () => {
         toast({
